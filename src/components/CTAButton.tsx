@@ -4,7 +4,7 @@ export function CTAButton({ children = "I'M READY TO OPTIMIZE" }: { children?: R
   return (
     <Link
       to="/signup"
-      className="inline-block rounded-md bg-brand px-7 py-3 text-sm uppercase tracking-wide text-white shadow-sm hover:opacity-90"
+      className="inline-block rounded-md bg-brand px-8 py-4 text-base font-extrabold uppercase tracking-wide text-white shadow-sm hover:opacity-90"
     >
       {children}
     </Link>

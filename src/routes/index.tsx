@@ -4,6 +4,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBanner } from "@/components/StickyBanner";
 import { CTAButton } from "@/components/CTAButton";
 import logo from "@/assets/m3-logo.png";
+import founderMax from "@/assets/founder-max.png";
+import founderJon from "@/assets/founder-jon.png";
+import foundersDuo from "@/assets/founders-duo.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,83 +50,122 @@ function Index() {
       <SiteHeader />
 
       <main>
-        {/* Hero */}
-        <section className="mx-auto max-w-3xl px-4 py-16 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold uppercase tracking-tight">
-            Do You Want To Feel Like Yourself Again?
-          </h1>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Take the precision timed supplement and come alive in 30 days.
-          </p>
-          <div className="mt-7"><CTAButton>I'M READY TO OPTIMIZE</CTAButton></div>
-          <p className="mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
+        {/* HERO — fills viewport, founder pngs on sides (desktop), peek of free resource at bottom */}
+        <section className="relative overflow-hidden">
+          <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center justify-center px-4 pt-10 pb-20 md:pt-16 md:pb-24">
+            {/* Side founder images — desktop only, cut at bottom */}
+            <img
+              src={founderMax}
+              alt=""
+              aria-hidden
+              className="hidden md:block pointer-events-none select-none absolute left-2 lg:left-6 bottom-0 h-[78%] w-auto object-contain object-bottom"
+              style={{ clipPath: "inset(0 0 0 0)" }}
+            />
+            <img
+              src={founderJon}
+              alt=""
+              aria-hidden
+              className="hidden md:block pointer-events-none select-none absolute right-2 lg:right-6 bottom-0 h-[78%] w-auto object-contain object-bottom"
+            />
+
+            <div className="relative z-10 mx-auto max-w-2xl text-center">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.05]">
+                Do You Want To Feel Like Yourself Again?
+              </h1>
+              <p className="mt-5 text-base md:text-lg text-foreground/80">
+                Take the precision timed supplement and come alive in 30 days.
+              </p>
+              <div className="mt-7"><CTAButton>I'M READY TO OPTIMIZE</CTAButton></div>
+              <p className="mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
+
+              {/* Mobile-only duo image */}
+              <img
+                src={foundersDuo}
+                alt="Max and Jon Valrose, M3 founders"
+                className="md:hidden mt-8 mx-auto w-full max-w-sm rounded-lg"
+              />
+            </div>
+          </div>
         </section>
 
-        {/* Free Resource */}
-        <section className="border-y border-border bg-secondary/40">
-          <div className="mx-auto max-w-3xl px-4 py-14 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold uppercase">
+        {/* FREE RESOURCE — thin section */}
+        <section className="border-t border-border bg-secondary/40">
+          <div className="mx-auto max-w-3xl px-4 py-8 text-center">
+            <div className="inline-block rounded-full bg-[#FF0000] text-white text-xs px-3 py-1 mb-3">
+              It's Free
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight">
               <span className="text-brand">FREE</span> RESOURCE
             </h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-2 text-sm md:text-base text-foreground/80">
               The same nutrient timing science M3 is built on in a free guide you can follow on your own:
             </p>
 
-            <div className="mt-8 mx-auto max-w-md rounded-lg border border-border bg-background p-6 shadow-sm">
-              <div className="mx-auto mb-4 inline-flex h-20 w-20 items-center justify-center rounded-full bg-brand text-white text-sm font-bold uppercase">
-                Free
-              </div>
-              <h3 className="text-xl font-bold uppercase">Nutrient Timing Guide</h3>
-              <div className="mt-4 mx-auto aspect-[4/3] w-full max-w-xs border border-border bg-secondary/60 flex items-center justify-center text-xs text-muted-foreground">
+            <div className="mt-5 mx-auto max-w-sm">
+              <h3 className="text-lg md:text-xl font-black uppercase">Nutrient Timing Guide</h3>
+              <div className="mt-3 mx-auto aspect-[4/3] w-full max-w-[220px] border border-border bg-background flex items-center justify-center text-xs text-muted-foreground">
                 Guide preview
               </div>
               <a
                 href="https://docs.google.com/document/d/14I4Id_ZUuAeovT98vToEZzOjyMMJKlfYcUbG8kZhuQI/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-block rounded-md bg-brand px-6 py-3 text-sm font-medium text-white hover:opacity-90"
+                className="mt-4 inline-block rounded-md bg-brand px-6 py-3 text-sm text-white hover:opacity-90"
               >
-                Download the Free Guide →
+                Get Your Free Guide →
               </a>
             </div>
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="mx-auto max-w-3xl px-4 py-14">
-          <h2 className="text-2xl md:text-3xl font-bold text-center uppercase">FAQ</h2>
-          <div className="mt-6 space-y-3">
+        {/* FAQ — borderless, wide */}
+        <section className="mx-auto max-w-4xl px-4 py-10">
+          <h2 className="text-2xl md:text-3xl font-black text-center uppercase">FAQs</h2>
+          <div className="mt-6 divide-y divide-border">
             {faqs.map((f) => (
-              <details key={f.q} className="border border-border rounded-md bg-background px-4 py-3">
-                <summary className="cursor-pointer font-semibold">{f.q}</summary>
-                <div className="mt-3 text-muted-foreground text-sm">{f.a}</div>
+              <details key={f.q} className="group py-4">
+                <summary className="cursor-pointer list-none flex justify-between items-center font-bold text-base md:text-lg">
+                  <span>{f.q}</span>
+                  <span className="ml-4 text-brand text-xl group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="mt-3 text-sm md:text-base text-foreground/80">{f.a}</div>
               </details>
             ))}
           </div>
         </section>
 
-        {/* Founders */}
+        {/* Founders — 33% image / 66% text */}
         <section className="border-t border-border bg-secondary/40">
-          <div className="mx-auto max-w-3xl px-4 py-14">
-            <h2 className="text-2xl md:text-3xl font-bold text-center uppercase">About The Founders</h2>
-            <div className="mt-6 space-y-4 text-muted-foreground">
-              <p>Max and Jon Valrose are brothers and co-founders of M3. Max holds a degree in Cybersecurity and Economics. Jon holds a degree in Physics and Electrical Engineering. Both are The Knowledge Society alumni. Across their education a deep focus on human performance and nutrition remained constant.</p>
-              <p>Over time that gave them a thorough understanding of the industry and its problems. They have spent years implementing nutrition science. Max has a 2,000 consecutive day streak on Cronometer and MyFitnessPal. Neither has missed a single gym session in eight years. When they travel, TSA often flags their bags for supplements. They became the default reference point in their circles for training and nutrition.</p>
-              <p>They have been through the mistakes M3 is designed to prevent. From managing over 20 supplements to spending hundreds of dollars per month on trending ingredients: they get it. The research they did to understand those failures is what M3 is built on.</p>
+          <div className="mx-auto max-w-5xl px-4 py-12">
+            <h2 className="text-2xl md:text-3xl font-black text-center uppercase mb-8">About The Founders</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+              <div className="md:col-span-1">
+                <img src={foundersDuo} alt="Max and Jon Valrose" className="w-full rounded-lg" />
+              </div>
+              <div className="md:col-span-2 space-y-4 text-sm md:text-base text-foreground/85">
+                <p>Max and Jon Valrose are brothers and co-founders of M3. Max holds a degree in Cybersecurity and Economics. Jon holds a degree in Physics and Electrical Engineering. Both are The Knowledge Society alumni. Across their education a deep focus on human performance and nutrition remained constant.</p>
+                <p>Over time that gave them a thorough understanding of the industry and its problems. They have spent years implementing nutrition science. Max has a 2,000 consecutive day streak on Cronometer and MyFitnessPal. Neither has missed a single gym session in eight years. When they travel, TSA often flags their bags for supplements. They became the default reference point in their circles for training and nutrition.</p>
+                <p>They have been through the mistakes M3 is designed to prevent. From managing over 20 supplements to spending hundreds of dollars per month on trending ingredients: they get it. The research they did to understand those failures is what M3 is built on.</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="mx-auto max-w-3xl px-4 py-16 text-center">
-          <img src={logo} alt="M3" className="mx-auto h-16 w-auto" />
-          <div className="mt-6">
-            <Link
-              to="/signup"
-              className="inline-block rounded-md bg-brand px-8 py-4 text-base uppercase tracking-wide text-white hover:opacity-90"
-            >
-              Start Feeling Better For Free
-            </Link>
+        {/* Final CTA — logo left, button right with LIMITED OPPORTUNITY badge */}
+        <section className="mx-auto max-w-5xl px-4 py-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <img src={logo} alt="M3" className="h-14 w-auto" />
+            <div className="relative">
+              <span className="absolute -top-3 -right-3 rounded-md bg-[#FF0000] text-white text-[10px] px-2 py-1 uppercase">
+                Limited Opportunity
+              </span>
+              <Link
+                to="/signup"
+                className="inline-block rounded-md bg-brand px-7 py-4 text-base uppercase tracking-wide text-white hover:opacity-90"
+              >
+                Start Feeling Better For Free
+              </Link>
+            </div>
           </div>
         </section>
       </main>
