@@ -52,20 +52,19 @@ function Index() {
       <main>
         {/* HERO — fills viewport, founder pngs on sides (desktop), peek of free resource at bottom */}
         <section className="relative overflow-hidden">
-          <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center justify-center px-4 pt-10 pb-20 md:pt-16 md:pb-24">
-            {/* Side founder images — desktop only, cut at bottom */}
+          <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center justify-center px-4 pt-10 pb-6 md:pt-16 md:pb-8">
+            {/* Side founder images — desktop only, pushed to outer edges, never overlapping text */}
             <img
               src={founderMax}
               alt=""
               aria-hidden
-              className="hidden md:block pointer-events-none select-none absolute left-2 lg:left-6 bottom-0 h-[78%] w-auto object-contain object-bottom"
-              style={{ clipPath: "inset(0 0 0 0)" }}
+              className="hidden md:block pointer-events-none select-none absolute left-0 bottom-0 h-[78%] w-auto max-w-[28vw] object-contain object-bottom"
             />
             <img
               src={founderJon}
               alt=""
               aria-hidden
-              className="hidden md:block pointer-events-none select-none absolute right-2 lg:right-6 bottom-0 h-[78%] w-auto object-contain object-bottom"
+              className="hidden md:block pointer-events-none select-none absolute right-0 bottom-0 h-[78%] w-auto max-w-[28vw] object-contain object-bottom"
             />
 
             <div className="relative z-10 mx-auto max-w-2xl text-center">
@@ -151,20 +150,20 @@ function Index() {
           </div>
         </section>
 
-        {/* Final CTA — logo left, button right with LIMITED OPPORTUNITY badge */}
+        {/* Final CTA — centered logo + button */}
         <section className="mx-auto max-w-5xl px-4 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col items-center justify-center gap-6">
             <img src={logo} alt="M3" className="h-14 w-auto" />
-            <div className="relative">
-              <span className="absolute -top-3 -right-3 rounded-md bg-[#FF0000] text-white text-[10px] px-2 py-1 uppercase">
-                Limited Opportunity
-              </span>
+            <div className="relative inline-block">
               <Link
                 to="/signup"
-                className="inline-block rounded-md bg-brand px-7 py-4 text-base uppercase tracking-wide text-white hover:opacity-90"
+                className="relative inline-block rounded-md bg-brand px-7 py-4 text-base uppercase tracking-wide text-white hover:opacity-90"
               >
                 Start Feeling Better For Free
               </Link>
+              <span className="pointer-events-none absolute -top-3 -right-3 z-10 rounded-md bg-[#FF0000] text-white text-[10px] px-2 py-1 uppercase">
+                Limited Opportunity
+              </span>
             </div>
           </div>
         </section>
