@@ -52,23 +52,39 @@ function Index() {
       <main>
         {/* HERO — fills viewport, founder pngs on sides (desktop), peek of free resource at bottom */}
         <section className="relative overflow-hidden">
-          <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center justify-center px-4 pt-10 pb-20 md:pt-16 md:pb-24">
-            {/* Side founder images — desktop only, cut at bottom */}
+          <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center justify-center px-4 pt-10 pb-6 md:pt-16 md:pb-8">
+            {/* Side founder images — desktop only, pushed to outer edges, never overlapping text */}
             <img
               src={founderMax}
               alt=""
               aria-hidden
-              className="hidden md:block pointer-events-none select-none absolute left-2 lg:left-6 bottom-0 h-[78%] w-auto object-contain object-bottom"
-              style={{ clipPath: "inset(0 0 0 0)" }}
+              className="hidden md:block pointer-events-none select-none absolute left-0 bottom-0 h-[78%] w-auto max-w-[28vw] object-contain object-bottom"
             />
             <img
               src={founderJon}
               alt=""
               aria-hidden
-              className="hidden md:block pointer-events-none select-none absolute right-2 lg:right-6 bottom-0 h-[78%] w-auto object-contain object-bottom"
+              className="hidden md:block pointer-events-none select-none absolute right-0 bottom-0 h-[78%] w-auto max-w-[28vw] object-contain object-bottom"
             />
 
             <div className="relative z-10 mx-auto max-w-2xl text-center">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.05]">
+                Do You Want To Feel Like Yourself Again?
+              </h1>
+              <p className="mt-5 text-base md:text-lg text-foreground/80">
+                Take the precision timed supplement and come alive in 30 days.
+              </p>
+              <div className="mt-7"><CTAButton>I'M READY TO OPTIMIZE</CTAButton></div>
+              <p className="mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
+
+              {/* Mobile-only duo image */}
+              <img
+                src={foundersDuo}
+                alt="Max and Jon Valrose, M3 founders"
+                className="md:hidden mt-8 mx-auto w-full max-w-sm rounded-lg"
+              />
+            </div>
+          </div>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.05]">
                 Do You Want To Feel Like Yourself Again?
               </h1>
