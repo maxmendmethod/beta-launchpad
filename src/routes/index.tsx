@@ -85,23 +85,6 @@ function Index() {
               />
             </div>
           </div>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.05]">
-                Do You Want To Feel Like Yourself Again?
-              </h1>
-              <p className="mt-5 text-base md:text-lg text-foreground/80">
-                Take the precision timed supplement and come alive in 30 days.
-              </p>
-              <div className="mt-7"><CTAButton>I'M READY TO OPTIMIZE</CTAButton></div>
-              <p className="mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
-
-              {/* Mobile-only duo image */}
-              <img
-                src={foundersDuo}
-                alt="Max and Jon Valrose, M3 founders"
-                className="md:hidden mt-8 mx-auto w-full max-w-sm rounded-lg"
-              />
-            </div>
-          </div>
         </section>
 
         {/* FREE RESOURCE — thin section */}
