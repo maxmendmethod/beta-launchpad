@@ -150,20 +150,20 @@ function Index() {
           </div>
         </section>
 
-        {/* Final CTA — logo left, button right with LIMITED OPPORTUNITY badge */}
+        {/* Final CTA — centered logo + button */}
         <section className="mx-auto max-w-5xl px-4 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col items-center justify-center gap-6">
             <img src={logo} alt="M3" className="h-14 w-auto" />
-            <div className="relative">
-              <span className="absolute -top-3 -right-3 rounded-md bg-[#FF0000] text-white text-[10px] px-2 py-1 uppercase">
-                Limited Opportunity
-              </span>
+            <div className="relative inline-block">
               <Link
                 to="/signup"
-                className="inline-block rounded-md bg-brand px-7 py-4 text-base uppercase tracking-wide text-white hover:opacity-90"
+                className="relative inline-block rounded-md bg-brand px-7 py-4 text-base uppercase tracking-wide text-white hover:opacity-90"
               >
                 Start Feeling Better For Free
               </Link>
+              <span className="pointer-events-none absolute -top-3 -right-3 z-10 rounded-md bg-[#FF0000] text-white text-[10px] px-2 py-1 uppercase">
+                Limited Opportunity
+              </span>
             </div>
           </div>
         </section>
