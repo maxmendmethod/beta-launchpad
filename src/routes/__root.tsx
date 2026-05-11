@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 function NotFoundComponent() {
   return (
@@ -18,6 +19,7 @@ export const Route = createRootRoute({
     <>
       <Outlet />
       <Analytics />
+      <SpeedInsights />
     </>
   ),
   notFoundComponent: NotFoundComponent,
