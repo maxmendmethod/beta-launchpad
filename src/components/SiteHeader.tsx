@@ -9,14 +9,19 @@ export function SiteHeader() {
   return (
     <header className="border-b border-border" style={{ backgroundColor: "#1d1e1c" }}>
       {/* Desktop */}
-      <div className="hidden md:flex mx-auto max-w-5xl items-center justify-center gap-8 px-4 py-4">
+      <div className="hidden md:flex mx-auto max-w-5xl items-center justify-between px-4 py-4">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="M3" className="h-12 w-auto" />
         </Link>
         <nav className="flex items-center gap-8 text-sm font-semibold text-white">
           {/* <Link to="/about" className="hover:text-brand">About M3</Link> */}
           {/* <Link to="/science" className="hover:text-brand">Core Principles</Link> */}
-          <Link to="/signup" className="hover:text-brand">Become a Founding Member</Link>
+          <Link
+            to="/signup"
+            className="rounded-md border border-white/40 px-4 py-2 transition-colors hover:border-brand hover:text-brand"
+          >
+            Become a Founding Member
+          </Link>
         </nav>
       </div>
 
@@ -36,7 +41,13 @@ export function SiteHeader() {
           <nav className="flex flex-col px-4 py-3 text-sm font-semibold text-white">
             {/* <Link to="/about" onClick={() => setOpen(false)} className="py-2">About M3</Link> */}
             {/* <Link to="/science" onClick={() => setOpen(false)} className="py-2">Core Principles</Link> */}
-            <Link to="/signup" onClick={() => setOpen(false)} className="py-2">Become a Founding Member</Link>
+            <Link
+              to="/signup"
+              onClick={() => setOpen(false)}
+              className="self-start rounded-md border border-white/40 px-4 py-2 transition-colors hover:border-brand hover:text-brand"
+            >
+              Become a Founding Member
+            </Link>
           </nav>
         </div>
       )}
