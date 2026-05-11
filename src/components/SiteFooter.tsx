@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border mt-16 bg-background">
+    <footer className="border-t border-border mt-16" style={{ backgroundColor: "#e68163" }}>
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 px-4 py-8 text-sm text-muted-foreground">
         <nav className="flex flex-wrap items-center justify-center gap-5">
           <Link to="/about" className="hover:text-brand">About M3</Link>

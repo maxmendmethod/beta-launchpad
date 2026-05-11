@@ -7,6 +7,7 @@ import logo from "@/assets/m3-logo.png";
 import founderMax from "@/assets/founder-max.png";
 import founderJon from "@/assets/founder-jon.png";
 import foundersDuo from "@/assets/founders-duo.jpg";
+import guidePreview from "@/assets/guide-preview.png.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,37 +52,37 @@ function Index() {
 
       <main>
         {/* HERO — fills viewport, founder pngs on sides (desktop), peek of free resource at bottom */}
-        <section className="relative overflow-hidden">
-          <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center justify-center px-4 pt-10 pb-6 md:pt-16 md:pb-8">
-            {/* Side founder images — desktop only, pushed to outer edges, never overlapping text */}
-            <img
-              src={founderMax}
-              alt=""
-              aria-hidden
-              className="hidden md:block pointer-events-none select-none absolute left-0 bottom-0 h-[78%] w-auto max-w-[28vw] object-contain object-bottom"
-            />
-            <img
-              src={founderJon}
-              alt=""
-              aria-hidden
-              className="hidden md:block pointer-events-none select-none absolute right-0 bottom-0 h-[78%] w-auto max-w-[28vw] object-contain object-bottom"
-            />
+        <section className="relative overflow-hidden bg-[#fffaeb]">
+          {/* Side founder images — large desktop only, anchored to section edges */}
+          <img
+            src={founderMax}
+            alt=""
+            aria-hidden
+            className="hidden 2xl:block pointer-events-none select-none absolute left-0 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
+          />
+          <img
+            src={founderJon}
+            alt=""
+            aria-hidden
+            className="hidden 2xl:block pointer-events-none select-none absolute right-0 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
+          />
 
-            <div className="relative z-10 mx-auto max-w-2xl text-center">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.05]">
+          <div className="relative mx-auto flex min-h-[56vh] max-w-7xl items-center justify-center px-4 pt-6 pb-2 md:pt-10 md:pb-3.5">
+            <div className="relative z-10 mx-auto max-w-3xl text-center">
+              <h1 className="text-[2.3rem] md:text-[3.6rem] lg:text-[3.7rem] font-extrabold uppercase tracking-tight leading-[1.05]">
                 Do You Want To Feel Like Yourself Again?
               </h1>
-              <p className="mt-5 text-base md:text-lg text-foreground/80">
+              <p className="mt-5 text-2xl md:text-[1.7rem] font-normal text-foreground/80">
                 Take the precision timed supplement and come alive in 30 days.
               </p>
-              <div className="mt-7"><CTAButton>I'M READY TO OPTIMIZE</CTAButton></div>
+              <div className="mt-7"><CTAButton className="px-12 py-6 text-2xl">I'M READY TO OPTIMIZE</CTAButton></div>
               <p className="mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
 
-              {/* Mobile-only duo image */}
+              {/* Duo image — shown below text until viewport is wide enough for side PNGs */}
               <img
                 src={foundersDuo}
                 alt="Max and Jon Valrose, M3 founders"
-                className="md:hidden mt-8 mx-auto w-full max-w-sm rounded-lg"
+                className="2xl:hidden mt-8 mx-auto w-full max-w-sm rounded-lg"
               />
             </div>
           </div>
@@ -90,9 +91,6 @@ function Index() {
         {/* FREE RESOURCE — thin section */}
         <section className="border-t border-border bg-secondary/40">
           <div className="mx-auto max-w-3xl px-4 py-8 text-center">
-            <div className="inline-block rounded-full bg-[#FF0000] text-white text-xs px-3 py-1 mb-3">
-              It's Free
-            </div>
             <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight">
               <span className="text-brand">FREE</span> RESOURCE
             </h2>
@@ -102,8 +100,15 @@ function Index() {
 
             <div className="mt-5 mx-auto max-w-sm">
               <h3 className="text-lg md:text-xl font-black uppercase">Nutrient Timing Guide</h3>
-              <div className="mt-3 mx-auto aspect-[4/3] w-full max-w-[220px] border border-border bg-background flex items-center justify-center text-xs text-muted-foreground">
-                Guide preview
+              <div className="relative inline-block mt-3">
+                <img
+                  src={guidePreview}
+                  alt="Nutrient Timing Guide preview"
+                  className="w-full max-w-[220px] rounded border border-border"
+                />
+                <span className="pointer-events-none absolute -top-3 -right-3 z-10 rounded-md bg-[#FF0000] text-white text-[10px] px-2 py-1 uppercase">
+                  It's Free
+                </span>
               </div>
               <a
                 href="https://docs.google.com/document/d/14I4Id_ZUuAeovT98vToEZzOjyMMJKlfYcUbG8kZhuQI/edit?usp=sharing"
