@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "PowerShell(Add-Type -AssemblyName System.Drawing; $imgs = @\\('founder-max.png','founder-jon.png'\\); foreach\\($img in $imgs\\){ $bmp = [System.Drawing.Image]::FromFile\\(\"D:\\\\Nas\\\\Desktop\\\\beta-launchpad\\\\src\\\\assets\\\\$img\"\\); Write-Host \"$img : $\\($bmp.Width\\) x $\\($bmp.Height\\)\"; $bmp.Dispose\\(\\) })",
-      "Bash(Remove-Item *)"
+      "Bash(Remove-Item *)",
+      "Bash(git commit *)",
+      "Bash(del *)",
+      "Bash(git add *)",
+      "Bash(git push *)"
     ]
   }
 }
