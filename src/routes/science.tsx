@@ -4,12 +4,6 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBanner } from "@/components/StickyBanner";
 
 export const Route = createFileRoute("/science")({
-  head: () => ({
-    meta: [
-      { title: "Core Principles — Coming Soon" },
-      { name: "description", content: "The science behind M3 — coming soon." },
-    ],
-  }),
   component: SciencePage,
 });
 

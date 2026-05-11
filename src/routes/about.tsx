@@ -4,12 +4,6 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBanner } from "@/components/StickyBanner";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About M3 — Coming Soon" },
-      { name: "description", content: "About M3 — coming soon." },
-    ],
-  }),
   component: AboutPage,
 });
 

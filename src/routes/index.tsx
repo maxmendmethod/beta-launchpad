@@ -10,12 +10,6 @@ import foundersDuo from "@/assets/founders-duo.jpg";
 import guidePreview from "@/assets/guide-preview.png.png";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "M3 — Max Mend Method" },
-      { name: "description", content: "The first supplement built around how your body actually absorbs nutrients. Join the Founding Members Program — free." },
-    ],
-  }),
   component: Index,
 });
 

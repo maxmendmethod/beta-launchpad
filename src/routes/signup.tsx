@@ -6,12 +6,6 @@ import founderVideo from "@/assets/founder-video.mp4";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/signup")({
-  head: () => ({
-    meta: [
-      { title: "Become a Founding Member — M3" },
-      { name: "description", content: "Apply for the M3 Founding Members Program. Free product, free shipping." },
-    ],
-  }),
   component: SignupPage,
 });
 
