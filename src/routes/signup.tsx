@@ -93,7 +93,7 @@ function SignupPage() {
           <h1 className="mt-10 text-2xl md:text-4xl font-black uppercase tracking-tight">
             Congratulations on taking the first step to optimizing your health
           </h1>
-          <img src={celebrationGif} alt="Celebration" className="mx-auto mt-8 w-full max-w-lg" />
+          <img src={celebrationGif} alt="Celebration" className="mx-auto mt-8 w-full max-w-[57.6rem]" />
           <p className="mt-5 text-base md:text-lg text-foreground/80">
             We'll review your application and reach out soon with next steps and shipping info for your Founding Membership!
           </p>
