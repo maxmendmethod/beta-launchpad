@@ -6,7 +6,12 @@
       "Bash(git commit *)",
       "Bash(del *)",
       "Bash(git add *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(vercel *)",
+      "Bash(npx vercel *)",
+      "Bash(Get-ChildItem D:\\\\NAS\\\\Desktop\\\\beta-launchpad *)",
+      "PowerShell(vercel *)",
+      "PowerShell(npm install *)"
     ]
   }
 }

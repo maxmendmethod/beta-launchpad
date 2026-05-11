@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Copy, Check, Share2, Pause, Play, Volume2, VolumeX, RotateCcw, Settings } from "lucide-react";
 import logo from "@/assets/m3-logo.png";
 import founderVideo from "@/assets/founder-video.mp4";
+import celebrationGif from "@/assets/celebrationgif.gif";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/signup")({
@@ -92,6 +93,7 @@ function SignupPage() {
           <h1 className="mt-10 text-2xl md:text-4xl font-black uppercase tracking-tight">
             Congratulations on taking the first step to optimizing your health
           </h1>
+          <img src={celebrationGif} alt="Celebration" className="mx-auto mt-8 w-full max-w-lg" />
           <p className="mt-5 text-base md:text-lg text-foreground/80">
             We'll review your application and reach out soon with next steps and shipping info for your Founding Membership!
           </p>
