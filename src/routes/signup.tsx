@@ -40,11 +40,41 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
 ];
 
+const ML_FORM_URL = "https://assets.mailerlite.com/jsonp/2339440/forms/187201532187378744/subscribe";
+const ML_TAKEL_URL = "https://assets.mailerlite.com/jsonp/2339440/forms/187201532187378744/takel";
+
 function SignupPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const shareText = "Just joined the M3 Founding Members program. It's a free 30 day supplement protocol. Check it out:";
   const shareUrl = "maxmendmethod.com/signup";
+
+  useEffect(() => {
+    fetch(ML_TAKEL_URL).catch(() => {});
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    const fd = new FormData(e.currentTarget);
+    const params = new URLSearchParams();
+    params.append("fields[name]", (fd.get("name") as string) ?? "");
+    params.append("fields[email]", (fd.get("email") as string) ?? "");
+    params.append("ml-submit", "1");
+    params.append("anticsrf", "true");
+    try {
+      await fetch(ML_FORM_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+    } catch {
+      // proceed to success even on network error
+    }
+    setLoading(false);
+    setSubmitted(true);
+  };
 
   const copy = async () => {
     try {
@@ -134,16 +164,17 @@ function SignupPage() {
           {/* Fields section — white background */}
           <div className="mt-8 bg-white border border-border rounded-lg px-8 py-10 max-w-2xl mx-auto text-foreground">
             <form
-              onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+              onSubmit={handleSubmit}
               className="space-y-4"
             >
               <Field label="Name" name="name" placeholder="Your full name" required />
               <Field label="Email" name="email" type="email" placeholder="you@email.com" required />
               <button
                 type="submit"
-                className="w-full rounded-md bg-brand px-5 py-3 text-sm font-extrabold uppercase tracking-wide text-white hover:opacity-90"
+                disabled={loading}
+                className="w-full rounded-md bg-brand px-5 py-3 text-sm font-extrabold uppercase tracking-wide text-white hover:opacity-90 disabled:opacity-60"
               >
-                Join The Waitlist
+                {loading ? "Submitting…" : "Join The Waitlist"}
               </button>
               <p className="text-center text-sm text-foreground/60">
                 The founding members program is FREE + free shipping
