@@ -14,8 +14,8 @@ export function SiteHeader() {
           <img src={logo} alt="M3" className="h-12 w-auto" />
         </Link>
         <nav className="flex items-center gap-8 text-sm font-semibold text-white">
-          <Link to="/about" className="hover:text-brand">About M3</Link>
-          <Link to="/science" className="hover:text-brand">Core Principles</Link>
+          {/* <Link to="/about" className="hover:text-brand">About M3</Link> */}
+          {/* <Link to="/science" className="hover:text-brand">Core Principles</Link> */}
           <Link to="/signup" className="hover:text-brand">Become a Founding Member</Link>
         </nav>
       </div>
@@ -34,8 +34,8 @@ export function SiteHeader() {
       {open && (
         <div className="md:hidden border-t border-border" style={{ backgroundColor: "#1d1e1c" }}>
           <nav className="flex flex-col px-4 py-3 text-sm font-semibold text-white">
-            <Link to="/about" onClick={() => setOpen(false)} className="py-2">About M3</Link>
-            <Link to="/science" onClick={() => setOpen(false)} className="py-2">Core Principles</Link>
+            {/* <Link to="/about" onClick={() => setOpen(false)} className="py-2">About M3</Link> */}
+            {/* <Link to="/science" onClick={() => setOpen(false)} className="py-2">Core Principles</Link> */}
             <Link to="/signup" onClick={() => setOpen(false)} className="py-2">Become a Founding Member</Link>
           </nav>
         </div>
