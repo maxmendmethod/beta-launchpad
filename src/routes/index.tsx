@@ -4,8 +4,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBanner } from "@/components/StickyBanner";
 import { CTAButton } from "@/components/CTAButton";
 import logo from "@/assets/m3-logo.png";
-import founderMax from "@/assets/founder-max.png";
-import founderJon from "@/assets/founder-jon.png";
+import founderMyles from "@/assets/founder-max.png";
+import founderLeo from "@/assets/founder-jon.png";
 import foundersDuo from "@/assets/founders-duo.jpg";
 import drinkExample from "@/assets/drink_example.png";
 import guidePreview from "@/assets/guide-preview.png.png";
@@ -50,13 +50,13 @@ function Index() {
         <section className="relative overflow-hidden bg-[#fffaeb]">
           {/* Side founder images — large desktop only, anchored to section edges */}
           <img
-            src={founderMax}
+            src={founderMyles}
             alt=""
             aria-hidden
             className="hidden 2xl:block pointer-events-none select-none absolute left-0 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
           />
           <img
-            src={founderJon}
+            src={founderLeo}
             alt=""
             aria-hidden
             className="hidden 2xl:block pointer-events-none select-none absolute right-0 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
@@ -139,11 +139,11 @@ function Index() {
             <h2 className="text-2xl md:text-3xl font-black text-center uppercase mb-8">About The Founders</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
               <div className="md:col-span-1">
-                <img src={foundersDuo} alt="Max and Jon Valrose" className="w-full rounded-lg" />
+                <img src={foundersDuo} alt="Myles and Leo Sherman" className="w-full rounded-lg" />
               </div>
               <div className="md:col-span-2 space-y-4 text-sm md:text-base text-foreground/85">
-                <p>Max and Jon Valrose are brothers and co-founders of M3. Max holds a degree in Cybersecurity and Economics. Jon holds a degree in Physics and Electrical Engineering. Both are The Knowledge Society alumni. Across their education a deep focus on human performance and nutrition remained constant.</p>
-                <p>Over time that gave them a thorough understanding of the industry and its problems. They have spent years implementing nutrition science. Max has a 2,000 consecutive day streak on Cronometer and MyFitnessPal. Neither has missed a single gym session in eight years. When they travel, TSA often flags their bags for supplements. They became the default reference point in their circles for training and nutrition.</p>
+                <p>Myles and Leo Sherman are brothers and co-founders of M3. Myles holds a degree in Cybersecurity and Economics. Leo holds a degree in Physics and Electrical Engineering. Both are The Knowledge Society alumni. Across their education a deep focus on human performance and nutrition remained constant.</p>
+                <p>Over time that gave them a thorough understanding of the industry and its problems. They have spent years implementing nutrition science. Myles has a 2,000 consecutive day streak on Cronometer and MyFitnessPal. Neither has missed a single gym session in eight years. When they travel, TSA often flags their bags for supplements. They became the default reference point in their circles for training and nutrition.</p>
                 <p>They have been through the mistakes M3 is designed to prevent. From managing over 20 supplements to spending hundreds of dollars per month on trending ingredients: they get it. The research they did to understand those failures is what M3 is built on.</p>
               </div>
             </div>
