@@ -7,6 +7,7 @@ import logo from "@/assets/m3-logo.png";
 import founderMax from "@/assets/founder-max.png";
 import founderJon from "@/assets/founder-jon.png";
 import foundersDuo from "@/assets/founders-duo.jpg";
+import drinkExample from "@/assets/drink_example.png";
 import guidePreview from "@/assets/guide-preview.png.png";
 
 export const Route = createFileRoute("/")({
@@ -72,10 +73,10 @@ function Index() {
               <div className="mt-7"><CTAButton className="px-12 py-6 text-2xl">I'M READY TO OPTIMIZE</CTAButton></div>
               <p className="mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
 
-              {/* Duo image — shown below text until viewport is wide enough for side PNGs */}
+              {/* Drink example image — shown below text until viewport is wide enough for side PNGs */}
               <img
-                src={foundersDuo}
-                alt="Max and Jon Valrose, M3 founders"
+                src={drinkExample}
+                alt="M3 drink example"
                 className="2xl:hidden mt-8 mx-auto w-full max-w-sm rounded-lg"
               />
             </div>
