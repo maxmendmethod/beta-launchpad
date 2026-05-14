@@ -6,7 +6,7 @@ import { CTAButton } from "@/components/CTAButton";
 import logo from "@/assets/m3-logo.png";
 import founderMyles from "@/assets/founder-max.png";
 import founderLeo from "@/assets/founder-jon.png";
-import foundersDuo from "@/assets/founders-duo.jpg";
+import foundersDuo from "@/assets/founders-duo.png";
 import drinkExample from "@/assets/drink_example.png";
 import guidePreview from "@/assets/guide-preview.png.png";
 
