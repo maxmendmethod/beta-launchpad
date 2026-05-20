@@ -315,8 +315,8 @@ function FounderVideo() {
         className={`absolute inset-0 flex items-center justify-center w-full transition-opacity duration-200 ${showControls ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         aria-label={isPlaying ? "Pause" : "Play"}
       >
-        <div className="bg-black/50 rounded-full p-4 backdrop-blur-sm">
-          {isPlaying ? <Pause className="h-8 w-8 text-white" /> : <Play className="h-8 w-8 text-white" />}
+        <div className="rounded-full p-5 backdrop-blur-sm" style={{ backgroundColor: "#e68163" }}>
+          {isPlaying ? <Pause className="h-10 w-10 text-white" /> : <Play className="h-10 w-10 text-white" />}
         </div>
       </button>
 
