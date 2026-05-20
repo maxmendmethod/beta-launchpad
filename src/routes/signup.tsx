@@ -310,7 +310,17 @@ function FounderVideo() {
         onSeeking={handleSeeking}
       />
 
-<div
+      <button
+        onClick={togglePlay}
+        className={`absolute inset-0 flex items-center justify-center w-full transition-opacity duration-200 ${showControls ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        aria-label={isPlaying ? "Pause" : "Play"}
+      >
+        <div className="bg-black/50 rounded-full p-4 backdrop-blur-sm">
+          {isPlaying ? <Pause className="h-8 w-8 text-white" /> : <Play className="h-8 w-8 text-white" />}
+        </div>
+      </button>
+
+      <div
         className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent px-4 pt-10 pb-3 transition-opacity duration-300 ${
           showControls ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
