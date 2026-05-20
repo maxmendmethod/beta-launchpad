@@ -212,7 +212,7 @@ function FounderVideo() {
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [showControls, setShowControls] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
@@ -302,7 +302,6 @@ function FounderVideo() {
         src={founderVideo}
         className="w-full aspect-video block"
         autoPlay
-        muted
         playsInline
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
@@ -311,7 +310,7 @@ function FounderVideo() {
         onSeeking={handleSeeking}
       />
 
-      <div
+<div
         className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent px-4 pt-10 pb-3 transition-opacity duration-300 ${
           showControls ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
