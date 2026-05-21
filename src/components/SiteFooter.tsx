@@ -9,6 +9,24 @@ export function SiteFooter() {
           <Link to="/science" className="hover:text-brand">Core Principles</Link>
           <Link to="/signup" className="hover:text-brand">Become a Founding Member</Link>
         </nav>
+        <div className="flex flex-wrap items-center justify-center gap-5 text-xs">
+          <a
+            href="https://www.instagram.com/maxmendmethod/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-brand"
+          >
+            Instagram @maxmendmethod
+          </a>
+          <a
+            href="https://www.google.com/search?q=Max+Mend+Method"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-brand"
+          >
+            Google Business
+          </a>
+        </div>
         <p className="text-xs">© {new Date().getFullYear()} Max Mend Method. All rights reserved.</p>
         <p className="text-xs max-w-2xl text-center">
           These statements have not been evaluated by the FDA. M3 is not intended to diagnose, treat, cure, or prevent any disease.

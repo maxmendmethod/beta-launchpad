@@ -46,6 +46,7 @@ function Index() {
       <SiteHeader />
 
       <main>
+        <h1 className="sr-only">Max Mend Method — Precision Timed Supplement Protocol</h1>
         {/* HERO — fills viewport, founder pngs on sides (desktop), peek of free resource at bottom */}
         <section className="relative overflow-hidden bg-[#fffaeb]">
           {/* Side founder images — large desktop only, anchored to section edges */}
@@ -64,9 +65,9 @@ function Index() {
 
           <div className="relative mx-auto flex min-h-[56vh] max-w-7xl items-center justify-center px-4 pt-6 pb-2 md:pt-10 md:pb-3.5">
             <div className="relative z-10 mx-auto max-w-3xl text-center">
-              <h1 className="text-[2.3rem] md:text-[3.6rem] lg:text-[3.7rem] font-extrabold uppercase tracking-tight leading-[1.05]">
+              <h2 className="text-[2.3rem] md:text-[3.6rem] lg:text-[3.7rem] font-extrabold uppercase tracking-tight leading-[1.05]">
                 Do You Want To Feel Like Yourself Again?
-              </h1>
+              </h2>
               <p className="mt-5 text-2xl md:text-[1.7rem] font-normal text-foreground/80">
                 Take the precision timed supplement and come alive in 30 days.
               </p>
