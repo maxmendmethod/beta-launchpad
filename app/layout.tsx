@@ -24,7 +24,14 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
-  icons: { icon: "/m3tablogo.png" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     url: SITE_URL,
