@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Core Principles",
     description:
       "The science behind Max Mend Method — nutrient absorption, interactions, and timing rules that shape the M3 rotating supplement protocol.",
-    url: "https://maxmendmethod.com/science",
+    url: "https://www.maxmendmethod.com/science",
   },
 };
 

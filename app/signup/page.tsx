@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Become a Founding Member | Max Mend Method",
     description:
       "Join the Max Mend Method Founding Members Program. Free 30 day supplement protocol, free shipping, science-backed daily packets — no cost in exchange for honest feedback.",
-    url: "https://maxmendmethod.com/signup",
+    url: "https://www.maxmendmethod.com/signup",
   },
   twitter: {
     title: "Become a Founding Member | Max Mend Method",

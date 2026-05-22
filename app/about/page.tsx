@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "About M3",
     description:
       "About Max Mend Method (M3) — a rotating supplement protocol designed to optimize nutrient absorption, recovery, hydration, and performance with science-backed daily packets.",
-    url: "https://maxmendmethod.com/about",
+    url: "https://www.maxmendmethod.com/about",
   },
 };
 

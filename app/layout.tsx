@@ -9,7 +9,7 @@ import "@fontsource/poppins/800.css";
 import "@fontsource/poppins/900.css";
 import "./globals.css";
 
-const SITE_URL = "https://maxmendmethod.com";
+const SITE_URL = "https://www.maxmendmethod.com";
 const SITE_NAME = "Max Mend Method";
 const DEFAULT_DESCRIPTION =
   "Max Mend Method is a rotating supplement protocol designed to optimize nutrient absorption, recovery, hydration, and performance with science-backed daily packets.";

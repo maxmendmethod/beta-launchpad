@@ -48,7 +48,7 @@ const faqs = [
   },
 ];
 
-const SITE_URL = "https://maxmendmethod.com";
+const SITE_URL = "https://www.maxmendmethod.com";
 
 const websiteLd = {
   "@context": "https://schema.org",
