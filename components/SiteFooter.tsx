@@ -12,7 +12,7 @@ export function SiteFooter() {
 
           {/* Logo */}
           <Link href="/" className="shrink-0">
-            <Image src={logo} alt="M3" className="h-16 w-auto" />
+            <Image src={logo} alt="M3" className="h-16 w-auto" style={{ filter: 'brightness(0) invert(1) sepia(0.3)' }} />
           </Link>
 
           {/* Links */}
