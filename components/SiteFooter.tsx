@@ -27,6 +27,9 @@ export function SiteFooter() {
             Google Business
           </a>
         </div>
+        <div className="flex flex-wrap items-center justify-center gap-5 text-xs">
+          <Link href="/terms" className="hover:text-brand">Terms of Service</Link>
+        </div>
         <p className="text-xs">© {new Date().getFullYear()} Max Mend Method. All rights reserved.</p>
         <p className="text-xs max-w-2xl text-center">
           These statements have not been evaluated by the FDA. M3 is not intended to diagnose, treat, cure, or prevent any disease.
