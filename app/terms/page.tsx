@@ -32,8 +32,7 @@ export default function TermsPage() {
               <p>These Terms of Service apply to all users of the site, including without limitation browsers, vendors, customers, merchants, and contributors of content.</p>
               <p>Please read these Terms of Service carefully before accessing or using our website. By accessing or using any part of the website, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any Services.</p>
               <p>Any new features or tools added to the current store shall also be subject to these Terms of Service. We reserve the right to update, change, or replace any part of these Terms of Service by posting updates and changes to our website. Your continued use of the website following the posting of changes constitutes acceptance of those changes.</p>
-              <p>If your store is hosted on Shopify, you may include the following:</p>
-              <p>"Our store is hosted on Shopify Inc. They provide us with the online e-commerce platform that allows us to sell our products and Services to you."</p>
+              <p>Our store is hosted on Shopify Inc. They provide us with the online e-commerce platform that allows us to sell our products and Services to you.</p>
             </div>
           </section>
 

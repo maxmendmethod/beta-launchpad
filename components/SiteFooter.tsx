@@ -29,6 +29,7 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-wrap items-center justify-center gap-5 text-xs">
           <Link href="/terms" className="hover:text-brand">Terms of Service</Link>
+          <Link href="/privacy" className="hover:text-brand">Privacy Policy</Link>
         </div>
         <p className="text-xs">© {new Date().getFullYear()} Max Mend Method. All rights reserved.</p>
         <p className="text-xs max-w-2xl text-center">
