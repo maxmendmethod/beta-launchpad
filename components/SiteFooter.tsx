@@ -1,42 +1,46 @@
 import Link from "next/link";
+import Image from "next/image";
+import logo from "@/src/assets/m3-logo.png";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border mt-16" style={{ backgroundColor: "#e68163" }}>
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 px-4 py-8 text-sm text-muted-foreground">
-        <nav className="flex flex-wrap items-center justify-center gap-5">
-          <Link href="/about" className="hover:text-brand">About M3</Link>
-          <Link href="/science" className="hover:text-brand">Core Principles</Link>
-          <Link href="/signup" className="hover:text-brand">Become a Founding Member</Link>
-        </nav>
-        <div className="flex flex-wrap items-center justify-center gap-5 text-xs">
-          <a
-            href="https://www.instagram.com/maxmendmethod/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-brand"
-          >
-            Instagram @maxmendmethod
-          </a>
-          <a
-            href="https://www.google.com/search?q=Max+Mend+Method"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-brand"
-          >
-            Google Business
-          </a>
+    <footer style={{ backgroundColor: "#e68163" }}>
+      <div className="mx-auto max-w-5xl px-6 py-12">
+
+        {/* Main row */}
+        <div className="flex flex-col items-center gap-10 md:flex-row md:items-start md:justify-between">
+
+          {/* Logo */}
+          <Link href="/" className="shrink-0">
+            <Image src={logo} alt="M3" className="h-16 w-auto" />
+          </Link>
+
+          {/* Links */}
+          <div className="flex flex-col items-center gap-4 md:items-end">
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-medium text-white md:justify-end">
+              <Link href="/about" className="transition-colors hover:text-black">About M3</Link>
+              <Link href="/science" className="transition-colors hover:text-black">Core Principles</Link>
+              <Link href="/signup" className="transition-colors hover:text-black">Become a Founding Member</Link>
+              <a href="https://www.instagram.com/maxmendmethod/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black">Instagram</a>
+              <a href="https://www.google.com/search?q=Max+Mend+Method" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black">Google Business</a>
+            </div>
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs font-medium text-white/80 md:justify-end">
+              <Link href="/terms" className="transition-colors hover:text-black">Terms of Service</Link>
+              <Link href="/privacy" className="transition-colors hover:text-black">Privacy Policy</Link>
+              <Link href="/refunds" className="transition-colors hover:text-black">Refund Policy</Link>
+            </div>
+          </div>
+
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-5 text-xs">
-          <Link href="/terms" className="hover:text-brand">Terms of Service</Link>
-          <Link href="/privacy" className="hover:text-brand">Privacy Policy</Link>
-          <Link href="/refunds" className="hover:text-brand">Refund Policy</Link>
+
+        {/* Bottom */}
+        <div className="mt-10 border-t border-white/30 pt-6 flex flex-col items-center gap-2 text-xs text-white/70">
+          <p>© {new Date().getFullYear()} Max Mend Method LLC. All rights reserved.</p>
+          <p className="max-w-2xl text-center">
+            These statements have not been evaluated by the FDA. M3 is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before starting any supplement protocol.
+          </p>
         </div>
-        <p className="text-xs">© {new Date().getFullYear()} Max Mend Method. All rights reserved.</p>
-        <p className="text-xs max-w-2xl text-center">
-          These statements have not been evaluated by the FDA. M3 is not intended to diagnose, treat, cure, or prevent any disease.
-          Consult your healthcare provider before starting any supplement protocol.
-        </p>
+
       </div>
     </footer>
   );
