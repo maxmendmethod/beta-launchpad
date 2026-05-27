@@ -24,6 +24,12 @@ export function SiteHeader() {
             Science
           </Link>
           <Link
+            href="/about"
+            className="transition-colors hover:text-brand"
+          >
+            About
+          </Link>
+          <Link
             href="/signup"
             className="transition-colors hover:text-brand"
           >
@@ -54,6 +60,13 @@ export function SiteHeader() {
               className="self-start transition-colors hover:text-brand"
             >
               Science
+            </Link>
+            <Link
+              href="/about"
+              onClick={() => setOpen(false)}
+              className="self-start transition-colors hover:text-brand"
+            >
+              About
             </Link>
             <Link
               href="/signup"
