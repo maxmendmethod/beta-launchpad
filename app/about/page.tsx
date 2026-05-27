@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBanner } from "@/components/StickyBanner";
+import bostonLandscape from "@/src/assets/bostonlandscape.avif";
+import notesApp from "@/src/assets/notesapp.png";
+import founderJon from "@/src/assets/founder-jon.png";
 
 export const metadata: Metadata = {
   title: "Why We Made M3 — About M3",
@@ -22,10 +26,31 @@ export default function AboutPage() {
       <StickyBanner />
       <SiteHeader />
       <main className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
-        <header className="mb-12">
+        <header className="mb-10">
           <h1 className="text-4xl font-bold leading-tight">Why We Made M3</h1>
-          <p className="mt-3 text-sm text-muted-foreground uppercase tracking-widest">By Leo Sherman</p>
+          <div className="mt-4 flex items-center gap-3">
+            <Image
+              src={founderJon}
+              alt="Leo Sherman"
+              width={36}
+              height={36}
+              className="rounded-full object-cover"
+            />
+            <div>
+              <p className="text-sm font-medium">Written by Leo Sherman, Co-Founder</p>
+              <p className="text-xs text-muted-foreground">5 min read</p>
+            </div>
+          </div>
         </header>
+
+        <div className="mb-10 overflow-hidden rounded-xl">
+          <Image
+            src={bostonLandscape}
+            alt="Boston landscape"
+            className="w-full object-cover"
+            priority
+          />
+        </div>
 
         <div className="prose prose-neutral max-w-none space-y-6 text-base leading-relaxed text-foreground">
           <p>Most people taking supplements have a nagging sense that their routine isn&apos;t actually working the way they think it is.</p>
@@ -95,6 +120,14 @@ export default function AboutPage() {
           <p>And once you understand how much nutrient timing, absorption competition, and accumulation dynamics matter, you start seeing the category differently. You realize some supplements are probably competing with each other in your gut right now. You realize the &ldquo;same thing every day forever&rdquo; model may have more to do with convenience than biology.</p>
 
           <p>That realization alone changed how we approach nutrition entirely.</p>
+
+          <div className="my-8 overflow-hidden rounded-xl">
+            <Image
+              src={notesApp}
+              alt="Notes app"
+              className="w-full object-cover"
+            />
+          </div>
 
           <p>We think this information matters whether or not you ever buy anything from us, so we decided to publish a lot of our thinking for free.</p>
 
