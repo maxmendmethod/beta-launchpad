@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Core Principles",
   description:
     "The science behind Max Mend Method — every scheduling decision behind each nutrient in the M3 rotating supplement protocol, plus every interaction we're watching.",
-  alternates: { canonical: "/science" },
+  alternates: { canonical: "https://www.maxmendmethod.com/science" },
   openGraph: {
     title: "Core Principles",
     description:

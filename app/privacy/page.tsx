@@ -6,7 +6,7 @@ import { StickyBanner } from "@/components/StickyBanner";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy Policy for Max Mend Method LLC — how we collect, use, and protect your information.",
-  alternates: { canonical: "/privacy" },
+  alternates: { canonical: "https://www.maxmendmethod.com/privacy" },
   openGraph: {
     title: "Privacy Policy",
     description: "Privacy Policy for Max Mend Method LLC — how we collect, use, and protect your information.",

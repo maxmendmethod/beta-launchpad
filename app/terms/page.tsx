@@ -6,7 +6,7 @@ import { StickyBanner } from "@/components/StickyBanner";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Terms of Service for Max Mend Method LLC — read our terms and conditions for using maxmendmethod.com.",
-  alternates: { canonical: "/terms" },
+  alternates: { canonical: "https://www.maxmendmethod.com/terms" },
   openGraph: {
     title: "Terms of Service",
     description: "Terms of Service for Max Mend Method LLC — read our terms and conditions for using maxmendmethod.com.",

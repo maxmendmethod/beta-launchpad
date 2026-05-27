@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Become a Founding Member",
   description:
     "Join the Max Mend Method Founding Members Program. Free 30 day supplement protocol, free shipping, science-backed daily packets — no cost in exchange for honest feedback.",
-  alternates: { canonical: "/signup" },
+  alternates: { canonical: "https://www.maxmendmethod.com/signup" },
   robots: { index: false, follow: false },
   openGraph: {
     title: "Become a Founding Member | Max Mend Method",

@@ -6,7 +6,7 @@ import { StickyBanner } from "@/components/StickyBanner";
 export const metadata: Metadata = {
   title: "Refund Policy",
   description: "Refund and return policy for Max Mend Method LLC.",
-  alternates: { canonical: "/refunds" },
+  alternates: { canonical: "https://www.maxmendmethod.com/refunds" },
   openGraph: {
     title: "Refund Policy",
     description: "Refund and return policy for Max Mend Method LLC.",

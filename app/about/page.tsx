@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Why We Made M3 — About M3",
   description:
     "Leo Sherman on why M3 was built: the problem with daily supplement routines, nutrient competition, and the rotating protocol that changed how we think about supplementation.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "https://www.maxmendmethod.com/about" },
   openGraph: {
     title: "Why We Made M3 — About M3",
     description:

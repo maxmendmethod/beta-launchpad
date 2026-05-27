@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Max Mend Method | Precision Timed Supplement",
   description:
     "Max Mend Method is a rotating supplement protocol designed to optimize nutrient absorption, recovery, hydration, and performance with science-backed daily packets.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: "https://www.maxmendmethod.com/" },
 };
 
 const faqs = [
