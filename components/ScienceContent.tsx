@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 
 /* ─────────────────────────────────────────────────────────────────────────
-   M3 SCIENCE PAGE — themed version of the M3 Formulator Brief.
+   M3 SCIENCE PAGE â€” themed version of the M3 Formulator Brief.
    No specific weights or dosages. Only directional language: increased,
    decreased, boosted, reduced, pulsed, zeroed, paired, separated, etc.
    ───────────────────────────────────────────────────────────────────────── */
@@ -13,22 +13,22 @@ const getF = (i: number) => (i >= 26 ? "W" : i % 2 === 0 ? "F1" : "F2");
 
 // Traffic-light palette themed to M3 brand
 const FC: Record<string, string> = {
-  F1: "#e68163", // Iron Day — brand orange
-  F2: "#7d9b6a", // Rest Day — sage green
-  W:  "#c9b07a", // Maintenance — soft cream/gold
+  F1: "#e68163", // Performance â€” brand orange
+  F2: "#7d9b6a", // Recovery â€” sage green
+  W:  "#c9b07a", // Maintenance â€” soft cream/gold
 };
 const FN: Record<string, string> = {
-  F1: "Iron Day",
-  F2: "Rest Day",
+  F1: "Performance",
+  F2: "Recovery",
   W:  "Maintenance",
 };
 
-// Heatmap colors for the schedule grid
+// Heatmap colors for the schedule grid — high-contrast 4-level scale
 const HC: Record<number, string> = {
-  0: "#ffffff", // off
-  1: "#f4c4ad", // reduced (faded brand)
-  2: "#e68163", // full (brand)
-  3: "#b04a26", // boosted (deep brand)
+  0: "#ffffff", // zeroed (white, will get a visible outline)
+  1: "#fcd9a8", // reduced (pale warm)
+  2: "#e68163", // full (brand orange)
+  3: "#7a1f0b", // boosted (deep maroon)
 };
 
 // Nutrient categories
@@ -56,11 +56,13 @@ const CC: Record<Cat, string> = {
 // Per-day day-type chip ("full" / "reduced" / "boosted" / "off")
 type DayState = "boosted" | "full" | "reduced" | "off";
 
+type IxKind = "pairs" | "separates" | "drug" | "note";
+
 type Nutrient = {
   id: string;
   name: string;
   cat: Cat;
-  // What happens on each day type — directional only.
+  // What happens on each day type â€” directional only.
   f1: DayState;
   f2: DayState;
   w: DayState;
@@ -70,6 +72,8 @@ type Nutrient = {
   blurb: string;
   // The full reasoning, 3rd-grade-readable but smart.
   why: string;
+  // Per-nutrient interactions â€” what it pairs with, what it's separated from, drug interactions, notes.
+  interactions: { kind: IxKind; text: string }[];
 };
 
 const ds = (s: number): DayState =>
@@ -94,7 +98,10 @@ const N: Nutrient[] = [
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
     blurb: "Steady, daily, every day. The slow-burn nutrient.",
-    why: "Your body parks D3 in fat tissue for weeks, so timing within the day barely matters — what matters is that you're feeding the reservoir consistently. We keep it on every single day at the same amount. D3 also pairs really well with K2 at the small doses used here, so they ride together without elbowing each other for absorption. D3 makes the proteins your bones use; K2 turns those proteins on. Daily on both is what completes the loop.",
+    why: "Your body parks D3 in fat tissue for weeks, so timing within the day barely matters â€” what matters is that you're feeding the reservoir consistently. We keep it on every single day at the same amount. D3 also pairs really well with K2 at the small doses used here, so they ride together without elbowing each other for absorption. D3 makes the proteins your bones use; K2 turns those proteins on. Daily on both is what completes the loop.",
+    interactions: [
+      { kind: "pairs", text: "K2, Magnesium, and Calcium on Performance Days as the bone-axis stack. D3 makes the bone proteins, K2 turns them on, Magnesium powers D3's own activation enzyme, and Calcium is the structural building block." },
+    ],
   },
   {
     id: "k2",
@@ -102,17 +109,27 @@ const N: Nutrient[] = [
     cat: "Fat-Soluble",
     f1: "full", f2: "off", w: "off",
     sched: altF1Only(),
-    blurb: "Pulsed onto Iron Days only — separated from Vitamin E.",
-    why: "Vitamin K2 and Vitamin E are enemies at the dosage scale they live at in a stack like this. E elbows K2 out of the absorption truck (called a chylomicron) AND directly blocks the enzyme K2 needs to work. We can't have them on the same day. So K2 is exiled to Iron Days and E lives on Rest Days. K2's effects last about 72 hours per dose, so taking it every other day is enough — your body bridges the gap. During the 4-day washout, K2 still stays zero because even reduced E is too much company for K2 to coexist with.",
+    blurb: "Pulsed onto Performance Days only â€” separated from Vitamin E.",
+    why: "Vitamin K2 and Vitamin E are enemies at the dosage scale they live at in a stack like this. E elbows K2 out of the absorption truck (called a chylomicron) AND directly blocks the enzyme K2 needs to work. We can't have them on the same day. So K2 is exiled to Performance Days and E lives on Recovery Days. K2's effects last about 72 hours per dose, so taking it every other day is enough â€” your body bridges the gap. During the 4-day washout, K2 still stays zero because even reduced E is too much company for K2 to coexist with.",
+    interactions: [
+      { kind: "pairs", text: "Vitamin D3 on Performance Days. D3 makes the bone proteins; K2 activates them." },
+      { kind: "separates", text: "Vitamin E. E elbows K2 out of the same fat-absorption truck AND directly blocks the enzyme K2 needs to do its job. K2 lives on Performance Days, E lives on Recovery Days â€” they never share a day." },
+      { kind: "drug", text: "Contraindicated with warfarin and other vitamin-K antagonists â€” K2 directly opposes the drug's mechanism." },
+    ],
   },
   {
     id: "vitA",
-    name: "Vitamin A (β-Carotene + Retinyl)",
+    name: "Vitamin A (Î²-Carotene + Retinyl)",
     cat: "Fat-Soluble",
     f1: "reduced", f2: "boosted", w: "reduced",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 1 : i % 2 === 0 ? 1 : 2)),
-    blurb: "Plant form runs daily. Animal form is pulsed onto Rest Days.",
-    why: "We split Vitamin A into two forms so they can each do a different job. The plant form (beta-carotene) is on every single day because on Iron Days it actually helps iron get absorbed — it grabs onto iron in the gut and keeps it dissolved, adding meaningful extra uptake. The animal form (retinyl) is added only on Rest Days, on top of the baseline plant dose. Retinyl is kept off Iron Days because it would compete with the iron-day absorption setup, and it's only needed sometimes anyway — retinyl stays in your liver for over four months, so your tissues are completely indifferent to whether it's daily or every other day. During washout, the animal form drops to zero again to ease long-term load.",
+    blurb: "Plant form runs daily. Animal form is pulsed onto Recovery Days.",
+    why: "We split Vitamin A into two forms so they can each do a different job. The plant form (beta-carotene) is on every single day because on Performance Days it actually helps iron get absorbed â€” it grabs onto iron in the gut and keeps it dissolved, adding meaningful extra uptake. The animal form (retinyl) is added only on Recovery Days, on top of the baseline plant dose. Retinyl is kept off Performance Days because it would compete with the iron-day absorption setup, and it's only needed sometimes anyway â€” retinyl stays in your liver for over four months, so your tissues are completely indifferent to whether it's daily or every other day. During washout, the animal form drops to zero again to ease long-term load.",
+    interactions: [
+      { kind: "pairs", text: "Iron on Performance Days. The plant form (Î²-carotene) forms a soluble iron complex that adds significant extra absorption." },
+      { kind: "separates", text: "Iron on Performance Days for the animal form (retinyl) only â€” kept on Recovery Days to avoid competition with iron-day absorption." },
+      { kind: "note", text: "Shares the fat-absorption truck with Vitamin E and CoQ10 on Recovery Days. Combined load stays well below saturation." },
+    ],
   },
   {
     id: "vitE",
@@ -120,8 +137,13 @@ const N: Nutrient[] = [
     cat: "Fat-Soluble",
     f1: "off", f2: "boosted", w: "reduced",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 1 : i % 2 === 0 ? 0 : 2)),
-    blurb: "Boosted on Rest Days, reduced on washout, zero on Iron Days.",
-    why: "Vitamin E is held off Iron Days because it fights K2 — see the K2 card for the full story. On Rest Days, E gets its full boosted dose. On the 4-day washout, E is reduced because K2 isn't around to be antagonized, and your fat tissue holds onto E for about six months — daily dosing isn't necessary. We use mixed tocopherols (alpha plus gamma plus delta) instead of just alpha, because gamma has its own anti-inflammatory job that alpha alone can't do. Daily Vitamin C is the partner that recycles spent E back into the active form — these two are functionally linked.",
+    blurb: "Boosted on Recovery Days, reduced on washout, zero on Performance Days.",
+    why: "Vitamin E is held off Performance Days because it fights K2 â€” see the K2 card for the full story. On Recovery Days, E gets its full boosted dose. On the 4-day washout, E is reduced because K2 isn't around to be antagonized, and your fat tissue holds onto E for about six months â€” daily dosing isn't necessary. We use mixed tocopherols (alpha plus gamma plus delta) instead of just alpha, because gamma has its own anti-inflammatory job that alpha alone can't do. Daily Vitamin C is the partner that recycles spent E back into the active form â€” these two are functionally linked.",
+    interactions: [
+      { kind: "pairs", text: "Vitamin C. C donates an electron to spent E, recycling it back into the active form. Daily C keeps the recycling capacity in excess of E's burn rate." },
+      { kind: "separates", text: "Vitamin K2. E double-antagonizes K2 â€” competes for the same fat-absorption truck AND directly blocks the enzyme K2 needs. The two never share a day." },
+      { kind: "note", text: "Shares the fat-absorption truck with Vitamin A retinyl and CoQ10 on Recovery Days. Combined load stays below saturation." },
+    ],
   },
   {
     id: "coq10",
@@ -130,7 +152,11 @@ const N: Nutrient[] = [
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
     blurb: "Daily, every day. Smoother than pulsing.",
-    why: "Originally CoQ10 was pulsed onto Rest Days and washout only, to avoid any theoretical interaction with iron in the gut. We switched it to a smaller daily dose because the math is cleaner: the half-life supports daily better than every-other-day, and total monthly exposure is the same with smoother blood levels. The theoretical iron concern turned out to be a non-issue in practice — even if some converts to the oxidized form in the gut, that form is still biologically useful. The reduced (ubiquinol) form is chosen over the oxidized (ubiquinone) because it absorbs 3–4× better, especially in people over 40 where your body's own production has dropped meaningfully.",
+    why: "Originally CoQ10 was pulsed onto Recovery Days and washout only, to avoid any theoretical interaction with iron in the gut. We switched it to a smaller daily dose because the math is cleaner: the half-life supports daily better than every-other-day, and total monthly exposure is the same with smoother blood levels. The theoretical iron concern turned out to be a non-issue in practice â€” even if some converts to the oxidized form in the gut, that form is still biologically useful. The reduced (ubiquinol) form is chosen over the oxidized (ubiquinone) because it absorbs 3â€“4Ã— better, especially in people over 40 where your body's own production has dropped meaningfully.",
+    interactions: [
+      { kind: "note", text: "Shares the fat-absorption truck with Vitamin A retinyl and Vitamin E on Recovery Days. Combined load stays well below saturation." },
+      { kind: "drug", text: "Mild reduction of warfarin's effect â€” CoQ10 structurally resembles Vitamin K. INR monitoring required if on warfarin or other vitamin-K antagonists." },
+    ],
   },
   // ─── WATER-SOLUBLE ─────────────────────────────────────────────────────
   {
@@ -139,8 +165,12 @@ const N: Nutrient[] = [
     cat: "Water-Soluble",
     f1: "full", f2: "full", w: "reduced",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 2 : 3)),
-    blurb: "Daily for two jobs — slightly trimmed during washout.",
-    why: "Vitamin C works two completely different jobs depending on the day. On Iron Days, it converts iron from the hard-to-absorb form to the easy-to-absorb form right in your gut, giving a 4–6× boost in iron absorption. On Rest Days, it recycles spent Vitamin E back into the active form — a partnership that keeps the antioxidant loop running. Because the transporter that pulls C into your cells saturates at a relatively low dose, anything above that level stays in your gut — which is exactly where iron needs it. During washout, C is trimmed slightly because iron is off and demand is a little lower.",
+    blurb: "Daily for two jobs â€” slightly trimmed during washout.",
+    why: "Vitamin C works two completely different jobs depending on the day. On Performance Days, it converts iron from the hard-to-absorb form to the easy-to-absorb form right in your gut, giving a 4â€“6Ã— boost in iron absorption. On Recovery Days, it recycles spent Vitamin E back into the active form â€” a partnership that keeps the antioxidant loop running. Because the transporter that pulls C into your cells saturates at a relatively low dose, anything above that level stays in your gut â€” which is exactly where iron needs it. During washout, C is trimmed slightly because iron is off and demand is a little lower.",
+    interactions: [
+      { kind: "pairs", text: "Iron on Performance Days. Converts iron into the absorbable form right in your gut â€” adds 4â€“6Ã— more uptake." },
+      { kind: "pairs", text: "Vitamin E on Recovery Days. Recycles spent E back into the active form." },
+    ],
   },
   {
     id: "bComplex",
@@ -148,8 +178,13 @@ const N: Nutrient[] = [
     cat: "Water-Soluble",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily, all of them — each on its own private transporter.",
-    why: "Every B vitamin uses its own dedicated transporter — different from any mineral, different from any fat-soluble. Zero competition with anything else in the stack. Daily is right because the half-lives are all over the map: some B's deplete within hours, others last weeks. Daily covers the short ones without overshooting the long ones. We use the activated form of B6 (P-5-P) instead of the cheap form because it skips a conversion step in your liver — about 30% of people have reduced ability to do that conversion. B6 also matters because it powers the enzyme that turns L-tyrosine into dopamine.",
+    blurb: "Daily, all of them â€” each on its own private transporter.",
+    why: "Every B vitamin uses its own dedicated transporter â€” different from any mineral, different from any fat-soluble. Zero competition with anything else in the stack. Daily is right because the half-lives are all over the map: some B's deplete within hours, others last weeks. Daily covers the short ones without overshooting the long ones. We use the activated form of B6 (P-5-P) instead of the cheap form because it skips a conversion step in your liver â€” about 30% of people have reduced ability to do that conversion. B6 also matters because it powers the enzyme that turns L-tyrosine into dopamine.",
+    interactions: [
+      { kind: "pairs", text: "L-Tyrosine. Activated B6 (P-5-P) powers the enzyme that converts tyrosine into dopamine." },
+      { kind: "pairs", text: "Iodine, Selenium, and L-Tyrosine for thyroid hormone production." },
+      { kind: "note", text: "Every B vitamin uses its own dedicated transporter â€” zero competition with anything else in the stack." },
+    ],
   },
   {
     id: "b12",
@@ -157,8 +192,12 @@ const N: Nutrient[] = [
     cat: "Water-Soluble",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily, under the tongue — bypasses the gut entirely.",
-    why: "Sublingual (under-the-tongue) absorption skips the stomach, skips the intrinsic-factor system, skips every gut interaction this stack has to manage. The methyl form is already activated and ready to use. Even though B12 stores in your liver for years, daily dosing makes sense because how much you absorb from a sublingual dose varies a lot — daily smooths that out.",
+    blurb: "Daily, under the tongue â€” bypasses the gut entirely.",
+    why: "Sublingual (under-the-tongue) absorption skips the stomach, skips the intrinsic-factor system, skips every gut interaction this stack has to manage. The methyl form is already activated and ready to use. Even though B12 stores in your liver for years, daily dosing makes sense because how much you absorb from a sublingual dose varies a lot â€” daily smooths that out.",
+    interactions: [
+      { kind: "pairs", text: "Folate and CDP-Choline for the methylation cycle (recycling homocysteine back into methionine)." },
+      { kind: "note", text: "Sublingual absorption bypasses every gut interaction in the stack." },
+    ],
   },
   {
     id: "folate",
@@ -166,8 +205,12 @@ const N: Nutrient[] = [
     cat: "Water-Soluble",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily, activated form — works for everyone including MTHFR variants.",
-    why: "The activated form (5-MTHF) uses its own transporter that's completely independent of everything else in this stack. It also bypasses the MTHFR genetic variants that limit how well the cheap form (folic acid) actually gets used — about 10–15% of people are homozygous for those variants. Daily is right because folate is small, easily handled, and pairs with B12 and choline to recycle homocysteine back into methionine.",
+    blurb: "Daily, activated form â€” works for everyone including MTHFR variants.",
+    why: "The activated form (5-MTHF) uses its own transporter that's completely independent of everything else in this stack. It also bypasses the MTHFR genetic variants that limit how well the cheap form (folic acid) actually gets used â€” about 10â€“15% of people are homozygous for those variants. Daily is right because folate is small, easily handled, and pairs with B12 and choline to recycle homocysteine back into methionine.",
+    interactions: [
+      { kind: "pairs", text: "B12 and CDP-Choline for the methylation cycle." },
+      { kind: "note", text: "Activated form (5-MTHF) uses its own dedicated transporter â€” works for everyone including the 10â€“15% with MTHFR variants." },
+    ],
   },
   // ─── MINERALS ──────────────────────────────────────────────────────────
   {
@@ -176,8 +219,13 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "full", f2: "off", w: "off",
     sched: altF1Only(),
-    blurb: "The keystone. Pulsed onto Iron Days. Zeroed during washout.",
-    why: "Iron drives the entire architecture of this protocol — both the alternating Iron Day / Rest Day pattern AND the 4-day washout. Here's why: when you take iron, a signal called hepcidin spikes and shuts off iron absorption for roughly 24 hours. If you take iron daily, you're fighting your own shutdown signal. Alternate-day dosing lets hepcidin reset between doses, giving about 40% more total absorption from the same amount of iron. Beyond that, after weeks of continuous use even alternate-day dosing slowly raises your baseline hepcidin ceiling. The 4-day pure break at the end of each month resets that ceiling, so the next month's first dose absorbs at its monthly maximum. Iron is paired with a four-way absorption booster on every Iron Day: Vitamin C (converts iron to the absorbable form), beta-carotene (forms a soluble iron complex), the bisglycinate form itself (partial bypass of the competition gate), and L. plantarum 299v in the probiotic blend (enhances solubility). On the same days, every potential competitor is either reduced, switched to a non-competing form, or zeroed.",
+    blurb: "The keystone. Pulsed onto Performance Days. Zeroed during washout.",
+    why: "Iron drives the entire architecture of this protocol â€” both the alternating Performance Day / Recovery Day pattern AND the 4-day washout. Here's why: when you take iron, a signal called hepcidin spikes and shuts off iron absorption for roughly 24 hours. If you take iron daily, you're fighting your own shutdown signal. Alternate-day dosing lets hepcidin reset between doses, giving about 40% more total absorption from the same amount of iron. Beyond that, after weeks of continuous use even alternate-day dosing slowly raises your baseline hepcidin ceiling. The 4-day pure break at the end of each month resets that ceiling, so the next month's first dose absorbs at its monthly maximum. Iron is paired with a four-way absorption booster on every Performance Day: Vitamin C (converts iron to the absorbable form), beta-carotene (forms a soluble iron complex), the bisglycinate form itself (partial bypass of the competition gate), and L. plantarum 299v in the probiotic blend (enhances solubility). On the same days, every potential competitor is either reduced, switched to a non-competing form, or zeroed.",
+    interactions: [
+      { kind: "pairs", text: "Quadruple booster on every Performance Day â€” Vitamin C (converts iron to the absorbable form), Î²-Carotene (soluble iron complex), the bisglycinate form itself (partial transporter bypass), and L. plantarum 299v probiotic (enhances solubility)." },
+      { kind: "separates", text: "Every potential Performance Day competitor is managed â€” Calcium is reduced, Magnesium switches to taurate form (different transporter), Zinc is reduced, Manganese is zeroed, Phosphorus is zeroed, and the R-ALA portion of the amino complex is zeroed." },
+      { kind: "drug", text: "Separate by at least 2 hours from levothyroxine, bisphosphonates, fluoroquinolones, and tetracyclines. Iron binds and inactivates these drug classes in the gut." },
+    ],
   },
   {
     id: "ca",
@@ -185,8 +233,13 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "reduced", f2: "full", w: "full",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 2 : i % 2 === 0 ? 1 : 2)),
-    blurb: "Reduced on Iron Days, full on Rest Days and washout.",
-    why: "Calcium and iron share a competition gate (called DMT1) at the cells lining your small intestine. At full doses they meaningfully interfere. On Iron Days, calcium is reduced so the interference drops below 6% — iron stays absorbed. On Rest Days and washout, calcium goes to its full dose without any iron present to compete. Citrate form is used because it works without strong stomach acid, and it also grabs onto oxalate in your gut to reduce kidney-stone risk. This is supplemental calcium — dietary calcium is still the primary source.",
+    blurb: "Reduced on Performance Days, full on Recovery Days and washout.",
+    why: "Calcium and iron share a competition gate (called DMT1) at the cells lining your small intestine. At full doses they meaningfully interfere. On Performance Days, calcium is reduced so the interference drops below 6% â€” iron stays absorbed. On Recovery Days and washout, calcium goes to its full dose without any iron present to compete. Citrate form is used because it works without strong stomach acid, and it also grabs onto oxalate in your gut to reduce kidney-stone risk. This is supplemental calcium â€” dietary calcium is still the primary source.",
+    interactions: [
+      { kind: "pairs", text: "D3, K2, and Magnesium on Performance Days as the bone-axis stack. Pairs with Phosphorus on Recovery Days for the bone-mineral structural ratio." },
+      { kind: "separates", text: "Iron on Performance Days â€” calcium and iron share the same competition gate. Reduced on Performance Days so interference drops well under control while iron absorbs cleanly." },
+      { kind: "note", text: "Citrate form chelates gut oxalate from Vitamin C, reducing kidney stone risk." },
+    ],
   },
   {
     id: "mg",
@@ -194,8 +247,13 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "full", f2: "full", w: "reduced",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 1 : 2)),
-    blurb: "Two different forms — one for Iron Days, one for everything else.",
-    why: "This was an interesting puzzle. Iron bisglycinate and magnesium glycinate both use the same gut transporter (called PepT1). Direct fight. The fix isn't to drop the magnesium dose — it's to switch the form. On Iron Days, magnesium is in the taurate form, which uses a totally different transporter (TauT). Problem solved. On Rest Days and washout, magnesium switches to the glycinate form (because there's no iron to compete with). Bonus: the Iron Day form (magnesium taurate) delivers a meaningful side dose of taurine — combined with the amino complex it pushes Iron Days into felt-effect taurine territory. The washout dose is slightly reduced because your intracellular magnesium lasts about four months — your tissues don't care about a small daily fluctuation.",
+    blurb: "Two different forms â€” one for Performance Days, one for everything else.",
+    why: "This was an interesting puzzle. Iron bisglycinate and magnesium glycinate both use the same gut transporter (called PepT1). Direct fight. The fix isn't to drop the magnesium dose â€” it's to switch the form. On Performance Days, magnesium is in the taurate form, which uses a totally different transporter (TauT). Problem solved. On Recovery Days and washout, magnesium switches to the glycinate form (because there's no iron to compete with). Bonus: the Performance Day form (magnesium taurate) delivers a meaningful side dose of taurine â€” combined with the amino complex it pushes Performance Days into felt-effect taurine territory. The washout dose is slightly reduced because your intracellular magnesium lasts about four months â€” your tissues don't care about a small daily fluctuation.",
+    interactions: [
+      { kind: "pairs", text: "D3 on Performance Days as the catalytic cofactor for D3's activation enzyme. Part of the bone-axis stack (D3 + K2 + Mg + Ca)." },
+      { kind: "separates", text: "Iron on Performance Days. Magnesium glycinate and iron bisglycinate both use the PepT1 transporter â€” direct fight. Fixed by switching to the taurate form on Performance Days (different transporter entirely)." },
+      { kind: "note", text: "Magnesium taurate on Performance Days delivers a meaningful side-load of taurine, pushing Performance Days into felt-effect taurine territory." },
+    ],
   },
   {
     id: "zn",
@@ -203,8 +261,12 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "reduced", f2: "full", w: "reduced",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 2 : i % 2 === 0 ? 1 : 2)),
-    blurb: "Reduced on Iron Days, full on Rest Days.",
-    why: "Zinc and iron compete at the same shared gate (DMT1). At full zinc plus iron together, you'd lose meaningful iron absorption. On Iron Days, zinc is reduced so the competition drops to under 5% — iron stays absorbed. On Rest Days, zinc gets its full dose with no iron to compete with. We can get away with this fluctuation because your whole-body zinc lasts about 280 days — your tissues are indifferent to whether the dose is the same every day.",
+    blurb: "Reduced on Performance Days, full on Recovery Days.",
+    why: "Zinc and iron compete at the same shared gate (DMT1). At full zinc plus iron together, you'd lose meaningful iron absorption. On Performance Days, zinc is reduced so the competition drops to under 5% â€” iron stays absorbed. On Recovery Days, zinc gets its full dose with no iron to compete with. We can get away with this fluctuation because your whole-body zinc lasts about 280 days â€” your tissues are indifferent to whether the dose is the same every day.",
+    interactions: [
+      { kind: "pairs", text: "Copper. Copper tracks zinc inversely every single day to keep the Zn:Cu ratio safely under 15:1." },
+      { kind: "separates", text: "Iron on Performance Days â€” they share the same competition gate (DMT1). Zinc is reduced on Performance Days so interference stays minimal." },
+    ],
   },
   {
     id: "cu",
@@ -212,8 +274,12 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "reduced", f2: "full", w: "reduced",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 2 : i % 2 === 0 ? 1 : 2)),
-    blurb: "Tracks zinc inversely — keeps the safe ratio.",
-    why: "The ratio of zinc to copper has to stay under 15:1 for safety. Copper tracks zinc inversely every single day — when zinc goes up, copper goes up; when zinc goes down, copper goes down. That keeps the ratio safe on every day type. Same bisglycinate form as zinc and iron for transporter consistency.",
+    blurb: "Tracks zinc inversely â€” keeps the safe ratio.",
+    why: "The ratio of zinc to copper has to stay under 15:1 for safety. Copper tracks zinc inversely every single day â€” when zinc goes up, copper goes up; when zinc goes down, copper goes down. That keeps the ratio safe on every day type. Same bisglycinate form as zinc and iron for transporter consistency.",
+    interactions: [
+      { kind: "pairs", text: "Tracks zinc inversely to maintain the Zn:Cu ratio under 15:1 on every day type." },
+      { kind: "note", text: "Independent of molybdenum at this dose (copper-depleting effect of molybdenum only shows up at chronic high molybdenum doses)." },
+    ],
   },
   {
     id: "mn",
@@ -221,8 +287,11 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "off", f2: "full", w: "off",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 0 : i % 2 === 0 ? 0 : 2)),
-    blurb: "Banished to Rest Days only. Zeroed everywhere else.",
-    why: "Manganese versus iron is the strongest fight among all the divalent minerals at the shared gate (DMT1) — stronger than zinc-vs-iron or copper-vs-iron. Putting them on the same day would crush both. So manganese is exiled to Rest Days only. During washout it's zeroed too, even though it's not fighting anything — your whole-body manganese lasts about 37 days, so getting it just 13 days a month is plenty. The 4-day washout also adds a safety margin against any long-term basal ganglia accumulation (which is a chronic-high-dose concern, not a normal-dose concern, but the pulsing keeps the margin wide).",
+    blurb: "Banished to Recovery Days only. Zeroed everywhere else.",
+    why: "Manganese versus iron is the strongest fight among all the divalent minerals at the shared gate (DMT1) â€” stronger than zinc-vs-iron or copper-vs-iron. Putting them on the same day would crush both. So manganese is exiled to Recovery Days only. During washout it's zeroed too, even though it's not fighting anything â€” your whole-body manganese lasts about 37 days, so getting it just 13 days a month is plenty. The 4-day washout also adds a safety margin against any long-term basal ganglia accumulation (which is a chronic-high-dose concern, not a normal-dose concern, but the pulsing keeps the margin wide).",
+    interactions: [
+      { kind: "separates", text: "Iron â€” manganese vs. iron is the strongest competition pair at the shared transporter (DMT1). Manganese is exiled to Recovery Days only and zeroed during Maintenance for additional safety margin." },
+    ],
   },
   {
     id: "se",
@@ -230,8 +299,12 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — the selenium taxi refreshes every 24 hours.",
-    why: "Selenoprotein P (the protein that ferries selenium around your body) turns over about every 24 hours. So daily dosing fits the kinetics. Selenomethionine moves via the amino-acid transport system at tiny molar amounts — negligible competition with anything else. It's also the cofactor your body uses to convert thyroid hormone from T4 to T3.",
+    blurb: "Daily â€” the selenium taxi refreshes every 24 hours.",
+    why: "Selenoprotein P (the protein that ferries selenium around your body) turns over about every 24 hours. So daily dosing fits the kinetics. Selenomethionine moves via the amino-acid transport system at tiny molar amounts â€” negligible competition with anything else. It's also the cofactor your body uses to convert thyroid hormone from T4 to T3.",
+    interactions: [
+      { kind: "pairs", text: "Iodine, L-Tyrosine, and activated B6 for thyroid hormone production. Selenium is the cofactor that converts T4 into the active T3 form." },
+      { kind: "note", text: "Independent amino-acid transport â€” no competition with anything else." },
+    ],
   },
   {
     id: "iodine",
@@ -239,8 +312,12 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — the thyroid has its own private transporter.",
+    blurb: "Daily â€” the thyroid has its own private transporter.",
     why: "Iodine uses a transporter dedicated entirely to iodide (called NIS, in the thyroid). Complete independence from everything else. Iodine plus selenium plus L-tyrosine completes the thyroid-hormone production set. Iodine is the rate-limiting substrate in most diets that don't include iodized salt or seaweed.",
+    interactions: [
+      { kind: "pairs", text: "Selenium, L-Tyrosine, and B6 for thyroid hormones. Iodine is the rate-limiting substrate in most diets without iodized salt or seaweed." },
+      { kind: "note", text: "Uses its own dedicated thyroid transporter (NIS) â€” completely independent of everything else." },
+    ],
   },
   {
     id: "mo",
@@ -248,8 +325,11 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — independent transporter, low dose, safe.",
-    why: "Molybdenum has its own dedicated transporter — zero competition with any other mineral in the stack. Helps process sulfites (relevant for high-sulfur-food and sulfite-preservative tolerance) and purines. Most diets cover this from legumes, grains, and organ meats, so this dose is insurance-tier — completes the trace-mineral picture. The only meaningful interaction would be with copper, but only at chronic high doses, far above what's used here.",
+    blurb: "Daily â€” independent transporter, low dose, safe.",
+    why: "Molybdenum has its own dedicated transporter â€” zero competition with any other mineral in the stack. Helps process sulfites (relevant for high-sulfur-food and sulfite-preservative tolerance) and purines. Most diets cover this from legumes, grains, and organ meats, so this dose is insurance-tier â€” completes the trace-mineral picture. The only meaningful interaction would be with copper, but only at chronic high doses, far above what's used here.",
+    interactions: [
+      { kind: "note", text: "Independent molybdate transporter â€” zero competition with any other mineral in the stack. Could theoretically deplete copper at chronic high doses, but at this dose, no concern." },
+    ],
   },
   {
     id: "p",
@@ -257,8 +337,12 @@ const N: Nutrient[] = [
     cat: "Mineral",
     f1: "off", f2: "full", w: "full",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 2 : i % 2 === 0 ? 0 : 2)),
-    blurb: "Rest Days and washout. Zeroed on Iron Days.",
-    why: "Phosphate can grab onto iron in your gut and pull it out of absorption. To keep Iron Days clean, phosphorus is zeroed there. On Rest Days and washout, it's on at its small structural-mineral dose. Most people get plenty of phosphorus from food (dairy, meat, grains, processed foods) — this is here mainly for the bone-mineral ratio with calcium and for label completeness, not as a pharmacological dose.",
+    blurb: "Recovery Days and washout. Zeroed on Performance Days.",
+    why: "Phosphate can grab onto iron in your gut and pull it out of absorption. To keep Performance Days clean, phosphorus is zeroed there. On Recovery Days and washout, it's on at its small structural-mineral dose. Most people get plenty of phosphorus from food (dairy, meat, grains, processed foods) â€” this is here mainly for the bone-mineral ratio with calcium and for label completeness, not as a pharmacological dose.",
+    interactions: [
+      { kind: "pairs", text: "Calcium on Recovery Days for the bone-mineral structural ratio (Ca:P balance matters for bone formation)." },
+      { kind: "separates", text: "Iron on Performance Days â€” phosphate could grab onto iron in your gut. Zeroed on Performance Days to keep them clean." },
+    ],
   },
   // ─── ELECTROLYTE ───────────────────────────────────────────────────────
   {
@@ -267,8 +351,11 @@ const N: Nutrient[] = [
     cat: "Electrolyte",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — heavy on potassium, nominal on sodium.",
-    why: "The average American already gets well over the daily sodium limit from food, and actively too much for the ~24% of adults with high blood pressure. So supplemental sodium is intentionally nominal here — a trace amount, not a meaningful dose. Potassium, meanwhile, is genuinely deficient in most American diets, so the potassium dose is meaningful. Endurance athletes, fasting people, low-carb or keto folks, and anyone doing sweat-heavy work should add a separate electrolyte drink around training — that's not what this base supplement is for.",
+    blurb: "Daily â€” heavy on potassium, nominal on sodium.",
+    why: "The average American already gets well over the daily sodium limit from food, and actively too much for the ~24% of adults with high blood pressure. So supplemental sodium is intentionally nominal here â€” a trace amount, not a meaningful dose. Potassium, meanwhile, is genuinely deficient in most American diets, so the potassium dose is meaningful. Endurance athletes, fasting people, low-carb or keto folks, and anyone doing sweat-heavy work should add a separate electrolyte drink around training â€” that's not what this base supplement is for.",
+    interactions: [
+      { kind: "note", text: "Ion channels are independent at these doses â€” no competition with anything else in the stack. Endurance athletes, fasting people, and keto folks should add separate sodium around training." },
+    ],
   },
   // ─── GUT ───────────────────────────────────────────────────────────────
   {
@@ -277,8 +364,12 @@ const N: Nutrient[] = [
     cat: "Gut",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — these strains wash out without re-dosing.",
-    why: "Transient probiotic strains wash out of your gut in 1–3 weeks if you stop re-dosing them — so daily is required to maintain any effect. We picked a blend with a specific strain (L. plantarum 299v) that boosts iron absorption on Iron Days through a small molecule it produces. We also chose strains that are low TMA producers (TMA is a metabolite that becomes TMAO, which you don't want elevated) to keep that pathway quiet.",
+    blurb: "Daily â€” these strains wash out without re-dosing.",
+    why: "Transient probiotic strains wash out of your gut in 1â€“3 weeks if you stop re-dosing them â€” so daily is required to maintain any effect. We picked a blend with a specific strain (L. plantarum 299v) that boosts iron absorption on Performance Days through a small molecule it produces. We also chose strains that are low TMA producers (TMA is a metabolite that becomes TMAO, which you don't want elevated) to keep that pathway quiet.",
+    interactions: [
+      { kind: "pairs", text: "L. plantarum 299v specifically pairs with Iron on Performance Days â€” it produces a molecule that boosts iron solubility in the gut." },
+      { kind: "pairs", text: "Prebiotic blend (feeds the strains) and Creatine (enterocyte energy substrate) for gut barrier integrity." },
+    ],
   },
   {
     id: "prebiotic",
@@ -286,8 +377,12 @@ const N: Nutrient[] = [
     cat: "Gut",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — three fibers feeding three different microbe groups.",
-    why: "Different gut microbes prefer different fibers. Instead of one big dose of one fiber, this is three smaller doses of three different ones — each effective at its specific dose for its specific target microbes. The blend reaches a broader spread of populations across the length of your colon than a single substrate would. None of these fibers chelate minerals (which is a problem with some fiber sources like phytate-rich ones).",
+    blurb: "Daily â€” three fibers feeding three different microbe groups.",
+    why: "Different gut microbes prefer different fibers. Instead of one big dose of one fiber, this is three smaller doses of three different ones â€” each effective at its specific dose for its specific target microbes. The blend reaches a broader spread of populations across the length of your colon than a single substrate would. None of these fibers chelate minerals (which is a problem with some fiber sources like phytate-rich ones).",
+    interactions: [
+      { kind: "pairs", text: "Probiotics (feeds the strains) and Creatine for gut barrier integrity." },
+      { kind: "note", text: "None of the three fibers chelate minerals â€” no interference with the mineral absorption pathways." },
+    ],
   },
   {
     id: "enzymes",
@@ -295,8 +390,12 @@ const N: Nutrient[] = [
     cat: "Gut",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — local effect in the gut, no systemic competition.",
-    why: "Digestive enzymes act locally in your gut and aren't absorbed systemically — so they don't interact with anything else in the stack. The lipase portion is the important one here: it helps form micelles for the fat-soluble vitamins (A, E, K2, CoQ10) so they actually get absorbed from the one daily meal this is taken with. The protease portion helps liberate amino acids from whatever you're eating alongside.",
+    blurb: "Daily â€” local effect in the gut, no systemic competition.",
+    why: "Digestive enzymes act locally in your gut and aren't absorbed systemically â€” so they don't interact with anything else in the stack. The lipase portion is the important one here: it helps form micelles for the fat-soluble vitamins (A, E, K2, CoQ10) so they actually get absorbed from the one daily meal this is taken with. The protease portion helps liberate amino acids from whatever you're eating alongside.",
+    interactions: [
+      { kind: "pairs", text: "Lipase helps form micelles for the fat-soluble vitamins (A, E, K2, CoQ10) so they actually absorb from the single daily meal." },
+      { kind: "note", text: "Local gut action only â€” no systemic absorption, no competition with anything in the stack." },
+    ],
   },
   // ─── AMINO & PERFORMANCE ───────────────────────────────────────────────
   {
@@ -305,8 +404,12 @@ const N: Nutrient[] = [
     cat: "Amino & Performance",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — saturates muscles in about 28 days. Matches the cycle.",
-    why: "Creatine has the strongest evidence base in the whole stack. It uses its own dedicated transporter (CRT1) with zero documented interactions with anything else here. At a daily maintenance dose, it takes about 28 days for muscles to fully saturate — which matches the 30-day cycle almost perfectly: you reach steady state mid-month and hold through the rest. No cycling because phosphocreatine pools decay over weeks if you stop. Monohydrate over fancier forms because it's the cheapest, best-studied, and equally effective.",
+    blurb: "Daily â€” saturates muscles in about 28 days. Matches the cycle.",
+    why: "Creatine has the strongest evidence base in the whole stack. It uses its own dedicated transporter (CRT1) with zero documented interactions with anything else here. At a daily maintenance dose, it takes about 28 days for muscles to fully saturate â€” which matches the 30-day cycle almost perfectly: you reach steady state mid-month and hold through the rest. No cycling because phosphocreatine pools decay over weeks if you stop. Monohydrate over fancier forms because it's the cheapest, best-studied, and equally effective.",
+    interactions: [
+      { kind: "pairs", text: "Prebiotic and Probiotic for gut barrier integrity. Creatine incidentally serves as an energy substrate for gut-lining cells." },
+      { kind: "note", text: "Zero documented interactions with any other compound in the stack. Uses its own dedicated transporter (CRT1)." },
+    ],
   },
   {
     id: "aminoComplex",
@@ -314,8 +417,12 @@ const N: Nutrient[] = [
     cat: "Amino & Performance",
     f1: "reduced", f2: "full", w: "full",
     sched: [1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,2,2,2,2],
-    blurb: "Daily blend — but R-ALA is zeroed on Iron Days.",
-    why: "Three things share this complex. Glycine and taurine are both at substrate-pool doses (below the threshold for their own felt effects on sleep or cardiovascular tone) — they're here for substrate insurance and to cover the methyl-buffer demand from CDP-choline. R-ALA (alpha-lipoic acid) is at its evidence-effective floor for antioxidant and insulin-sensitivity effects. The catch: R-ALA reversibly chelates iron in your gut. So on Iron Days, ALA is zeroed out — only the glycine and taurine portions remain. On Rest Days and washout, all three are at full dose. All three use different transporters from each other and from everything else.",
+    blurb: "Daily blend â€” but R-ALA is zeroed on Performance Days.",
+    why: "Three things share this complex. Glycine and taurine are both at substrate-pool doses (below the threshold for their own felt effects on sleep or cardiovascular tone) â€” they're here for substrate insurance and to cover the methyl-buffer demand from CDP-choline. R-ALA (alpha-lipoic acid) is at its evidence-effective floor for antioxidant and insulin-sensitivity effects. The catch: R-ALA reversibly chelates iron in your gut. So on Performance Days, ALA is zeroed out â€” only the glycine and taurine portions remain. On Recovery Days and washout, all three are at full dose. All three use different transporters from each other and from everything else.",
+    interactions: [
+      { kind: "separates", text: "The R-ALA portion is zeroed on Performance Days because ALA reversibly chelates iron in your gut. Glycine and taurine portions stay on every day." },
+      { kind: "note", text: "Glycine, taurine, and R-ALA each use different transporters â€” no internal competition, and no competition with anything else in the stack." },
+    ],
   },
   {
     id: "tyrosine",
@@ -323,8 +430,12 @@ const N: Nutrient[] = [
     cat: "Amino & Performance",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — independent transport. Critical drug interactions.",
-    why: "L-tyrosine is the substrate for both the dopamine pathway (tyrosine → L-DOPA → dopamine) and thyroid hormones. It uses the amino-acid transport system with zero meaningful competition from anything else in the stack. Daily makes sense because catecholamine synthesis is substrate-dependent under acute load — you want the pool topped up. CRITICAL: absolutely contraindicated with MAOIs (risk of hypertensive crisis). Caution with SSRIs and SNRIs. Pharmacist review required if you're on any of those.",
+    blurb: "Daily â€” independent transport. Critical drug interactions.",
+    why: "L-tyrosine is the substrate for both the dopamine pathway (tyrosine â†’ L-DOPA â†’ dopamine) and thyroid hormones. It uses the amino-acid transport system with zero meaningful competition from anything else in the stack. Daily makes sense because catecholamine synthesis is substrate-dependent under acute load â€” you want the pool topped up. CRITICAL: absolutely contraindicated with MAOIs (risk of hypertensive crisis). Caution with SSRIs and SNRIs. Pharmacist review required if you're on any of those.",
+    interactions: [
+      { kind: "pairs", text: "Iodine, Selenium, and activated B6 for thyroid hormone production. Activated B6 also powers the enzyme that converts tyrosine into dopamine." },
+      { kind: "drug", text: "ABSOLUTE contraindication with MAOIs â€” risk of hypertensive crisis from norepinephrine substrate flooding. Caution with SSRIs and SNRIs. Pharmacist review mandatory." },
+    ],
   },
   {
     id: "ump",
@@ -332,8 +443,12 @@ const N: Nutrient[] = [
     cat: "Amino & Performance",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — pairs with CDP-choline for brain cell membranes.",
-    why: "UMP feeds the pyrimidine arm of the Kennedy pathway — the system your brain uses to build the membranes of new dendritic spines (the contact points between neurons). It pairs in-product with CDP-choline (which feeds the choline arm of the same pathway). The third arm is DHA (from algal omega-3) — that's recommended as a separate paired supplement. UMP uses its own nucleoside transporters, completely independent of everything else. Daily, conservative dose to avoid bumping uric acid.",
+    blurb: "Daily â€” pairs with CDP-choline for brain cell membranes.",
+    why: "UMP feeds the pyrimidine arm of the Kennedy pathway â€” the system your brain uses to build the membranes of new dendritic spines (the contact points between neurons). It pairs in-product with CDP-choline (which feeds the choline arm of the same pathway). The third arm is DHA (from algal omega-3) â€” that's recommended as a separate paired supplement. UMP uses its own nucleoside transporters, completely independent of everything else. Daily, conservative dose to avoid bumping uric acid.",
+    interactions: [
+      { kind: "pairs", text: "CDP-Choline (in-product) and DHA (separate algal omega-3 recommended) for the Kennedy pathway â€” the system your brain uses to build neuron membranes." },
+      { kind: "pairs", text: "Lion's Mane for NGF amplification â€” UMP upregulates the NGF receptors that Lion's Mane's ligands bind to." },
+    ],
   },
   {
     id: "choline",
@@ -341,8 +456,13 @@ const N: Nutrient[] = [
     cat: "Amino & Performance",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — the cleanest-evidence choline source.",
-    why: "Citicoline is chosen over Alpha-GPC and choline bitartrate for three reasons. First, it has the cleanest felt-effect evidence in healthy adults at this dose range. Second, it produces less TMAO than Alpha-GPC. Third, it splits in the gut into cytidine plus choline — the cytidine arm actually contributes back to the UMP pool, so it's additive with the UMP dose. Independent transport. It also covers the cholinergic demand from ashwagandha's mild acetylcholinesterase inhibition without needing a second choline source.",
+    blurb: "Daily â€” the cleanest-evidence choline source.",
+    why: "Citicoline is chosen over Alpha-GPC and choline bitartrate for three reasons. First, it has the cleanest felt-effect evidence in healthy adults at this dose range. Second, it produces less TMAO than Alpha-GPC. Third, it splits in the gut into cytidine plus choline â€” the cytidine arm actually contributes back to the UMP pool, so it's additive with the UMP dose. Independent transport. It also covers the cholinergic demand from ashwagandha's mild acetylcholinesterase inhibition without needing a second choline source.",
+    interactions: [
+      { kind: "pairs", text: "UMP (in-product) and DHA (external omega-3) for the Kennedy pathway." },
+      { kind: "pairs", text: "B12 and Folate for the methylation cycle (modest secondary methyl-donor stream via the choline â†’ betaine route)." },
+      { kind: "note", text: "Cytidine moiety contributes back to the UMP pool â€” additive effect. Cleanest TMAO profile compared to Alpha-GPC." },
+    ],
   },
   // ─── BOTANICAL ─────────────────────────────────────────────────────────
   {
@@ -351,8 +471,12 @@ const N: Nutrient[] = [
     cat: "Botanical",
     f1: "full", f2: "full", w: "off",
     sched: Array.from({ length: 30 }, (_, i) => (i >= 26 ? 0 : 2)),
-    blurb: "Iron Days and Rest Days. Zeroed during the 4-day washout.",
-    why: "Ashwagandha is pulsed: on for 26 days, off for 4. Any compound that's active on the HPA (stress) axis benefits from a periodic receptor adaptation break — the washout gives that. The dose is also deliberately reduced from the full clinical dose to soften the upstream push on the thyroid axis (which is dose-dependent), keep the safety margin against liver concerns wide, and trim the powder weight. At this reduced dose, the felt-effect on cortisol is partial (still measurable, just gentler than the full clinical effect). We use the KSM-66 extract specifically — standardized to withanolides, root-only (the leaf form contains a different compound that's cytotoxic).",
+    blurb: "Performance Days and Recovery Days. Zeroed during the 4-day washout.",
+    why: "Ashwagandha is pulsed: on for 26 days, off for 4. Any compound that's active on the HPA (stress) axis benefits from a periodic receptor adaptation break â€” the washout gives that. The dose is also deliberately reduced from the full clinical dose to soften the upstream push on the thyroid axis (which is dose-dependent), keep the safety margin against liver concerns wide, and trim the powder weight. At this reduced dose, the felt-effect on cortisol is partial (still measurable, just gentler than the full clinical effect). We use the KSM-66 extract specifically â€” standardized to withanolides, root-only (the leaf form contains a different compound that's cytotoxic).",
+    interactions: [
+      { kind: "pairs", text: "Iodine, Selenium, L-Tyrosine, and B6 for a gentle upstream thyroid axis push. Zeroed during Maintenance for HPA-axis receptor reset." },
+      { kind: "drug", text: "May potentiate sedatives (additive GABA effect). Softens thyroid medications â€” flag with your endocrinologist. Mild immunomodulatory effect â€” caution with immunosuppressants. PREGNANCY CONTRAINDICATION regardless of dose." },
+    ],
   },
   {
     id: "lionsMane",
@@ -360,258 +484,39 @@ const N: Nutrient[] = [
     cat: "Botanical",
     f1: "full", f2: "full", w: "full",
     sched: daily(2),
-    blurb: "Daily — all 30 days. No cycling.",
-    why: "Lion's Mane works by gradually upregulating NGF (nerve growth factor) — it's a cumulative, weeks-long effect, not an acute hit. Critically, the gains decay if you stop dosing, so no cycling is allowed: daily on every day including the washout. The dose is intentionally below the canonical research dose, which trades a bit of ligand-side effect for cost and powder weight. The pairing with UMP still works qualitatively though: UMP upregulates the NGF receptors that Lion's Mane's ligands bind to, so receptor-side amplification is preserved at full strength even though ligand-side is partial. We use the fruiting body (which contains the active hericenones) — not mycelium products that often contain mostly grain filler.",
+    blurb: "Daily â€” all 30 days. No cycling.",
+    why: "Lion's Mane works by gradually upregulating NGF (nerve growth factor) â€” it's a cumulative, weeks-long effect, not an acute hit. Critically, the gains decay if you stop dosing, so no cycling is allowed: daily on every day including the washout. The dose is intentionally below the canonical research dose, which trades a bit of ligand-side effect for cost and powder weight. The pairing with UMP still works qualitatively though: UMP upregulates the NGF receptors that Lion's Mane's ligands bind to, so receptor-side amplification is preserved at full strength even though ligand-side is partial. We use the fruiting body (which contains the active hericenones) â€” not mycelium products that often contain mostly grain filler.",
+    interactions: [
+      { kind: "pairs", text: "UMP for NGF amplification â€” Lion's Mane stimulates NGF synthesis (ligand side), UMP upregulates the NGF receptors (receptor side). Both sides of the same pathway." },
+      { kind: "note", text: "No documented drug interactions at this dose." },
+    ],
   },
 ];
 
-// ── INTERACTIONS ────────────────────────────────────────────────────────
-type IxType = "resolved" | "synergy" | "interact" | "accepted";
-type IxSev = "critical" | "high" | "moderate" | "low";
-
-type Interaction = {
-  cat: string;
-  a: string;
-  b: string;
-  type: IxType;
-  sev: IxSev;
-  note: string;
+// ── INTERACTION COLORS (per nutrient interaction kind) ─────────────────
+const IxKindC: Record<IxKind, string> = {
+  pairs: "#3a7a3a",      // green â€” synergistic
+  separates: "#c25e3c",  // orange â€” keep apart
+  drug: "#b03030",       // red â€” drug caution
+  note: "#666666",       // gray â€” informational
+};
+const IxKindLabel: Record<IxKind, string> = {
+  pairs: "Pairs with",
+  separates: "Separated from",
+  drug: "Drug interaction",
+  note: "Note",
 };
 
-const IX: Interaction[] = [
-  {
-    cat: "Iron Absorption",
-    a: "Iron",
-    b: "Vitamin C + β-Carotene + Bisglycinate + L. plantarum 299v",
-    type: "synergy",
-    sev: "critical",
-    note: "A four-way iron-absorption booster runs on every Iron Day. Vitamin C converts iron into the form your gut can absorb (4–6× more uptake). Beta-carotene forms a soluble iron complex that prevents iron from falling out of solution in your gut. The bisglycinate form of iron itself gets a partial bypass of the main competition gate. And a specific probiotic strain in the blend (L. plantarum 299v) produces a molecule that further enhances iron solubility. Together these stack up to far more absorbed iron than the same dose of iron alone.",
-  },
-  {
-    cat: "Iron Absorption",
-    a: "Iron",
-    b: "Calcium / Magnesium / Zinc / Manganese / Phosphorus / ALA",
-    type: "resolved",
-    sev: "critical",
-    note: "Every potential Iron Day competitor is handled: calcium is reduced to where interference is negligible; magnesium switches to the taurate form (totally different transporter — no fight); zinc is reduced to where interference drops under 5%; manganese is zeroed because it's the strongest divalent competitor; phosphorus is zeroed because it could grab onto iron in your gut; and the R-ALA portion of the amino complex is zeroed because ALA reversibly chelates iron.",
-  },
-  {
-    cat: "Fat-Soluble",
-    a: "K2 (MK-7)",
-    b: "Vitamin A retinyl + Vitamin E + CoQ10",
-    type: "resolved",
-    sev: "critical",
-    note: "K2 is on Iron Days only; retinyl Vitamin A and Vitamin E are on Rest Days only. The reason: Vitamin E exerts a dual antagonism against K2 — it competes for the absorption truck (chylomicron) AND directly blocks the enzyme K2 needs to do its job. The two simply can't share a day. CoQ10 is now consolidated to daily at a smaller dose; the load is well below saturation and there's no documented CoQ10–K2 antagonism. During washout, Vitamin E is reduced but the ratio against any K2 would still be antagonistic — so K2 stays zeroed there. The long half-life of MK-7 means it bridges the 4-day break.",
-  },
-  {
-    cat: "Fat-Soluble",
-    a: "Vitamin D3",
-    b: "K2 + Magnesium taurate + Calcium + Phosphorus",
-    type: "synergy",
-    sev: "critical",
-    note: "Iron Days double as 'bone-axis days.' D3 makes the proteins your bones use (osteocalcin and MGP). K2 turns them on via an enzyme called gamma-glutamyl carboxylase. Magnesium taurate provides the catalytic cofactor your body needs to activate D3 itself, plus broader cofactor roles in bone metabolism (ATP-dependent osteoblast activity, PTH signaling). Calcium is the structural mineral. On Rest Days, phosphorus joins as the calcium-phosphorus structural partner for bone formation.",
-  },
-  {
-    cat: "Fat-Soluble",
-    a: "Vitamin E",
-    b: "Vitamin C",
-    type: "synergy",
-    sev: "critical",
-    note: "Vitamin C donates an electron to spent Vitamin E (specifically the tocopheroxyl radical), regenerating it back to its active form. Daily Vitamin C keeps the recycling capacity in excess of Vitamin E's burn rate, even on the Rest Days when Vitamin E peaks. The two are functionally yoked.",
-  },
-  {
-    cat: "Fat-Soluble",
-    a: "CoQ10 + Vitamin A retinyl + Vitamin E",
-    b: "Chylomicron sharing on Rest Days",
-    type: "accepted",
-    sev: "low",
-    note: "On Rest Days, CoQ10, retinyl Vitamin A, and Vitamin E all share the same chylomicron packaging system in your gut. The combined fat-soluble load is well below saturation, so this is fine. The lipase in the digestive enzyme blend supports good micelle formation. Taking the dose with a meal that includes some fat is recommended for reliable absorption of any of these fat-solubles.",
-  },
-  {
-    cat: "Mineral",
-    a: "Manganese",
-    b: "Iron and other divalents",
-    type: "resolved",
-    sev: "high",
-    note: "Manganese shares the same competition gate (DMT1) with iron, zinc, and copper. Manganese-vs-iron is the strongest competition among them. Solution: manganese is exiled to Rest Days only — zero overlap with iron. On Rest Days, the combined mineral load is still well within safe concurrent absorption thresholds, and the bisglycinate forms reduce dependence on that one specific transporter.",
-  },
-  {
-    cat: "Mineral",
-    a: "Calcium",
-    b: "Magnesium",
-    type: "resolved",
-    sev: "low",
-    note: "On Iron Days, calcium is reduced and magnesium is in the taurate form (uses a separate transporter from calcium). On Rest Days, calcium is full and magnesium is in the glycinate form (uses yet another transporter, also separate from calcium). All combinations stay below the threshold where calcium and magnesium meaningfully compete at the shared gate.",
-  },
-  {
-    cat: "Mineral",
-    a: "Molybdenum",
-    b: "Copper",
-    type: "resolved",
-    sev: "low",
-    note: "At chronic high doses, molybdenum can deplete copper (this is actually the classic mechanism of Wilson's disease therapy). At the trace dose used here against the meaningful copper dose, the ratio strongly favors copper retention — no clinical concern. Independent transporters anyway.",
-  },
-  {
-    cat: "Mineral",
-    a: "Phosphorus",
-    b: "Calcium + Iron",
-    type: "resolved",
-    sev: "low",
-    note: "Phosphorus is well below any calcium-phosphorus imbalance threshold (concern starts when phosphorus is more than twice the calcium dose — far above what's here). Phosphorus's mild iron-chelation potential is handled by keeping it off Iron Days entirely. Independent transporter from any other mineral pathway.",
-  },
-  {
-    cat: "Mineral",
-    a: "Zinc",
-    b: "Copper",
-    type: "resolved",
-    sev: "moderate",
-    note: "The zinc-to-copper ratio is kept safely under 15:1 (the safety limit) on every day type. Copper tracks zinc inversely — when zinc goes up, copper goes up; when zinc goes down, copper goes down. The ratio is maintained on Iron Days (where both are reduced), on Rest Days (where both are full), and during washout (where both are reduced).",
-  },
-  {
-    cat: "Cognitive",
-    a: "UMP + CDP-Choline (in-product) + DHA (paired)",
-    b: "Kennedy pathway",
-    type: "synergy",
-    sev: "high",
-    note: "Two arms of the Kennedy pathway (the system your brain uses to build dendritic spine membranes) are in this product: UMP feeds the pyrimidine arm, and CDP-choline feeds the choline arm (and bonus: CDP-choline's cytidine contributes back to the UMP pool). The third arm — DHA — is intentionally not in this product because the algal omega-3 powder is too heavy for a powder format. To complete the full triad, pair this with a separate algal omega-3 supplement. The UMP + CDP-choline pair stands on its own for meaningful effects.",
-  },
-  {
-    cat: "Cognitive",
-    a: "Lion's Mane + UMP",
-    b: "NGF ligand + receptor co-upregulation",
-    type: "synergy",
-    sev: "moderate",
-    note: "Lion's Mane's hericenones increase NGF (nerve growth factor) synthesis — that's the ligand side. UMP upregulates the NGF receptors that bind those ligands — that's the receptor side. Combined, you get amplification on both sides of the same pathway. At the reduced Lion's Mane dose used here, the ligand side is partial but the receptor side is preserved at full strength — so the pair still meaningfully amplifies, with a lower ceiling than the canonical research dose of Lion's Mane would produce.",
-  },
-  {
-    cat: "Methylation",
-    a: "CDP-Choline + B12 + 5-MTHF",
-    b: "Homocysteine → Methionine",
-    type: "synergy",
-    sev: "moderate",
-    note: "The folate cycle (activated folate + B12) is the primary route to recycle homocysteine back into methionine. CDP-choline contributes a modest secondary methyl-donor stream through the choline → betaine → BHMT route. Total exogenous methyl load is low, so the small glycine in the amino complex is enough buffer. If a 30-day homocysteine bloodwork check shows elevation, supplemental betaine can be reintroduced.",
-  },
-  {
-    cat: "Thyroid",
-    a: "Iodine + Selenium + Tyrosine + B6 + Ashwagandha",
-    b: "Thyroid axis (gently active upstream)",
-    type: "synergy",
-    sev: "moderate",
-    note: "Four pieces of the thyroid axis are covered: substrate (iodine + L-tyrosine), conversion cofactor (selenium), decarboxylation cofactor (activated B6), and a gentle upstream push (ashwagandha at the reduced dose). At the reduced ashwagandha dose, the thyroid push is meaningfully softened — most users will see modest changes rather than the bigger shifts at the full clinical dose. Anyone with hyperthyroidism, Hashimoto's, or on levothyroxine should flag this. Baseline thyroid panel recommended for first-time users.",
-  },
-  {
-    cat: "Performance",
-    a: "Creatine",
-    b: "Everything else in the stack",
-    type: "resolved",
-    sev: "low",
-    note: "Creatine uses its own dedicated transporter (CRT1) with zero documented interactions with anything else in this stack. The saturation curve (about 28 days at maintenance dose) matches the 30-day cycle almost perfectly — steady state hits mid-month and holds.",
-  },
-  {
-    cat: "Amino",
-    a: "Amino & ALA Complex + Tyrosine + Creatine",
-    b: "Amino transporter independence",
-    type: "resolved",
-    sev: "low",
-    note: "Every amino-class compound in the stack rides a different transporter: glycine, taurine, R-ALA, tyrosine, and creatine each use their own. No transporter competition. R-ALA's reversible iron chelation is the one wrinkle, handled by zeroing the ALA portion of the amino complex on Iron Days.",
-  },
-  {
-    cat: "Gut",
-    a: "Prebiotic Blend + Probiotic + Creatine",
-    b: "Gut barrier integrity",
-    type: "synergy",
-    sev: "moderate",
-    note: "The multi-substrate prebiotic blend feeds different microbial populations across the length of your colon — broader coverage than any single-substrate alternative. The probiotic strains compete with pathogenic flora and produce short-chain fatty acids. Creatine incidentally serves as an energy substrate for enterocytes (gut lining cells). Together, the gut barrier coverage is solid.",
-  },
-  {
-    cat: "Washout",
-    a: "4-day Maintenance (days 27–30)",
-    b: "Hepcidin reset + HPA reset + Manganese pulsing",
-    type: "interact",
-    sev: "moderate",
-    note: "The washout serves three independent rest functions at once. (1) Iron is zeroed so the hepcidin ceiling fully resets — next month's first dose absorbs at maximum. (2) Ashwagandha is zeroed so the HPA-axis receptors can resensitize. (3) Manganese stays zeroed for the conservative safety margin. Meanwhile, all the daily compounds keep running (creatine, Lion's Mane, B-complex, etc.) and several others continue at reduced doses (Vitamin A drops to plant-form only, Vitamin E is reduced, magnesium and zinc are slightly reduced). The washout is a true rest cycle, not a full pause.",
-  },
-  {
-    cat: "Drug",
-    a: "L-Tyrosine",
-    b: "MAOIs / SSRIs",
-    type: "interact",
-    sev: "critical",
-    note: "Absolute contraindication with MAOIs — risk of hypertensive crisis from norepinephrine substrate flooding. Relative contraindication with SSRIs and SNRIs. Pharmacist review is mandatory if you're on any of these.",
-  },
-  {
-    cat: "Drug",
-    a: "Vitamin K2",
-    b: "Warfarin / VKAs",
-    type: "interact",
-    sev: "critical",
-    note: "Vitamin K2 directly opposes warfarin's mechanism. Contraindicated.",
-  },
-  {
-    cat: "Drug",
-    a: "Iron",
-    b: "Levothyroxine / Bisphosphonates / Quinolones / Tetracyclines",
-    type: "interact",
-    sev: "high",
-    note: "Iron binds and inactivates several drug classes in the gut. Separate iron dosing by at least 2 hours from levothyroxine, bisphosphonates, fluoroquinolones, and tetracyclines.",
-  },
-  {
-    cat: "Drug",
-    a: "CoQ10",
-    b: "Warfarin",
-    type: "interact",
-    sev: "moderate",
-    note: "CoQ10's structural similarity to Vitamin K can modestly reduce warfarin's effect. INR monitoring required if you're on warfarin or other vitamin-K antagonists.",
-  },
-  {
-    cat: "Drug",
-    a: "Ashwagandha",
-    b: "Sedatives / Thyroid meds / Immunosuppressants / Sympathomimetics",
-    type: "interact",
-    sev: "moderate",
-    note: "At the reduced dose used here, the drug interaction surface is smaller than at full clinical dose — but still real. May potentiate sedatives (additive GABAergic effect, gentler at this dose). Thyroid medication interaction is softened — but levothyroxine users should still flag this. Mild immunomodulatory effect persists — caution with immunosuppressants. Pregnancy contraindication applies regardless of dose. Pharmacist and physician review recommended for anyone on chronic medication.",
-  },
-];
-
-const IX_CATS = [...new Set(IX.map((x) => x.cat))];
-const SvC: Record<IxSev, string> = {
-  critical: "#c0392b",
-  high: "#d4760a",
-  moderate: "#b8860b",
-  low: "#3a7a3a",
-};
-const TpC: Record<IxType, string> = {
-  resolved: "#2980b9",
-  synergy: "#3a7a3a",
-  interact: "#b8860b",
-  accepted: "#777",
-};
-const IxCC: Record<string, string> = {
-  "Iron Absorption": "#e68163",
-  "Fat-Soluble": "#b8860b",
-  Mineral: "#2980b9",
-  Cognitive: "#7b68ee",
-  Methylation: "#6a8e3e",
-  Thyroid: "#c0392b",
-  Performance: "#3a7a3a",
-  Amino: "#b05574",
-  Gut: "#6a8e3e",
-  Washout: "#c9b07a",
-  Drug: "#8b0000",
-};
 
 // ── COMPONENT ───────────────────────────────────────────────────────────
 export function ScienceContent() {
   const [selDay, setSelDay] = useState<number | null>(null);
   const [selNut, setSelNut] = useState<string | null>(null);
   const [catF, setCatF] = useState<Cat | null>(null);
-  const [ixCat, setIxCat] = useState<string | null>(null);
-  const [expIx, setExpIx] = useState<number | null>(null);
 
   const schedR = useRef<HTMLDivElement>(null);
   const gridR = useRef<HTMLDivElement>(null);
   const nutR = useRef<HTMLDivElement>(null);
-  const ixR = useRef<HTMLDivElement>(null);
 
   const scrl = (r: React.RefObject<HTMLDivElement | null>) =>
     r.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -628,7 +533,6 @@ export function ScienceContent() {
 
   const sf = selDay !== null ? getF(selDay) : null;
   const filtN = catF ? N.filter((n) => n.cat === catF) : N;
-  const filtIx = ixCat ? IX.filter((x) => x.cat === ixCat) : IX;
 
   const labelFor = (s: DayState) =>
     s === "boosted" ? "Boosted" : s === "full" ? "Full" : s === "reduced" ? "Reduced" : "Off";
@@ -660,7 +564,6 @@ export function ScienceContent() {
               ["Schedule", schedR],
               ["Grid", gridR],
               ["Nutrients", nutR],
-              ["Interactions", ixR],
             ].map(([l, r]) => (
               <button
                 key={l as string}
@@ -686,10 +589,10 @@ export function ScienceContent() {
               The schedule itself is part of the formulation. <strong>When</strong> you take something matters as much as <strong>what</strong> you take.
             </p>
             <p>
-              Everything is taken in a single morning dose with a meal. All absorption conflicts are resolved <em>across</em> days, not within a day. The architecture is driven by iron&apos;s shutdown signal (hepcidin): alternate-day dosing lets that signal reset between doses, giving roughly 40% more absorption. That creates two day environments &mdash; an <span style={{ color: FC.F1, fontWeight: 700 }}>Iron Day</span> (clean of competitors, all absorption boosters on) and a <span style={{ color: FC.F2, fontWeight: 700 }}>Rest Day</span> (full fat-soluble vitamins, manganese, full minerals). A 4-day <span style={{ color: FC.W, fontWeight: 700 }}>Maintenance Washout</span> at the end of every month provides a hepcidin floor reset, an HPA-axis reset, and a manganese safety margin.
+              Everything is taken in a single morning dose with a meal. All absorption conflicts are resolved <em>across</em> days, not within a day. The architecture is driven by iron&apos;s shutdown signal (hepcidin): alternate-day dosing lets that signal reset between doses, giving roughly 40% more absorption. That creates two day environments &mdash; an <span style={{ color: FC.F1, fontWeight: 700 }}>Performance Day</span> (clean of competitors, all absorption boosters on) and a <span style={{ color: FC.F2, fontWeight: 700 }}>Recovery Day</span> (full fat-soluble vitamins, manganese, full minerals). A 4-day <span style={{ color: FC.W, fontWeight: 700 }}>Maintenance Washout</span> at the end of every month provides a hepcidin floor reset, an HPA-axis reset, and a manganese safety margin.
             </p>
             <p>
-              The 30-day cycle is intentional. It matches the saturation timescales of the strongest-evidence ingredients: creatine reaches muscle saturation in ~28 days; iron&apos;s hepcidin ceiling resets cleanly over 4 days off; fat-soluble vitamin tissue stores are months-deep; activated B-vitamins and CoQ10 hit steady state within 3&ndash;4 weeks. The cycle reaches plateau mid-month and holds, with a clean 4-day rest before re-entering Iron Day 1.
+              The 30-day cycle is intentional. It matches the saturation timescales of the strongest-evidence ingredients: creatine reaches muscle saturation in ~28 days; iron&apos;s hepcidin ceiling resets cleanly over 4 days off; fat-soluble vitamin tissue stores are months-deep; activated B-vitamins and CoQ10 hit steady state within 3&ndash;4 weeks. The cycle reaches plateau mid-month and holds, with a clean 4-day rest before re-entering Performance Day 1.
             </p>
           </div>
 
@@ -858,7 +761,7 @@ export function ScienceContent() {
 
       {/* ── NUTRIENT SCHEDULE GRID ─────────────────────────────────── */}
       <section ref={gridR} className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
+        <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
           <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight">Nutrient Schedule Grid</h2>
           <p className="mt-2 text-xs uppercase tracking-wider text-foreground/55">
             Every nutrient across all 30 days. Tap a row for its full reasoning.
@@ -879,7 +782,7 @@ export function ScienceContent() {
               Reduced
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm border border-border" style={{ background: HC[0] }} />
+              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[0], border: "1.5px dashed #b8b8b8" }} />
               Zeroed
             </span>
           </div>
@@ -934,10 +837,10 @@ export function ScienceContent() {
                           {n.sched.map((v, i) => (
                             <td key={i} className="text-center px-0 py-0.5">
                               <span
-                                className="inline-block w-2.5 h-2.5 rounded-sm"
+                                className="inline-block w-3.5 h-3.5 rounded-sm"
                                 style={{
                                   background: v > 0 ? HC[v] : HC[0],
-                                  border: v === 0 ? "1px solid #ddd" : "none",
+                                  border: v === 0 ? "1.5px dashed #b8b8b8" : "none",
                                 }}
                               />
                             </td>
@@ -1086,112 +989,34 @@ export function ScienceContent() {
                       </div>
                       <div className="px-4 py-4">
                         <p className="text-sm text-foreground/85 leading-relaxed">{n.why}</p>
+
+                        {n.interactions.length > 0 && (
+                          <div className="mt-5 pt-4 border-t border-border">
+                            <div className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-foreground/60 mb-3">
+                              Interactions
+                            </div>
+                            <ul className="space-y-2.5">
+                              {n.interactions.map((ix, i) => (
+                                <li key={i} className="flex gap-2.5">
+                                  <span
+                                    className="shrink-0 mt-0.5 rounded px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider whitespace-nowrap"
+                                    style={{
+                                      background: `${IxKindC[ix.kind]}1A`,
+                                      color: IxKindC[ix.kind],
+                                    }}
+                                  >
+                                    {IxKindLabel[ix.kind]}
+                                  </span>
+                                  <span className="text-sm text-foreground/85 leading-relaxed">
+                                    {ix.text}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── INTERACTION MAP ──────────────────────────────────────────── */}
-      <section ref={ixR} className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
-          <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight">Every Interaction We&apos;re Watching</h2>
-          <p className="mt-2 text-xs uppercase tracking-wider text-foreground/55">
-            {IX.length} interactions across the stack. Tap to expand the reasoning.
-          </p>
-
-          {/* Type legend */}
-          <div className="mt-4 flex flex-wrap gap-3 text-[11px] text-foreground/65">
-            {(Object.entries(TpC) as [IxType, string][]).map(([k, c]) => (
-              <span key={k} className="flex items-center gap-1.5">
-                <span className="inline-block w-2 h-2 rounded-sm" style={{ background: c }} />
-                <span className="capitalize">{k}</span>{" "}
-                <span className="text-foreground/40">({IX.filter((x) => x.type === k).length})</span>
-              </span>
-            ))}
-          </div>
-
-          {/* Category filter */}
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            <button
-              onClick={() => {
-                setIxCat(null);
-                setExpIx(null);
-              }}
-              className="rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider border"
-              style={{
-                background: ixCat === null ? "#1a1a1a" : "white",
-                color: ixCat === null ? "white" : "#555",
-                borderColor: ixCat === null ? "#1a1a1a" : "#e5e5e5",
-              }}
-            >
-              All
-            </button>
-            {IX_CATS.map((c) => (
-              <button
-                key={c}
-                onClick={() => {
-                  setIxCat(ixCat === c ? null : c);
-                  setExpIx(null);
-                }}
-                className="rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider border"
-                style={{
-                  background: ixCat === c ? IxCC[c] || "#1a1a1a" : "white",
-                  color: ixCat === c ? "white" : "#555",
-                  borderColor: ixCat === c ? IxCC[c] || "#1a1a1a" : "#e5e5e5",
-                }}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-
-          {/* Interactions */}
-          <div className="mt-4 grid gap-2">
-            {filtIx.map((x) => {
-              const gi = IX.indexOf(x);
-              const open = expIx === gi;
-              return (
-                <div
-                  key={gi}
-                  onClick={() => setExpIx(open ? null : gi)}
-                  className="bg-white rounded-lg border px-4 py-3 cursor-pointer transition-colors"
-                  style={{ borderColor: open ? SvC[x.sev] : "#e5e5e5" }}
-                >
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span
-                      className="rounded px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider"
-                      style={{
-                        color: IxCC[x.cat] || "#555",
-                        background: `${IxCC[x.cat] || "#999"}1A`,
-                      }}
-                    >
-                      {x.cat}
-                    </span>
-                    <span
-                      className="rounded px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider"
-                      style={{ color: SvC[x.sev], background: `${SvC[x.sev]}1A` }}
-                    >
-                      {x.sev}
-                    </span>
-                    <span
-                      className="rounded px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider"
-                      style={{ color: TpC[x.type], background: `${TpC[x.type]}1A` }}
-                    >
-                      {x.type}
-                    </span>
-                    <span className="font-bold text-foreground text-sm">
-                      {x.a} <span className="text-foreground/40 mx-1">↔</span> {x.b}
-                    </span>
-                  </div>
-                  {open && (
-                    <p className="mt-3 pt-3 border-t border-border text-sm text-foreground/85 leading-relaxed">
-                      {x.note}
-                    </p>
                   )}
                 </div>
               );
@@ -1214,8 +1039,8 @@ export function ScienceContent() {
               Glycine and taurine in the amino complex are below the doses where their primary felt effects appear (the doses that move sleep or cardiovascular tone). They&apos;re here for substrate-pool insurance and label coverage, not the full pharmacological effect. The R-ALA portion of the same complex <em>is</em> at the evidence-effective floor for its antioxidant and insulin-sensitivity effects. Anyone wanting felt-effect glycine or taurine should dose those separately at evening.
             </p>
             <p>
-              <strong className="text-foreground">Magnesium is at a felt-effect dose on Iron Days.</strong>{" "}
-              The taurate form on Iron Days delivers a meaningful side-load of taurine, pushing Iron Days into felt-effect territory. Rest Days and washout magnesium is sub-felt but tissue-sufficient (intracellular magnesium lasts ~4 months &mdash; daily fluctuation doesn&apos;t matter).
+              <strong className="text-foreground">Magnesium is at a felt-effect dose on Performance Days.</strong>{" "}
+              The taurate form on Performance Days delivers a meaningful side-load of taurine, pushing Performance Days into felt-effect territory. Recovery Days and washout magnesium is sub-felt but tissue-sufficient (intracellular magnesium lasts ~4 months &mdash; daily fluctuation doesn&apos;t matter).
             </p>
             <p>
               <strong className="text-foreground">Sodium is nominal on purpose.</strong>{" "}
