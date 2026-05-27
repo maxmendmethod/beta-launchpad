@@ -10,16 +10,22 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-b border-border" style={{ backgroundColor: "#1d1e1c" }}>
+    <header className="border-b border-border" style={{ backgroundColor: "#fffaeb" }}>
       {/* Desktop */}
       <div className="hidden md:flex mx-auto max-w-5xl items-center justify-center gap-8 px-4 py-4">
         <Link href="/" className="flex items-center">
           <Image src={logo} alt="M3" className="h-12 w-auto" priority />
         </Link>
-        <nav className="flex items-center gap-8 text-sm font-semibold text-white">
+        <nav className="flex items-center gap-8 text-sm font-semibold text-foreground">
+          <Link
+            href="/science"
+            className="transition-colors hover:text-brand"
+          >
+            Science
+          </Link>
           <Link
             href="/signup"
-            className="rounded-md border border-white/40 px-4 py-2 transition-colors hover:border-brand hover:text-brand"
+            className="rounded-md bg-brand px-4 py-2 text-white transition-opacity hover:opacity-90"
           >
             Become a Founding Member
           </Link>
@@ -34,18 +40,25 @@ export function SiteHeader() {
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
-          className="p-2 rounded-md hover:bg-secondary text-white"
+          className="p-2 rounded-md hover:bg-secondary text-foreground"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
       {open && (
-        <div className="md:hidden border-t border-border" style={{ backgroundColor: "#1d1e1c" }}>
-          <nav className="flex flex-col px-4 py-3 text-sm font-semibold text-white">
+        <div className="md:hidden border-t border-border" style={{ backgroundColor: "#fffaeb" }}>
+          <nav className="flex flex-col gap-3 px-4 py-4 text-sm font-semibold text-foreground">
+            <Link
+              href="/science"
+              onClick={() => setOpen(false)}
+              className="self-start transition-colors hover:text-brand"
+            >
+              Science
+            </Link>
             <Link
               href="/signup"
               onClick={() => setOpen(false)}
-              className="self-start rounded-md border border-white/40 px-4 py-2 transition-colors hover:border-brand hover:text-brand"
+              className="self-start rounded-md bg-brand px-4 py-2 text-white transition-opacity hover:opacity-90"
             >
               Become a Founding Member
             </Link>
