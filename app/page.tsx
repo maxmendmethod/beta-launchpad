@@ -104,7 +104,7 @@ export default function HomePage() {
         <h1 className="sr-only">Max Mend Method — Precision Timed Supplement Protocol</h1>
 
         {/* HERO — fills viewport, founder pngs on sides (desktop), peek of free resource at bottom */}
-        <section className="relative overflow-hidden bg-[#fffaeb]">
+        <section className="relative overflow-hidden bg-white">
           {/* Side founder images — large desktop only, anchored to section edges */}
           <Image
             src={founderMyles}

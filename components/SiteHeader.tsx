@@ -25,7 +25,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/signup"
-            className="rounded-md bg-brand px-4 py-2 text-white transition-opacity hover:opacity-90"
+            className="transition-colors hover:text-brand"
           >
             Become a Founding Member
           </Link>
@@ -58,7 +58,7 @@ export function SiteHeader() {
             <Link
               href="/signup"
               onClick={() => setOpen(false)}
-              className="self-start rounded-md bg-brand px-4 py-2 text-white transition-opacity hover:opacity-90"
+              className="self-start transition-colors hover:text-brand"
             >
               Become a Founding Member
             </Link>
