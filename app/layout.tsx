@@ -55,9 +55,50 @@ const organizationLd = {
   name: SITE_NAME,
   alternateName: "M3",
   url: SITE_URL,
-  logo: `${SITE_URL}/m3tablogo.png`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/favicon-512x512.png`,
+    width: 512,
+    height: 512,
+  },
   description: DEFAULT_DESCRIPTION,
   sameAs: ["https://www.instagram.com/maxmendmethod/"],
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+};
+
+const siteNavLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Site Navigation",
+  itemListElement: [
+    {
+      "@type": "SiteLinksSearchBox",
+    },
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "About",
+      url: `${SITE_URL}/about`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Science",
+      url: `${SITE_URL}/science`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Become a Founding Member",
+      url: `${SITE_URL}/signup`,
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -67,6 +108,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavLd) }}
         />
         {children}
         <Analytics />
