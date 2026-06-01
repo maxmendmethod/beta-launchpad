@@ -454,9 +454,87 @@ export function ScienceContent() {
   return (
     <div style={{ background: "#fffaeb", color: "#1a1a1a", lineHeight: 1.65 }} className="font-sans">
 
+      {/* ── CORE PRINCIPLES ─────────────────────────────────────────── */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
+
+          <header className="mb-10">
+            <h2 className="text-4xl font-bold leading-tight">Core Principles</h2>
+          </header>
+
+          <div className="rounded-2xl border border-border bg-white overflow-hidden">
+            <div className="h-[3px] bg-[#f0ede4]">
+              <div
+                className="h-full bg-[#e68163] transition-all duration-300 ease-in-out"
+                style={{ width: `${((pIdx + 1) / PRINCIPLES.length) * 100}%` }}
+              />
+            </div>
+
+            <div className="px-8 py-8 md:px-10 md:py-10">
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex gap-1.5">
+                  {PRINCIPLES.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => goTo(i)}
+                      aria-label={PRINCIPLES[i].name}
+                      style={{
+                        width: i === pIdx ? 22 : 8,
+                        height: 8,
+                        borderRadius: 4,
+                        background: i === pIdx ? "#e68163" : "#e5ddd0",
+                        transition: "width 250ms ease, background 250ms ease",
+                      }}
+                    />
+                  ))}
+                </div>
+                <span className="text-xs font-bold tabular-nums" style={{ color: "#e68163" }}>
+                  {String(pIdx + 1).padStart(2, "0")}&thinsp;/&thinsp;{String(PRINCIPLES.length).padStart(2, "0")}
+                </span>
+              </div>
+
+              <div
+                style={{
+                  opacity: pVisible ? 1 : 0,
+                  transform: pVisible ? "translateY(0px)" : "translateY(10px)",
+                  transition: "opacity 190ms ease, transform 190ms ease",
+                  minHeight: 220,
+                }}
+              >
+                <h3 className="text-2xl md:text-3xl font-bold leading-tight mb-5">
+                  {PRINCIPLES[pIdx].name}
+                </h3>
+                <div className="space-y-4 text-base leading-relaxed text-foreground/80">
+                  {PRINCIPLES[pIdx].body.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-10 flex justify-end gap-2">
+                <button
+                  onClick={() => goTo(pIdx - 1)}
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-border text-foreground/50 transition-colors hover:border-[#e68163] hover:text-[#e68163]"
+                  aria-label="Previous principle"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={() => goTo(pIdx + 1)}
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-border text-foreground/50 transition-colors hover:border-[#e68163] hover:text-[#e68163]"
+                  aria-label="Next principle"
+                >
+                  →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── ARTICLE ─────────────────────────────────────────────────── */}
       <article className="border-b border-border">
-        <div className="mx-auto max-w-2xl px-4 pt-16 sm:pt-24 pb-6">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
 
           <header className="mb-10">
             <h1 className="text-4xl font-bold leading-tight">Why Every Day Looks A Little Different</h1>
@@ -516,92 +594,7 @@ export function ScienceContent() {
           </div>
 
           <MiniGrid1 />
-        </div>
 
-        {/* Nutrient grid — full width break */}
-        <div className="border-t border-b border-border">
-          <div className="mx-auto max-w-5xl px-4 py-12">
-            <div className="mb-6 flex flex-wrap gap-4 text-[11px] text-foreground/65">
-              <span className="flex items-center gap-1.5">
-                <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[3] }} />
-                Boosted
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[2] }} />
-                Full
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[1] }} />
-                Reduced
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[0], border: "1.5px dashed #b8b8b8" }} />
-                Zeroed
-              </span>
-            </div>
-            <div className="overflow-x-auto -mx-4 px-4">
-              <table className="border-collapse w-full min-w-[760px]">
-                <thead>
-                  <tr>
-                    <th className="text-left p-1 text-[10px] uppercase tracking-wider text-foreground/55 font-normal sticky left-0 bg-[#fffaeb] z-10 min-w-[190px]">
-                      Nutrient
-                    </th>
-                    {Array.from({ length: 30 }, (_, i) => {
-                      const f = getF(i);
-                      return (
-                        <th key={i} className="text-center p-0 min-w-[18px]">
-                          <div className="text-[9px] font-bold" style={{ color: FC[f] }}>
-                            {i + 1}
-                          </div>
-                        </th>
-                      );
-                    })}
-                  </tr>
-                </thead>
-                <tbody>
-                  {CATS.map((cat) => {
-                    const items = N.filter((n) => n.cat === cat);
-                    if (!items.length) return null;
-                    return (
-                      <React.Fragment key={cat}>
-                        <tr>
-                          <td colSpan={31} className="pt-3 pb-1 sticky left-0 bg-[#fffaeb]">
-                            <span
-                              className="text-[10px] font-extrabold uppercase tracking-[0.1em]"
-                              style={{ color: CC[cat] }}
-                            >
-                              {cat}
-                            </span>
-                          </td>
-                        </tr>
-                        {items.map((n) => (
-                          <tr key={n.id}>
-                            <td className="py-1 px-1 text-[11px] text-foreground/85 sticky left-0 bg-[#fffaeb] z-[5] max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap">
-                              {n.name}
-                            </td>
-                            {n.sched.map((v, idx) => (
-                              <td key={idx} className="text-center px-0 py-0.5">
-                                <span
-                                  className="inline-block w-3.5 h-3.5 rounded-sm"
-                                  style={{
-                                    background: v > 0 ? HC[v] : HC[0],
-                                    border: v === 0 ? "1.5px dashed #b8b8b8" : "none",
-                                  }}
-                                />
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </React.Fragment>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <div className="mx-auto max-w-2xl px-4 py-12 pb-16 sm:pb-24">
           <div className="space-y-6 text-base leading-relaxed text-foreground">
             <p>
               But then you keep digging and you realize this is where things start to get really annoying. You discover that calcium and iron actually compete for absorption. In the gut, they both use the same DMT1 transporter. In simple terms, they&apos;re trying to use the same doorway to get into your bloodstream so if calcium shows up and iron shows up at exactly the same time, less of both nutrients get absorbed.
@@ -637,91 +630,91 @@ export function ScienceContent() {
         </div>
       </article>
 
-      {/* ── CORE PRINCIPLES ─────────────────────────────────────────── */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
+      {/* ── NUTRIENT SCHEDULE GRID ─────────────────────────────────── */}
+      <section>
+        <div className="mx-auto max-w-5xl px-4 py-16 md:py-20">
 
-          <header className="mb-10">
-            <p className="text-xs uppercase tracking-[0.18em] text-foreground/50 mb-3">Our Approach</p>
-            <h2 className="text-4xl font-bold leading-tight">Core Principles</h2>
+          <header className="mb-8">
+            <h2 className="text-4xl font-bold leading-tight">Nutrient Schedule Grid</h2>
           </header>
 
-          {/* Carousel card */}
-          <div className="rounded-2xl border border-border bg-white overflow-hidden">
+          <div className="mb-6 flex flex-wrap gap-4 text-[11px] text-foreground/65">
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[3] }} />
+              Boosted
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[2] }} />
+              Full
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[1] }} />
+              Reduced
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[0], border: "1.5px dashed #b8b8b8" }} />
+              Zeroed
+            </span>
+          </div>
 
-            {/* Progress bar */}
-            <div className="h-[3px] bg-[#f0ede4]">
-              <div
-                className="h-full bg-[#e68163] transition-all duration-300 ease-in-out"
-                style={{ width: `${((pIdx + 1) / PRINCIPLES.length) * 100}%` }}
-              />
-            </div>
-
-            <div className="px-8 py-8 md:px-10 md:py-10">
-
-              {/* Counter row */}
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex gap-1.5">
-                  {PRINCIPLES.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => goTo(i)}
-                      aria-label={PRINCIPLES[i].name}
-                      style={{
-                        width: i === pIdx ? 22 : 8,
-                        height: 8,
-                        borderRadius: 4,
-                        background: i === pIdx ? "#e68163" : "#e5ddd0",
-                        transition: "width 250ms ease, background 250ms ease",
-                      }}
-                    />
-                  ))}
-                </div>
-                <span
-                  className="text-xs font-bold tabular-nums"
-                  style={{ color: "#e68163" }}
-                >
-                  {String(pIdx + 1).padStart(2, "0")}&thinsp;/&thinsp;{String(PRINCIPLES.length).padStart(2, "0")}
-                </span>
-              </div>
-
-              {/* Animated content */}
-              <div
-                style={{
-                  opacity: pVisible ? 1 : 0,
-                  transform: pVisible ? "translateY(0px)" : "translateY(10px)",
-                  transition: "opacity 190ms ease, transform 190ms ease",
-                  minHeight: 180,
-                }}
-              >
-                <h3 className="text-2xl md:text-3xl font-bold leading-tight mb-5">
-                  {PRINCIPLES[pIdx].name}
-                </h3>
-                <div className="space-y-4 text-base leading-relaxed text-foreground/80">
-                  {PRINCIPLES[pIdx].body.map((para, i) => (
-                    <p key={i}>{para}</p>
-                  ))}
-                </div>
-              </div>
-
-              {/* Prev / Next */}
-              <div className="mt-10 flex justify-end gap-2">
-                <button
-                  onClick={() => goTo(pIdx - 1)}
-                  className="flex items-center justify-center w-10 h-10 rounded-full border border-border text-foreground/50 transition-colors hover:border-[#e68163] hover:text-[#e68163]"
-                  aria-label="Previous principle"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={() => goTo(pIdx + 1)}
-                  className="flex items-center justify-center w-10 h-10 rounded-full border border-border text-foreground/50 transition-colors hover:border-[#e68163] hover:text-[#e68163]"
-                  aria-label="Next principle"
-                >
-                  →
-                </button>
-              </div>
-            </div>
+          <div className="overflow-x-auto -mx-4 px-4">
+            <table className="border-collapse w-full min-w-[760px]">
+              <thead>
+                <tr>
+                  <th className="text-left p-1 text-[10px] uppercase tracking-wider text-foreground/55 font-normal sticky left-0 bg-[#fffaeb] z-10 min-w-[190px]">
+                    Nutrient
+                  </th>
+                  {Array.from({ length: 30 }, (_, i) => {
+                    const f = getF(i);
+                    return (
+                      <th key={i} className="text-center p-0 min-w-[18px]">
+                        <div className="text-[9px] font-bold" style={{ color: FC[f] }}>
+                          {i + 1}
+                        </div>
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {CATS.map((cat) => {
+                  const items = N.filter((n) => n.cat === cat);
+                  if (!items.length) return null;
+                  return (
+                    <React.Fragment key={cat}>
+                      <tr>
+                        <td colSpan={31} className="pt-3 pb-1 sticky left-0 bg-[#fffaeb]">
+                          <span
+                            className="text-[10px] font-extrabold uppercase tracking-[0.1em]"
+                            style={{ color: CC[cat] }}
+                          >
+                            {cat}
+                          </span>
+                        </td>
+                      </tr>
+                      {items.map((n) => (
+                        <tr key={n.id}>
+                          <td className="py-1 px-1 text-[11px] text-foreground/85 sticky left-0 bg-[#fffaeb] z-[5] max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap">
+                            {n.name}
+                          </td>
+                          {n.sched.map((v, idx) => (
+                            <td key={idx} className="text-center px-0 py-0.5">
+                              <span
+                                className="inline-block w-3.5 h-3.5 rounded-sm"
+                                style={{
+                                  background: v > 0 ? HC[v] : HC[0],
+                                  border: v === 0 ? "1.5px dashed #b8b8b8" : "none",
+                                }}
+                              />
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </React.Fragment>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
