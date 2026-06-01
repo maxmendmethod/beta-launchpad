@@ -12,7 +12,7 @@ export function SiteHeader() {
   return (
     <header className="border-b border-border" style={{ backgroundColor: "#fffaeb" }}>
       {/* Desktop */}
-      <div className="hidden md:flex w-full items-center justify-between pl-6 pr-[15%] py-4">
+      <div className="hidden md:flex w-full items-center justify-between pl-[5%] pr-[15%] py-4">
         <Link href="/" className="flex items-center">
           <Image src={logo} alt="M3" className="h-24 w-auto" priority />
         </Link>
