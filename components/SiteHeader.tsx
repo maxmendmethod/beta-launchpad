@@ -20,13 +20,13 @@ export function SiteHeader() {
             <Image src={logo} alt="M3" className="h-14 w-auto" priority />
           </Link>
           <nav className="flex items-center gap-8 text-sm font-semibold text-foreground">
-            <Link href="/science" className="transition-colors hover:text-brand hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
+            <Link href="/science" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               Science
             </Link>
-            <Link href="/about" className="transition-colors hover:text-brand hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
+            <Link href="/about" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               About
             </Link>
-            <Link href="/signup" className="transition-colors hover:text-brand hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
+            <Link href="/signup" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               Become a Founding Member
             </Link>
           </nav>
