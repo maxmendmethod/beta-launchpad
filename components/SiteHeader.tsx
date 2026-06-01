@@ -12,12 +12,12 @@ export function SiteHeader() {
   return (
     <header className="border-b border-border" style={{ backgroundColor: "#fffaeb" }}>
       {/* Desktop */}
-      <div className="hidden md:flex w-full items-center justify-between pl-[5%] pr-[5%] py-4">
+      <div className="hidden md:flex w-full items-center justify-between pl-[5%] pr-[5%] py-2">
 
         {/* Left: logo + nav */}
         <div className="flex items-center gap-10">
           <Link href="/" className="flex items-center">
-            <Image src={logo} alt="M3" className="h-20 w-auto" priority />
+            <Image src={logo} alt="M3" className="h-14 w-auto" priority />
           </Link>
           <nav className="flex items-center gap-8 text-sm font-semibold text-foreground">
             <Link href="/science" className="transition-colors hover:text-brand">
@@ -52,9 +52,9 @@ export function SiteHeader() {
       </div>
 
       {/* Mobile */}
-      <div className="md:hidden flex items-center justify-between px-4 py-3">
+      <div className="md:hidden flex items-center justify-between px-4 py-2">
         <Link href="/">
-          <Image src={logo} alt="M3" className="h-10 w-auto" priority />
+          <Image src={logo} alt="M3" className="h-8 w-auto" priority />
         </Link>
         <div className="flex items-center gap-2">
           <Link
