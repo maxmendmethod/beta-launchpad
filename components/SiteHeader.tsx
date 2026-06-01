@@ -14,7 +14,7 @@ export function SiteHeader() {
       {/* Desktop */}
       <div className="hidden md:flex w-full items-center justify-between pl-[5%] pr-[15%] py-4">
         <Link href="/" className="flex items-center">
-          <Image src={logo} alt="M3" className="h-24 w-auto" priority />
+          <Image src={logo} alt="M3" className="h-20 w-auto" priority />
         </Link>
         <nav className="flex items-center gap-8 text-sm font-semibold text-foreground">
           <Link
