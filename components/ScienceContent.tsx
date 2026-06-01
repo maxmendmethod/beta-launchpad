@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 /* ─────────────────────────────────────────────────────────────────────────
    M3 SCIENCE PAGE
@@ -400,8 +400,57 @@ function MiniGrid2() {
   );
 }
 
+// ── PRINCIPLES DATA ──────────────────────────────────────────────────────
+const PRINCIPLES: { name: string; body: string[] }[] = [
+  {
+    name: "Science, Not Tradition",
+    body: [
+      "Most supplement companies start with what everyone else is doing and then make small changes around the edges. We took the opposite approach. Instead of asking what ingredients belong in a supplement, we started by asking why those ingredients were being used in the first place, then we looked at the research, the dosing, the timing, the forms, and how everything interacted with everything else.",
+      "The result was something that looked very different from the industry standard because when it comes to supplements, what you take is only part of the equation. How much you take, when you take it, and what you take it with can matter just as much.",
+    ],
+  },
+  {
+    name: "Full Transparency",
+    body: [
+      "The supplement industry has a bad habit of hiding things behind fancy marketing terms and proprietary blends. Every ingredient in M3 is listed openly and every decision has a reason behind it. No ingredient is included just because it’s trendy and “sells well.” Nothing is included because it sounds good on a label. Nothing is included because everyone else is doing it.",
+      "If we can’t explain exactly why something belongs in the protocol, it doesn’t belong in the protocol.",
+    ],
+  },
+  {
+    name: "Results You Can Point To",
+    body: [
+      "Max Mend Method was built to help you feel better. Most people don’t care about ingredient names, metabolic pathways, or obscure scientific terminology like we do and we totally get that. People care about having more energy when they wake up, feeling focused at work, and getting through the day without feeling like garbage.",
+      "At the end of the day, that’s what matters. The science only matters if it improves your life.",
+    ],
+  },
+  {
+    name: "Real Food, Real Ingredients",
+    body: [
+      "Our bodies evolved to eat real food, not synthetic lab chemicals. That’s why we try to source ingredients from food whenever it makes sense and avoid unnecessary additives whenever possible. No artificial junk that serves no real purpose. Just ingredients selected because they help move the protocol closer to its goal.",
+    ],
+  },
+  {
+    name: "The Best, Without a PhD",
+    body: [
+      "You shouldn’t need to spend hundreds of hours reading studies just to take care of your health. Nutrition can get complicated very quickly and the solution isn’t to force everyone to learn everything.",
+      "We built a product smart enough so that you don’t have to become a dietician to get dietician optimal nutrition. We spent years thinking about the ingredients, the doses, the timing, the interactions, and the schedule. You just have to open today’s packet.",
+    ],
+  },
+];
+
 // ── COMPONENT ────────────────────────────────────────────────────────────
 export function ScienceContent() {
+  const [pIdx, setPIdx] = useState(0);
+  const [pVisible, setPVisible] = useState(true);
+
+  function goTo(next: number) {
+    setPVisible(false);
+    setTimeout(() => {
+      setPIdx((next + PRINCIPLES.length) % PRINCIPLES.length);
+      setPVisible(true);
+    }, 190);
+  }
+
   return (
     <div style={{ background: "#fffaeb", color: "#1a1a1a", lineHeight: 1.65 }} className="font-sans">
 
@@ -592,47 +641,86 @@ export function ScienceContent() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
 
-          <header className="mb-12">
+          <header className="mb-10">
+            <p className="text-xs uppercase tracking-[0.18em] text-foreground/50 mb-3">Our Approach</p>
             <h2 className="text-4xl font-bold leading-tight">Core Principles</h2>
           </header>
 
-          <div className="space-y-12 text-base leading-relaxed text-foreground">
-            <div>
-              <h3 className="text-xl font-bold mb-4">Science, Not Tradition</h3>
-              <p>
-                Most supplement companies start with what everyone else is doing and then make small changes around the edges. We took the opposite approach. Instead of asking what ingredients belong in a supplement, we started by asking why those ingredients were being used in the first place, then we looked at the research, the dosing, the timing, the forms, and how everything interacted with everything else. The result was something that looked very different from the industry standard because when it comes to supplements, what you take is only part of the equation. How much you take, when you take it, and what you take it with can matter just as much.
-              </p>
+          {/* Carousel card */}
+          <div className="rounded-2xl border border-border bg-white overflow-hidden">
+
+            {/* Progress bar */}
+            <div className="h-[3px] bg-[#f0ede4]">
+              <div
+                className="h-full bg-[#e68163] transition-all duration-300 ease-in-out"
+                style={{ width: `${((pIdx + 1) / PRINCIPLES.length) * 100}%` }}
+              />
             </div>
 
-            <div>
-              <h3 className="text-xl font-bold mb-4">Full Transparency</h3>
-              <p>
-                The supplement industry has a bad habit of hiding things behind fancy marketing terms and proprietary blends. Every ingredient in M3 is listed openly and every decision has a reason behind it. No ingredient is included just because it&apos;s trendy and &ldquo;sells well.&rdquo; Nothing is included because it sounds good on a label. Nothing is included because everyone else is doing it.
-              </p>
-              <p className="mt-4">
-                If we can&apos;t explain exactly why something belongs in the protocol, it doesn&apos;t belong in the protocol.
-              </p>
-            </div>
+            <div className="px-8 py-8 md:px-10 md:py-10">
 
-            <div>
-              <h3 className="text-xl font-bold mb-4">Results You Can Point To</h3>
-              <p>
-                Max Mend Method was built to help you feel better. Most people don&apos;t care about ingredient names, metabolic pathways, or obscure scientific terminology like we do and we totally get that. People care about having more energy when they wake up, feeling focused at work, and getting through the day without feeling like garbage. At the end of the day, that&apos;s what matters. The science only matters if it improves your life.
-              </p>
-            </div>
+              {/* Counter row */}
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex gap-1.5">
+                  {PRINCIPLES.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => goTo(i)}
+                      aria-label={PRINCIPLES[i].name}
+                      style={{
+                        width: i === pIdx ? 22 : 8,
+                        height: 8,
+                        borderRadius: 4,
+                        background: i === pIdx ? "#e68163" : "#e5ddd0",
+                        transition: "width 250ms ease, background 250ms ease",
+                      }}
+                    />
+                  ))}
+                </div>
+                <span
+                  className="text-xs font-bold tabular-nums"
+                  style={{ color: "#e68163" }}
+                >
+                  {String(pIdx + 1).padStart(2, "0")}&thinsp;/&thinsp;{String(PRINCIPLES.length).padStart(2, "0")}
+                </span>
+              </div>
 
-            <div>
-              <h3 className="text-xl font-bold mb-4">Real Food, Real Ingredients</h3>
-              <p>
-                Our bodies evolved to eat real food, not synthetic lab chemicals. That&apos;s why we try to source ingredients from food whenever it makes sense and avoid unnecessary additives whenever possible. No artificial junk that serves no real purpose. Just ingredients selected because they help move the protocol closer to its goal.
-              </p>
-            </div>
+              {/* Animated content */}
+              <div
+                style={{
+                  opacity: pVisible ? 1 : 0,
+                  transform: pVisible ? "translateY(0px)" : "translateY(10px)",
+                  transition: "opacity 190ms ease, transform 190ms ease",
+                  minHeight: 180,
+                }}
+              >
+                <h3 className="text-2xl md:text-3xl font-bold leading-tight mb-5">
+                  {PRINCIPLES[pIdx].name}
+                </h3>
+                <div className="space-y-4 text-base leading-relaxed text-foreground/80">
+                  {PRINCIPLES[pIdx].body.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              </div>
 
-            <div>
-              <h3 className="text-xl font-bold mb-4">The Best, Without a PhD</h3>
-              <p>
-                You shouldn&apos;t need to spend hundreds of hours reading studies just to take care of your health. Nutrition can get complicated very quickly and the solution isn&apos;t to force everyone to learn everything. We built a product smart enough so that you don&apos;t have to become a dietician to get dietician optimal nutrition. We spent years thinking about the ingredients, the doses, the timing, the interactions, and the schedule. You just have to open today&apos;s packet.
-              </p>
+              {/* Prev / Next */}
+              <div className="mt-10 flex justify-end gap-2">
+                <button
+                  onClick={() => goTo(pIdx - 1)}
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-border text-foreground/50 transition-colors hover:border-[#e68163] hover:text-[#e68163]"
+                  aria-label="Previous principle"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={() => goTo(pIdx + 1)}
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-border text-foreground/50 transition-colors hover:border-[#e68163] hover:text-[#e68163]"
+                  aria-label="Next principle"
+                >
+                  →
+                </button>
+              </div>
             </div>
           </div>
         </div>
