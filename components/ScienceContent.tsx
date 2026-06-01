@@ -328,18 +328,18 @@ function MiniLegend() {
 
 function MiniGrid1() {
   const rows: { name: string; days: CellLevel[] }[] = [
-    { name: "Vitamin B2", days: ["full",    "full",    "full",    "full"]    },
-    { name: "Calcium",    days: ["full",    "reduced", "full",    "reduced"] },
-    { name: "Iron",       days: ["full",    "off",     "full",    "off"]     },
+    { name: "Vitamin B2", days: ["full", "full"] },
+    { name: "Calcium",    days: ["full", "full"] },
+    { name: "Iron",       days: ["full", "off"]  },
   ];
 
   return (
-    <div className="my-8 bg-white rounded-xl border border-border p-5 max-w-sm">
+    <div className="my-8 bg-white rounded-xl border border-border p-5 max-w-xs">
       <table className="border-collapse">
         <thead>
           <tr>
             <td className="pb-2 pr-5 min-w-[110px]" />
-            {["Day 1", "Day 2", "Day 3", "Day 4"].map((d) => (
+            {["Day 1", "Day 2"].map((d) => (
               <td key={d} className="text-center text-[10px] uppercase tracking-wider text-foreground/50 pb-2 px-2.5 font-medium">
                 {d}
               </td>
@@ -407,7 +407,7 @@ export function ScienceContent() {
 
       {/* ── ARTICLE ─────────────────────────────────────────────────── */}
       <article className="border-b border-border">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
+        <div className="mx-auto max-w-2xl px-4 pt-16 sm:pt-24 pb-6">
 
           <header className="mb-10">
             <h1 className="text-4xl font-bold leading-tight">Why Every Day Looks A Little Different</h1>
@@ -467,7 +467,92 @@ export function ScienceContent() {
           </div>
 
           <MiniGrid1 />
+        </div>
 
+        {/* Nutrient grid — full width break */}
+        <div className="border-t border-b border-border">
+          <div className="mx-auto max-w-5xl px-4 py-12">
+            <div className="mb-6 flex flex-wrap gap-4 text-[11px] text-foreground/65">
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[3] }} />
+                Boosted
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[2] }} />
+                Full
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[1] }} />
+                Reduced
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[0], border: "1.5px dashed #b8b8b8" }} />
+                Zeroed
+              </span>
+            </div>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="border-collapse w-full min-w-[760px]">
+                <thead>
+                  <tr>
+                    <th className="text-left p-1 text-[10px] uppercase tracking-wider text-foreground/55 font-normal sticky left-0 bg-[#fffaeb] z-10 min-w-[190px]">
+                      Nutrient
+                    </th>
+                    {Array.from({ length: 30 }, (_, i) => {
+                      const f = getF(i);
+                      return (
+                        <th key={i} className="text-center p-0 min-w-[18px]">
+                          <div className="text-[9px] font-bold" style={{ color: FC[f] }}>
+                            {i + 1}
+                          </div>
+                        </th>
+                      );
+                    })}
+                  </tr>
+                </thead>
+                <tbody>
+                  {CATS.map((cat) => {
+                    const items = N.filter((n) => n.cat === cat);
+                    if (!items.length) return null;
+                    return (
+                      <React.Fragment key={cat}>
+                        <tr>
+                          <td colSpan={31} className="pt-3 pb-1 sticky left-0 bg-[#fffaeb]">
+                            <span
+                              className="text-[10px] font-extrabold uppercase tracking-[0.1em]"
+                              style={{ color: CC[cat] }}
+                            >
+                              {cat}
+                            </span>
+                          </td>
+                        </tr>
+                        {items.map((n) => (
+                          <tr key={n.id}>
+                            <td className="py-1 px-1 text-[11px] text-foreground/85 sticky left-0 bg-[#fffaeb] z-[5] max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap">
+                              {n.name}
+                            </td>
+                            {n.sched.map((v, idx) => (
+                              <td key={idx} className="text-center px-0 py-0.5">
+                                <span
+                                  className="inline-block w-3.5 h-3.5 rounded-sm"
+                                  style={{
+                                    background: v > 0 ? HC[v] : HC[0],
+                                    border: v === 0 ? "1.5px dashed #b8b8b8" : "none",
+                                  }}
+                                />
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </React.Fragment>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-2xl px-4 py-12 pb-16 sm:pb-24">
           <div className="space-y-6 text-base leading-relaxed text-foreground">
             <p>
               But then you keep digging and you realize this is where things start to get really annoying. You discover that calcium and iron actually compete for absorption. In the gut, they both use the same DMT1 transporter. In simple terms, they&apos;re trying to use the same doorway to get into your bloodstream so if calcium shows up and iron shows up at exactly the same time, less of both nutrients get absorbed.
@@ -549,96 +634,6 @@ export function ScienceContent() {
                 You shouldn&apos;t need to spend hundreds of hours reading studies just to take care of your health. Nutrition can get complicated very quickly and the solution isn&apos;t to force everyone to learn everything. We built a product smart enough so that you don&apos;t have to become a dietician to get dietician optimal nutrition. We spent years thinking about the ingredients, the doses, the timing, the interactions, and the schedule. You just have to open today&apos;s packet.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── NUTRIENT SCHEDULE GRID ─────────────────────────────────── */}
-      <section>
-        <div className="mx-auto max-w-5xl px-4 py-16 md:py-20">
-
-          <header className="mb-8">
-            <h2 className="text-4xl font-bold leading-tight">Nutrient Schedule Grid</h2>
-          </header>
-
-          {/* Heatmap legend */}
-          <div className="mb-6 flex flex-wrap gap-4 text-[11px] text-foreground/65">
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[3] }} />
-              Boosted
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[2] }} />
-              Full
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[1] }} />
-              Reduced
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[0], border: "1.5px dashed #b8b8b8" }} />
-              Zeroed
-            </span>
-          </div>
-
-          <div className="overflow-x-auto -mx-4 px-4">
-            <table className="border-collapse w-full min-w-[760px]">
-              <thead>
-                <tr>
-                  <th className="text-left p-1 text-[10px] uppercase tracking-wider text-foreground/55 font-normal sticky left-0 bg-[#fffaeb] z-10 min-w-[190px]">
-                    Nutrient
-                  </th>
-                  {Array.from({ length: 30 }, (_, i) => {
-                    const f = getF(i);
-                    return (
-                      <th key={i} className="text-center p-0 min-w-[18px]">
-                        <div className="text-[9px] font-bold" style={{ color: FC[f] }}>
-                          {i + 1}
-                        </div>
-                      </th>
-                    );
-                  })}
-                </tr>
-              </thead>
-              <tbody>
-                {CATS.map((cat) => {
-                  const items = N.filter((n) => n.cat === cat);
-                  if (!items.length) return null;
-                  return (
-                    <React.Fragment key={cat}>
-                      <tr>
-                        <td colSpan={31} className="pt-3 pb-1 sticky left-0 bg-[#fffaeb]">
-                          <span
-                            className="text-[10px] font-extrabold uppercase tracking-[0.1em]"
-                            style={{ color: CC[cat] }}
-                          >
-                            {cat}
-                          </span>
-                        </td>
-                      </tr>
-                      {items.map((n) => (
-                        <tr key={n.id}>
-                          <td className="py-1 px-1 text-[11px] text-foreground/85 sticky left-0 bg-[#fffaeb] z-[5] max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap">
-                            {n.name}
-                          </td>
-                          {n.sched.map((v, i) => (
-                            <td key={i} className="text-center px-0 py-0.5">
-                              <span
-                                className="inline-block w-3.5 h-3.5 rounded-sm"
-                                style={{
-                                  background: v > 0 ? HC[v] : HC[0],
-                                  border: v === 0 ? "1.5px dashed #b8b8b8" : "none",
-                                }}
-                              />
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </React.Fragment>
-                  );
-                })}
-              </tbody>
-            </table>
           </div>
         </div>
       </section>
