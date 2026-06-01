@@ -59,6 +59,8 @@ export default function AboutPage() {
 
           <p>And yet most supplements are still built around the same assumption: take the same formula every day indefinitely.</p>
 
+          <h2 className="!mt-12 !mb-1">It starts simply enough.</h2>
+
           <p>For a while, I never questioned that. Most people don&apos;t. You buy a supplement, follow the directions, and assume the formulation already accounts for how the body actually handles nutrients.</p>
 
           <p>Then you get deeper into health.</p>
@@ -78,6 +80,8 @@ export default function AboutPage() {
           <p>They&apos;re reading studies, listening to podcasts, researching forms and dosages, trying to build routines carefully. But the deeper they go, the less confident they seem to become.</p>
 
           <p>That gap between effort and clarity was what pulled my brother and me into this problem in the first place.</p>
+
+          <h2 className="!mt-12 !mb-1">The interactions most products ignore.</h2>
 
           <p>Once we started digging into the research, we realized how many nutrient interactions the average supplement routine completely ignores.</p>
 
@@ -100,6 +104,8 @@ export default function AboutPage() {
           <p>The deeper we went, the more one idea kept emerging:</p>
 
           <p className="font-medium">The body needs different things on different days, so your supplements probably shouldn&apos;t be exactly the same every day either.</p>
+
+          <h2 className="!mt-12 !mb-1">The idea that became M3.</h2>
 
           <p>That thinking eventually became M3.</p>
 
@@ -128,6 +134,8 @@ export default function AboutPage() {
               className="w-full object-cover"
             />
           </div>
+
+          <h2 className="!mt-12 !mb-1">We published everything.</h2>
 
           <p>We think this information matters whether or not you ever buy anything from us, so we decided to publish a lot of our thinking for free.</p>
 
