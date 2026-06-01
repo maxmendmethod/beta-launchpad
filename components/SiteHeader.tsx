@@ -10,7 +10,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-b border-border" style={{ backgroundColor: "#fffaeb" }}>
+    <header className="border-b border-border" style={{ backgroundColor: "#ffffff" }}>
       {/* Desktop */}
       <div className="hidden md:flex w-full items-center justify-between pl-[5%] pr-[5%] py-2">
 
@@ -20,13 +20,13 @@ export function SiteHeader() {
             <Image src={logo} alt="M3" className="h-14 w-auto" priority />
           </Link>
           <nav className="flex items-center gap-8 text-sm font-semibold text-foreground">
-            <Link href="/science" className="transition-colors hover:text-brand">
+            <Link href="/science" className="transition-colors hover:text-brand hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               Science
             </Link>
-            <Link href="/about" className="transition-colors hover:text-brand">
+            <Link href="/about" className="transition-colors hover:text-brand hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               About
             </Link>
-            <Link href="/signup" className="transition-colors hover:text-brand">
+            <Link href="/signup" className="transition-colors hover:text-brand hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               Become a Founding Member
             </Link>
           </nav>
@@ -74,7 +74,7 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <div className="md:hidden border-t border-border" style={{ backgroundColor: "#fffaeb" }}>
+        <div className="md:hidden border-t border-border" style={{ backgroundColor: "#ffffff" }}>
           <nav className="flex flex-col gap-3 px-4 py-4 text-sm font-semibold text-foreground">
             <Link href="/science" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
               Science
