@@ -12,11 +12,11 @@ export function SiteHeader() {
   return (
     <header className="border-b border-border" style={{ backgroundColor: "#fffaeb" }}>
       {/* Desktop */}
-      <div className="hidden md:flex w-full items-center justify-between px-6 py-4">
+      <div className="hidden md:flex w-full items-center justify-between pl-6 pr-[15%] py-4">
         <Link href="/" className="flex items-center">
           <Image src={logo} alt="M3" className="h-24 w-auto" priority />
         </Link>
-        <nav className="flex items-center gap-8 text-xl font-semibold text-foreground">
+        <nav className="flex items-center gap-8 text-sm font-semibold text-foreground">
           <Link
             href="/science"
             className="transition-colors hover:text-brand"
