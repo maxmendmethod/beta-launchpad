@@ -12,6 +12,7 @@ import founderMyles from "@/src/assets/founder-max.png";
 import founderLeo from "@/src/assets/founder-jon.png";
 import foundersDuo from "@/src/assets/founders-duo.png";
 import drinkExample from "@/src/assets/drink_example.png";
+import heroBg from "@/src/assets/hero-bg.avif";
 
 export const metadata: Metadata = {
   title: "Max Mend Method | Precision Timed Supplement",
@@ -104,24 +105,22 @@ export default function HomePage() {
       <main>
         <h1 className="sr-only">Max Mend Method — Precision Timed Supplement Protocol</h1>
 
-        {/* HERO — fills viewport, founder pngs on sides (desktop), peek of free resource at bottom */}
-        <section className="relative overflow-hidden bg-white md:border-b md:border-border">
-          {/* Side founder images — large desktop only, anchored to section edges */}
+        {/* HERO — background image with left-to-right white fade */}
+        <section className="relative overflow-hidden md:border-b md:border-border">
+          {/* Background image */}
           <Image
-            src={founderMyles}
+            src={heroBg}
             alt=""
             aria-hidden
-            className="hidden 2xl:block pointer-events-none select-none absolute left-0 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
+            fill
+            priority
+            className="object-cover object-center pointer-events-none select-none"
           />
-          <Image
-            src={founderLeo}
-            alt=""
-            aria-hidden
-            className="hidden 2xl:block pointer-events-none select-none absolute right-0 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
-          />
+          {/* White fade: solid on left, transparent on right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-transparent" />
 
-          <div className="relative mx-auto flex min-h-[22vh] md:min-h-[56vh] max-w-7xl items-center justify-center px-4 pt-1 pb-0 md:pt-10 md:pb-3.5">
-            <div className="relative z-10 mx-auto max-w-3xl text-left md:text-center">
+          <div className="relative z-10 mx-auto flex min-h-[22vh] md:min-h-[56vh] max-w-7xl items-center px-4 pt-1 pb-0 md:pt-10 md:pb-3.5">
+            <div className="max-w-xl text-left">
               <h2 className="text-[2.3rem] md:text-[3.6rem] lg:text-[3.7rem] tracking-tight leading-[1.05]" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
                 Do You Want To Feel Like Yourself Again?
               </h2>
@@ -134,7 +133,6 @@ export default function HomePage() {
                 </a>
               </div>
               <p className="hidden md:block mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
-
             </div>
           </div>
         </section>
