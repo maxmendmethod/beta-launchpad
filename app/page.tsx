@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBanner } from "@/components/StickyBanner";
 import { CTAButton } from "@/components/CTAButton";
-import { ProductClient } from "@/app/product/ProductClient";
+import { ProductClient } from "@/components/ProductClient";
 import logo from "@/src/assets/m3-logo.png";
 import founderMyles from "@/src/assets/founder-max.png";
 import founderLeo from "@/src/assets/founder-jon.png";
@@ -141,7 +141,7 @@ export default function HomePage() {
 
         {/* PRODUCT SECTIONS */}
         <div id="product">
-          <ProductClient />
+          <ProductClient defaultPlanType="onetime" />
         </div>
 
         {/* FREE RESOURCE — thin section */}
