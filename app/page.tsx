@@ -119,12 +119,12 @@ export default function HomePage() {
           {/* White fade: solid on left, transparent on right */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-transparent" />
 
-          <div className="relative z-10 flex min-h-[22vh] md:min-h-[56vh] max-w-7xl items-end pl-10 md:pl-32 pr-4 pb-10 md:pb-16">
+          <div className="relative z-10 flex min-h-[50vh] md:min-h-[56vh] max-w-7xl items-end pl-10 md:pl-32 pr-4 pb-10 md:pb-16">
             <div className="max-w-2xl text-left">
-              <h2 className="text-[2.5rem] md:text-[4rem] lg:text-[4.3rem] tracking-tight leading-[1.05]" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
+              <h2 className="text-[1.6rem] md:text-[4rem] lg:text-[4.3rem] tracking-tight leading-[1.05]" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
                 Do You Want To Feel Like Yourself Again?
               </h2>
-              <p className="mt-5 text-2xl md:text-[1.7rem]">
+              <p className="mt-3 text-base md:text-[1.7rem]">
                 Take the precision timed supplement and come alive in 30 days.
               </p>
               <div className="hidden md:block mt-7">
@@ -137,13 +137,25 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Quote */}
+        <section className="border-t border-border bg-white">
+          <div className="mx-auto max-w-5xl px-6 py-16">
+            <p className="mb-3 text-sm uppercase tracking-wide" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 400, color: '#e68163' }}>
+              Generic Supplements Don&apos;t Consider Changing Daily Needs
+            </p>
+            <p className="text-2xl md:text-3xl lg:text-4xl leading-snug" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>
+              Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol. Each daily packet is tailored to that stage of the cycle rather than a one size fits all blend, designed for effortless top tier results.
+            </p>
+          </div>
+        </section>
+
         {/* PRODUCT SECTIONS */}
         <div id="product">
           <ProductClient defaultPlanType="onetime" />
         </div>
 
 {/* FAQ — borderless, wide */}
-        <section className="mx-auto max-w-4xl px-4 py-10">
+        <section className="mx-auto max-w-6xl px-4 py-10">
           <h2 className="text-2xl md:text-3xl font-black text-center uppercase">FAQs</h2>
           <div className="mt-6 divide-y divide-border">
             {faqs.map((f) => (
@@ -164,13 +176,13 @@ export default function HomePage() {
             src={founderMyles}
             alt=""
             aria-hidden
-            className="hidden 2xl:block pointer-events-none select-none absolute left-0 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
+            className="hidden 2xl:block pointer-events-none select-none absolute left-16 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
           />
           <Image
             src={founderLeo}
             alt=""
             aria-hidden
-            className="hidden 2xl:block pointer-events-none select-none absolute right-0 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
+            className="hidden 2xl:block pointer-events-none select-none absolute right-16 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
           />
           <div className="mx-auto max-w-5xl px-4 py-12 relative z-10">
             <h2 className="text-2xl md:text-3xl font-black text-center uppercase mb-8">About The Founders</h2>
