@@ -127,12 +127,12 @@ export default function HomePage() {
               <p className="mt-3 text-base md:text-[1.7rem]">
                 Take the precision timed supplement and come alive in 30 days.
               </p>
-              <div className="hidden md:block mt-7">
-                <a href="#product" className="inline-block rounded-md bg-brand px-20 py-3 text-xl font-extrabold uppercase tracking-wide text-white shadow-sm hover:opacity-90" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>
+              <div className="mt-5 md:mt-7">
+                <a href="#product" className="inline-block rounded-md bg-brand px-10 py-3 text-base md:px-20 md:text-xl font-extrabold uppercase tracking-wide text-white shadow-sm hover:opacity-90" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>
                   I'M READY TO OPTIMIZE
                 </a>
               </div>
-              <p className="hidden md:block mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
+              <p className="mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
             </div>
           </div>
         </section>
