@@ -295,7 +295,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Stars */}
             <div className="flex items-center gap-1.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-brand text-brand" />
+                <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
               ))}
               <span className="ml-1 text-sm text-foreground" style={{ fontFamily: '"Arimo", sans-serif' }}>Founding member reviews loading soon</span>
             </div>
@@ -565,7 +565,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                 </div>
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3 w-3 fill-brand text-brand" />
+                    <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
                 <p className="text-sm leading-relaxed" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>{e.quote}</p>
