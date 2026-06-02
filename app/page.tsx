@@ -181,7 +181,7 @@ export default function HomePage() {
         </section>
 
         {/* Founders — hero-style side images on 2xl+, duo image + text grid below */}
-        <section className="border-t border-border bg-white relative overflow-hidden">
+        <section className="bg-white relative overflow-hidden">
           <Image
             src={founderMyles}
             alt=""
