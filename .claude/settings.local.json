@@ -58,7 +58,8 @@
       "Bash(mv \"D:\\\\NAS\\\\Desktop\\\\beta-launchpad\\\\fonts\\\\gliker-regular-expanded.eot\" \"D:\\\\NAS\\\\Desktop\\\\beta-launchpad\\\\public\\\\fonts\\\\\" && rmdir \"D:\\\\NAS\\\\Desktop\\\\beta-launchpad\\\\fonts\")",
       "PowerShell(Copy-Item *)",
       "PowerShell(magick identify *)",
-      "PowerShell(node -e \"const sharp = require\\('sharp'\\); sharp\\('D:/NAS/Desktop/beta-launchpad/homepagebackground.avif'\\).resize\\(1600, null, { withoutEnlargement: true }\\).avif\\({ quality: 60 }\\).toFile\\('D:/NAS/Desktop/beta-launchpad/src/assets/hero-bg.avif'\\).then\\(i => console.log\\(i\\)\\)\" 2>&1)"
+      "PowerShell(node -e \"const sharp = require\\('sharp'\\); sharp\\('D:/NAS/Desktop/beta-launchpad/homepagebackground.avif'\\).resize\\(1600, null, { withoutEnlargement: true }\\).avif\\({ quality: 60 }\\).toFile\\('D:/NAS/Desktop/beta-launchpad/src/assets/hero-bg.avif'\\).then\\(i => console.log\\(i\\)\\)\" 2>&1)",
+      "PowerShell(node -e \"const sharp = require\\('sharp'\\); sharp\\('D:/NAS/Desktop/beta-launchpad/v2osk-1Z2niiBPg5A-unsplash.jpg'\\).resize\\(1600, null, { withoutEnlargement: true }\\).avif\\({ quality: 60 }\\).toFile\\('D:/NAS/Desktop/beta-launchpad/src/assets/hero-bg.avif'\\).then\\(i => console.log\\(i\\)\\)\")"
     ]
   }
 }

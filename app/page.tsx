@@ -119,9 +119,9 @@ export default function HomePage() {
           {/* White fade: solid on left, transparent on right */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-transparent" />
 
-          <div className="relative z-10 mx-auto flex min-h-[22vh] md:min-h-[56vh] max-w-7xl items-center px-4 pt-1 pb-0 md:pt-10 md:pb-3.5">
-            <div className="max-w-xl text-left">
-              <h2 className="text-[2.3rem] md:text-[3.6rem] lg:text-[3.7rem] tracking-tight leading-[1.05]" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
+          <div className="relative z-10 flex min-h-[22vh] md:min-h-[56vh] max-w-7xl items-end pl-10 md:pl-32 pr-4 pb-10 md:pb-16">
+            <div className="max-w-2xl text-left">
+              <h2 className="text-[2.5rem] md:text-[4rem] lg:text-[4.3rem] tracking-tight leading-[1.05]" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
                 Do You Want To Feel Like Yourself Again?
               </h2>
               <p className="mt-5 text-2xl md:text-[1.7rem]">
