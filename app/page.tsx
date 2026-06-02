@@ -11,7 +11,6 @@ import founderMyles from "@/src/assets/founder-max.png";
 import founderLeo from "@/src/assets/founder-jon.png";
 import foundersDuo from "@/src/assets/founders-duo.png";
 import drinkExample from "@/src/assets/drink_example.png";
-import guidePreview from "@/src/assets/guide-preview.png.png";
 
 export const metadata: Metadata = {
   title: "Max Mend Method | Precision Timed Supplement",
@@ -144,41 +143,7 @@ export default function HomePage() {
           <ProductClient defaultPlanType="onetime" />
         </div>
 
-        {/* FREE RESOURCE — thin section */}
-        <section className="border-t border-border bg-secondary/40">
-          <div className="mx-auto max-w-3xl px-4 py-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight">
-              <span className="text-brand">FREE</span> RESOURCE
-            </h2>
-            <p className="mt-2 text-sm md:text-base text-foreground/80">
-              The same nutrient timing science M3 is built on in a free guide you can follow on your own:
-            </p>
-
-            <div className="mt-5 mx-auto max-w-sm">
-              <h3 className="text-lg md:text-xl font-black uppercase">Nutrient Timing Guide</h3>
-              <div className="relative inline-block mt-3">
-                <Image
-                  src={guidePreview}
-                  alt="Nutrient Timing Guide preview"
-                  className="w-full max-w-[220px] rounded border border-border h-auto"
-                />
-                <span className="pointer-events-none absolute -top-3 -right-3 z-10 rounded-md bg-[#FF0000] text-white text-[10px] px-2 py-1 uppercase">
-                  It's Free
-                </span>
-              </div>
-              <a
-                href="https://docs.google.com/document/d/14I4Id_ZUuAeovT98vToEZzOjyMMJKlfYcUbG8kZhuQI/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block rounded-md bg-brand px-6 py-3 text-sm text-white hover:opacity-90"
-              >
-                Get Your Free Guide →
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ — borderless, wide */}
+{/* FAQ — borderless, wide */}
         <section className="mx-auto max-w-4xl px-4 py-10">
           <h2 className="text-2xl md:text-3xl font-black text-center uppercase">FAQs</h2>
           <div className="mt-6 divide-y divide-border">
