@@ -511,6 +511,16 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
               </div>
             </div>
 
+            {/* Quote — mobile only */}
+            <div className="md:hidden border-t border-border py-6">
+              <p className="mb-2 text-xs uppercase tracking-wide" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 400, color: '#e68163' }}>
+                Generic Supplements Don&apos;t Consider Changing Daily Needs
+              </p>
+              <p className="text-lg leading-snug" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>
+                Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol. Each daily packet is tailored to that stage of the cycle rather than a one size fits all blend, designed for effortless top tier results.
+              </p>
+            </div>
+
             {/* FAQ */}
             <div className="-mt-1 border-t border-border pt-0">
               <div className="flex flex-col">
