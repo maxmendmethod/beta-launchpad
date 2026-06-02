@@ -549,15 +549,18 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
       {/* Quote */}
       <section className="border-t border-border bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-16 text-center">
+        <div className="mx-auto max-w-5xl px-6 py-16">
+          <p className="mb-3 text-sm uppercase tracking-wide" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 400, color: '#e68163' }}>
+            Generic Supplements Don&apos;t Consider Changing Daily Needs
+          </p>
           <p className="text-2xl md:text-3xl lg:text-4xl leading-snug" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>
-            &ldquo;Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol. Each daily packet is tailored to that stage of the cycle rather than a one size fits all blend, designed for effortless top tier results.&rdquo;
+            Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol. Each daily packet is tailored to that stage of the cycle rather than a one size fits all blend, designed for effortless top tier results.
           </p>
         </div>
       </section>
 
       {/* Experts */}
-      <section className="border-t border-border">
+      <section className="">
         <div className="mx-auto max-w-7xl px-4 md:px-12 py-12">
           <h2 className="mb-6 text-center text-4xl" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>Trusted by Doctors and Coaches</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
