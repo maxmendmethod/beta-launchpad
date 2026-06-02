@@ -21,7 +21,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
         <a href="https://g.page/r/Cb2vve3DXC47EBM/review" target="_blank" rel="noopener noreferrer" className="text-brand font-semibold underline">
           leave us a Google review under Max Mend Method
         </a>
-        , follow us on Instagram (@maxvalrose, @maxmendmethod), and tell a friend.
+        , follow us on Instagram (@maxmendmethod), and tell a friend.
       </>
     ),
   },

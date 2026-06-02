@@ -547,6 +547,15 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
         </div>
       </section>
 
+      {/* Quote */}
+      <section className="border-t border-border bg-white">
+        <div className="mx-auto max-w-5xl px-6 py-16 text-center">
+          <p className="text-2xl md:text-3xl lg:text-4xl leading-snug" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>
+            &ldquo;Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol. Each daily packet is tailored to that stage of the cycle rather than a one size fits all blend, designed for effortless top tier results.&rdquo;
+          </p>
+        </div>
+      </section>
+
       {/* Experts */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-7xl px-4 md:px-12 py-12">
@@ -598,7 +607,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
       {/* What to Expect */}
       <section className="bg-white">
-        <div className="mx-auto max-w-5xl px-4 md:px-8 py-12">
+        <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
           {/* Mobile-only cropped image */}
           <div className="md:hidden w-full rounded-md overflow-hidden mb-6 aspect-square">
             <Image src={whatToExpectImg} alt="What to expect with M3 over time" className="w-full h-full object-cover object-top" />
