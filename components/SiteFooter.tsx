@@ -4,7 +4,7 @@ import logo from "@/src/assets/m3-logo.png";
 
 export function SiteFooter() {
   return (
-    <footer style={{ backgroundColor: "#e68163" }}>
+    <footer style={{ backgroundColor: "#d46a4e" }}>
       <div className="mx-auto max-w-5xl px-6 py-12">
 
         {/* Main row */}
