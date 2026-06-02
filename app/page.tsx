@@ -160,26 +160,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Guarantee */}
-        <section>
-          <div className="mx-auto max-w-3xl px-4 py-14 text-center">
-            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-brand/10">
-              <Shield className="h-8 w-8 text-brand" />
-            </div>
-            <h2 className="mb-3 text-2xl uppercase" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>30 Day Money Back Guarantee</h2>
-            <p className="mx-auto max-w-xl text-base" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>
-              Try M3 for a full 30 days. If you do not feel the difference, we will refund every dollar. No questions asked. We are confident in the protocol.
-            </p>
-            <Link
-              href="/refunds"
-              className="mt-4 inline-block text-sm font-semibold text-brand hover:underline"
-              style={{ fontFamily: '"Arimo", sans-serif' }}
-            >
-              Read our refund policy
-            </Link>
-          </div>
-        </section>
-
         {/* Founders — hero-style side images on 2xl+, duo image + text grid below */}
         <section className="bg-white relative overflow-hidden">
           <Image
@@ -206,6 +186,26 @@ export default function HomePage() {
                 <p>They have been through the mistakes M3 is designed to prevent. From managing over 20 supplements to spending hundreds of dollars per month on trending ingredients: they get it. The research they did to understand those failures is what M3 is built on.</p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Guarantee */}
+        <section>
+          <div className="mx-auto max-w-3xl px-4 py-14 text-center">
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-brand/10">
+              <Shield className="h-8 w-8 text-brand" />
+            </div>
+            <h2 className="mb-3 text-2xl uppercase" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>30 Day Money Back Guarantee</h2>
+            <p className="mx-auto max-w-xl text-base" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>
+              Try M3 for a full 30 days. If you do not feel the difference, we will refund every dollar. No questions asked. We are confident in the protocol.
+            </p>
+            <Link
+              href="/refunds"
+              className="mt-4 inline-block text-sm font-semibold text-brand hover:underline"
+              style={{ fontFamily: '"Arimo", sans-serif' }}
+            >
+              Read our refund policy
+            </Link>
           </div>
         </section>
 
