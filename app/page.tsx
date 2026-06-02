@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBanner } from "@/components/StickyBanner";
 import { CTAButton } from "@/components/CTAButton";
+import { ProductClient } from "@/app/product/ProductClient";
 import logo from "@/src/assets/m3-logo.png";
 import founderMyles from "@/src/assets/founder-max.png";
 import founderLeo from "@/src/assets/founder-jon.png";
@@ -104,7 +105,7 @@ export default function HomePage() {
         <h1 className="sr-only">Max Mend Method — Precision Timed Supplement Protocol</h1>
 
         {/* HERO — fills viewport, founder pngs on sides (desktop), peek of free resource at bottom */}
-        <section className="relative overflow-hidden bg-white">
+        <section className="relative overflow-hidden bg-white md:border-b md:border-border">
           {/* Side founder images — large desktop only, anchored to section edges */}
           <Image
             src={founderMyles}
@@ -119,26 +120,29 @@ export default function HomePage() {
             className="hidden 2xl:block pointer-events-none select-none absolute right-0 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
           />
 
-          <div className="relative mx-auto flex min-h-[56vh] max-w-7xl items-center justify-center px-4 pt-6 pb-2 md:pt-10 md:pb-3.5">
-            <div className="relative z-10 mx-auto max-w-3xl text-center">
-              <h2 className="text-[2.3rem] md:text-[3.6rem] lg:text-[3.7rem] font-extrabold uppercase tracking-tight leading-[1.05]">
+          <div className="relative mx-auto flex min-h-[22vh] md:min-h-[56vh] max-w-7xl items-center justify-center px-4 pt-1 pb-0 md:pt-10 md:pb-3.5">
+            <div className="relative z-10 mx-auto max-w-3xl text-left md:text-center">
+              <h2 className="text-[2.3rem] md:text-[3.6rem] lg:text-[3.7rem] tracking-tight leading-[1.05]" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
                 Do You Want To Feel Like Yourself Again?
               </h2>
-              <p className="mt-5 text-2xl md:text-[1.7rem] font-normal text-foreground/80">
+              <p className="mt-5 text-2xl md:text-[1.7rem]">
                 Take the precision timed supplement and come alive in 30 days.
               </p>
-              <div className="mt-7"><CTAButton className="px-12 py-6 text-2xl">I'M READY TO OPTIMIZE</CTAButton></div>
-              <p className="mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
+              <div className="hidden md:block mt-7">
+                <a href="#product" className="inline-block rounded-md bg-brand px-20 py-3 text-xl font-extrabold uppercase tracking-wide text-white shadow-sm hover:opacity-90" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>
+                  I'M READY TO OPTIMIZE
+                </a>
+              </div>
+              <p className="hidden md:block mt-3 text-sm text-muted-foreground">Become a founding member. Try M3 on us.</p>
 
-              {/* Drink example image — shown below text until viewport is wide enough for side PNGs */}
-              <Image
-                src={drinkExample}
-                alt="M3 drink example"
-                className="2xl:hidden mt-8 mx-auto w-full max-w-sm rounded-lg h-auto"
-              />
             </div>
           </div>
         </section>
+
+        {/* PRODUCT SECTIONS */}
+        <div id="product">
+          <ProductClient />
+        </div>
 
         {/* FREE RESOURCE — thin section */}
         <section className="border-t border-border bg-secondary/40">

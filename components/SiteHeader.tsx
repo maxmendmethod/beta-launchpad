@@ -10,7 +10,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-b border-border" style={{ backgroundColor: "#ffffff" }}>
+    <header style={{ backgroundColor: "#ffffff" }}>
       {/* Desktop */}
       <div className="hidden md:flex w-full items-center justify-between pl-[5%] pr-[5%] py-2">
 
@@ -19,12 +19,15 @@ export function SiteHeader() {
           <Link href="/" className="flex items-center">
             <Image src={logo} alt="M3" className="h-14 w-auto" priority />
           </Link>
-          <nav className="flex items-center gap-8 text-sm font-semibold text-foreground">
+          <nav className="flex items-center gap-8 text-sm text-foreground" style={{ fontFamily: '"Arimo", sans-serif' }}>
             <Link href="/science" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               Science
             </Link>
             <Link href="/about" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               About
+            </Link>
+            <Link href="/quality" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
+              Quality
             </Link>
             <Link href="/signup" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               Become a Founding Member
@@ -43,7 +46,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/signup"
-            className="flex items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm font-semibold text-foreground/70 transition-colors hover:border-brand hover:text-brand"
+            className="flex items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm text-foreground/70 transition-colors hover:border-brand hover:text-brand" style={{ fontFamily: '"Arimo", sans-serif' }}
           >
             <User className="h-3.5 w-3.5" />
             Log in
@@ -81,6 +84,9 @@ export function SiteHeader() {
             </Link>
             <Link href="/about" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
               About
+            </Link>
+            <Link href="/quality" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
+              Quality
             </Link>
             <Link href="/signup" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
               Become a Founding Member

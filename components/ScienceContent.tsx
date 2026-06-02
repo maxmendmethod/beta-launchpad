@@ -454,7 +454,7 @@ export function ScienceContent() {
         <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
 
           <header className="mb-10">
-            <h2 className="text-4xl font-bold leading-tight">Core Principles</h2>
+            <h2 className="text-4xl leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>Core Principles</h2>
           </header>
 
           {/* Grid stacking — all cards in the same cell so height = tallest card, no layout shift */}
@@ -547,7 +547,7 @@ export function ScienceContent() {
         <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
 
           <header className="mb-10">
-            <h1 className="text-4xl font-bold leading-tight">Why Every Day Looks A Little Different</h1>
+            <h1 className="text-4xl leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>Why Every Day Looks A Little Different</h1>
           </header>
 
           <div className="space-y-6 text-base leading-relaxed text-foreground">
@@ -645,7 +645,7 @@ export function ScienceContent() {
         <div className="mx-auto max-w-5xl px-4 py-16 md:py-20">
 
           <header className="mb-8">
-            <h2 className="text-4xl font-bold leading-tight">Nutrient Schedule Grid</h2>
+            <h2 className="text-4xl leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>Nutrient Schedule Grid</h2>
           </header>
 
           <div className="mb-6 flex flex-wrap gap-4 text-[11px] text-foreground/65">

@@ -17,17 +17,17 @@ export function SiteFooter() {
 
           {/* Links */}
           <div className="flex flex-col items-center gap-4 md:items-end">
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-medium text-white md:justify-end">
-              <Link href="/about" className="transition-colors hover:text-black">About M3</Link>
-              <Link href="/science" className="transition-colors hover:text-black">Core Principles</Link>
-              <Link href="/signup" className="transition-colors hover:text-black">Become a Founding Member</Link>
-              <a href="https://www.instagram.com/maxmendmethod/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black">Instagram</a>
-              <a href="https://www.google.com/search?q=Max+Mend+Method" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black">Google Business</a>
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white md:justify-end">
+              <Link href="/about" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>About M3</Link>
+              <Link href="/science" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Core Principles</Link>
+              <Link href="/signup" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Become a Founding Member</Link>
+              <a href="https://www.instagram.com/maxmendmethod/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Instagram</a>
+              <a href="https://www.google.com/search?q=Max+Mend+Method" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Google Business</a>
             </div>
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs font-medium text-white/80 md:justify-end">
-              <Link href="/terms" className="transition-colors hover:text-black">Terms of Service</Link>
-              <Link href="/privacy" className="transition-colors hover:text-black">Privacy Policy</Link>
-              <Link href="/refunds" className="transition-colors hover:text-black">Refund Policy</Link>
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs text-white/80 md:justify-end">
+              <Link href="/terms" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Terms of Service</Link>
+              <Link href="/privacy" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Privacy Policy</Link>
+              <Link href="/refunds" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Refund Policy</Link>
             </div>
           </div>
 
@@ -35,8 +35,8 @@ export function SiteFooter() {
 
         {/* Bottom */}
         <div className="mt-10 border-t border-white/30 pt-6 flex flex-col items-center gap-2 text-xs text-white/70">
-          <p>© {new Date().getFullYear()} Max Mend Method LLC. All rights reserved.</p>
-          <p className="max-w-2xl text-center">
+          <p style={{ fontFamily: '"Arimo", sans-serif' }}>© {new Date().getFullYear()} Max Mend Method LLC. All rights reserved.</p>
+          <p className="max-w-2xl text-center" style={{ fontFamily: '"Arimo", sans-serif' }}>
             These statements have not been evaluated by the FDA. M3 is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before starting any supplement protocol.
           </p>
         </div>

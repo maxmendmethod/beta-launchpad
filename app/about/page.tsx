@@ -27,7 +27,7 @@ export default function AboutPage() {
       <SiteHeader />
       <main className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
         <header className="mb-10">
-          <h1 className="text-4xl font-bold leading-tight">Why We Made M3</h1>
+          <h1 className="text-4xl leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>Why We Made M3</h1>
           <div className="mt-4 flex items-center gap-3">
             <Image
               src={founderJon}
@@ -52,7 +52,7 @@ export default function AboutPage() {
           />
         </div>
 
-        <div className="prose prose-neutral max-w-none space-y-6 text-base leading-relaxed text-foreground">
+        <div className="max-w-none space-y-6 text-base leading-relaxed text-foreground">
           <p>Most people taking supplements have a nagging sense that their routine isn&apos;t actually working the way they think it is.</p>
 
           <p>Americans spend enormous amounts of money every year trying to improve their health, while nutrient deficiencies remain incredibly common. Vitamin D, magnesium, and iron deficiencies still show up everywhere despite the category becoming bigger every year.</p>
