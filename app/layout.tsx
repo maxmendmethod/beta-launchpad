@@ -1,20 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import "@fontsource/arimo/400.css";
 import "@fontsource/arimo/700.css";
-import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/500.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
-import "@fontsource/poppins/800.css";
-import "@fontsource/poppins/900.css";
 import "./globals.css";
 
 const SITE_URL = "https://www.maxmendmethod.com";
 const SITE_NAME = "Max Mend Method";
 const DEFAULT_DESCRIPTION =
-  "Max Mend Method is a rotating supplement protocol designed to optimize nutrient absorption, recovery, hydration, and performance with science-backed daily packets.";
+  "Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -25,7 +19,13 @@ export const metadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
   robots: { index: true, follow: true },
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: SITE_URL,
+      "x-default": SITE_URL,
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -49,6 +49,12 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
     images: ["/m3tablogo.png"],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 const organizationLd = {

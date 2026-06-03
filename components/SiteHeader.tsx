@@ -86,14 +86,14 @@ export function SiteHeader() {
           <Link
             href="/signup"
             aria-label="Cart"
-            className="flex items-center justify-center w-8 h-8 rounded-full border border-border text-foreground/60"
+            className="flex items-center justify-center w-12 h-12 rounded-full border border-border text-foreground/60"
           >
             <ShoppingCart className="h-4 w-4" />
           </Link>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
-            className="p-2 rounded-md hover:bg-secondary text-foreground"
+            className="p-3 rounded-md hover:bg-secondary text-foreground"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

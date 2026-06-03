@@ -286,9 +286,9 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
             {/* Title */}
             <div>
-              <h1 className="text-4xl md:text-3xl tracking-tight leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400, color: '#e68163' }}>
+              <h2 className="text-4xl md:text-3xl tracking-tight leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400, color: '#e68163' }}>
                 {MOCK_PRODUCT.name}
-              </h1>
+              </h2>
               <p className="mt-1 text-lg md:text-base text-foreground" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>{MOCK_PRODUCT.tagline}</p>
             </div>
 

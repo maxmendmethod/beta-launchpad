@@ -11,13 +11,12 @@ import logo from "@/src/assets/m3-logo.png";
 import founderMyles from "@/src/assets/founder-max.png";
 import founderLeo from "@/src/assets/founder-jon.png";
 import foundersDuo from "@/src/assets/founders-duo.png";
-import drinkExample from "@/src/assets/drink_example.png";
 import heroBg from "@/src/assets/hero-bg.avif";
 
 export const metadata: Metadata = {
   title: "Max Mend Method | Precision Timed Supplement",
   description:
-    "Max Mend Method is a rotating supplement protocol designed to optimize nutrient absorption, recovery, hydration, and performance with science-backed daily packets.",
+    "Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol.",
   alternates: { canonical: "https://www.maxmendmethod.com/" },
 };
 
