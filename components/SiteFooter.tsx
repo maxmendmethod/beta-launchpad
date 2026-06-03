@@ -23,7 +23,7 @@ export function SiteFooter() {
               <Link href="/signup" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Become a Founding Member</Link>
               <a href="https://www.instagram.com/maxmendmethod/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Instagram</a>
               <a href="https://www.linkedin.com/company/maxmendmethod/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>LinkedIn</a>
-              <a href="https://www.facebook.com/profile.php?id=61590762503840" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Facebook</a>
+              <a href="https://www.facebook.com/maxmendmethod" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Facebook</a>
               <a href="https://www.google.com/search?q=Max+Mend+Method" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-black" style={{ fontFamily: '"Arimo", sans-serif' }}>Google Business</a>
             </div>
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs text-white/80 md:justify-end">
