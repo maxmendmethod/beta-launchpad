@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /signup
+
+Sitemap: https://www.maxmendmethod.com/sitemap.xml

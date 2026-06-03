@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -148,6 +149,10 @@ export default function AboutPage() {
           <p>None of this requires buying anything from us.</p>
 
           <p>Just use whatever&apos;s useful.</p>
+
+          <Link href="/product/m3" className="!mt-4 inline-block rounded-md bg-brand px-7 py-3 text-sm font-extrabold uppercase tracking-wide text-white hover:opacity-90 transition-opacity">
+            Learn About Max Mend Method →
+          </Link>
         </div>
       </main>
       <SiteFooter />

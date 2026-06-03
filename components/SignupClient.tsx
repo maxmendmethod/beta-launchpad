@@ -31,7 +31,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: "What happens after my 30 days?",
-    a: "When M3 officially drops, founding members get first access at $49 - half the retail price of $99. That discount is yours to keep.",
+    a: "When M3 officially drops, founding members get first access at $79 - half the retail price of $149. That discount is yours to keep.",
   },
   {
     q: "What if I don't want to lose momentum before the official launch?",
