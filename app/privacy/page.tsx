@@ -21,7 +21,7 @@ export default function PrivacyPage() {
       <SiteHeader />
       <main className="mx-auto max-w-3xl px-4 py-16 pb-24">
         <h1 className="text-4xl mb-2 font-gliker">Privacy Policy</h1>
-        <p className="text-sm text-muted-foreground mb-10">Last updated: May 22, 2026</p>
+        <p className="text-sm text-muted-foreground mb-10">Last updated: June 4, 2026</p>
         <div className="space-y-10 text-sm leading-relaxed text-foreground">
 
           <section>
@@ -37,6 +37,8 @@ export default function PrivacyPage() {
             <div className="space-y-3">
               <p>When you visit the Site, we automatically collect certain information about your device, including your web browser, IP address, time zone, and cookies installed on your device. We also collect information about the pages you view, search terms that referred you to the Site, and how you interact with the Site. We refer to this as "Device Information."</p>
               <p>We collect Device Information using cookies, log files, and web beacons or pixels. Cookies are data files placed on your device that often include an anonymous unique identifier. Log files track actions on the Site and collect data including your IP address, browser type, and date and time stamps. Web beacons and pixels are electronic files used to record how you browse the Site.</p>
+              <p>We use Google Analytics 4 to collect and analyze Device Information. Google Analytics uses cookies and similar technologies to track user interactions and may transmit data to Google servers. You can learn more about how Google uses data at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand">policies.google.com/privacy</a>. You can opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand">Google Analytics Opt-out Browser Add-on</a>.</p>
+              <p>We also use Vercel Analytics to collect anonymized page view and performance data. Vercel Analytics does not use cookies and does not collect personally identifiable information.</p>
               <p>When you make or attempt to make a purchase through the Site, we collect your name, billing address, shipping address, payment information, email address, and phone number. We refer to this as "Order Information."</p>
               <p>When you sign up through the Site, we collect your name and email address.</p>
               <p>"Personal Information" in this policy refers to both Device Information and Order Information.</p>
@@ -56,7 +58,10 @@ export default function PrivacyPage() {
             <h2 className="text-base font-bold uppercase mb-3">Section 3 Sharing Your Information</h2>
             <div className="space-y-3">
               <p>We share your Personal Information with third parties to help us operate the Site and fulfill orders.</p>
-              <p>Our store is hosted on Shopify Inc. Shopify uses your Personal Information to provide us with the e-commerce platform that allows us to sell our products to you. You can read more about how Shopify uses your Personal Information at https://www.shopify.com/legal/privacy.</p>
+              <p>Our store is hosted on Shopify Inc. Shopify uses your Personal Information to provide us with the e-commerce platform that allows us to sell our products to you. You can read more about how Shopify uses your Personal Information at <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand">shopify.com/legal/privacy</a>.</p>
+              <p>We use Google Analytics 4, a web analytics service provided by Google LLC. Google Analytics collects Device Information as described in Section 1 and processes it on Google's servers. Google's privacy policy is available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand">policies.google.com/privacy</a>.</p>
+              <p>We use Vercel Inc. to host and serve the Site. Vercel may collect anonymized performance and infrastructure data. Vercel's privacy policy is available at <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand">vercel.com/legal/privacy-policy</a>.</p>
+              <p>We use MailerLite to manage our mailing list. When you sign up, your name and email address are transmitted to MailerLite's servers. MailerLite's privacy policy is available at <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand">mailerlite.com/legal/privacy-policy</a>.</p>
               <p>We use third-party payment processors to handle transactions. Your payment information is transmitted directly to these processors and is not stored on our servers.</p>
               <p>We may share your information to comply with applicable laws and regulations, to respond to a lawful request for information, or to protect our rights.</p>
             </div>
