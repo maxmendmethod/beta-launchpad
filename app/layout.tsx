@@ -3,6 +3,7 @@ import { Arimo } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const arimo = Arimo({
@@ -170,6 +171,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Analytics />
         <SpeedInsights />
+        <GoogleAnalytics gaId="G-8HZL3B3CQK" />
       </body>
     </html>
   );
