@@ -120,14 +120,14 @@ export default function HomePage() {
 
           <div className="relative z-10 flex min-h-[50vh] md:min-h-[56vh] max-w-7xl items-end pl-10 md:pl-32 pr-4 pb-10 md:pb-16">
             <div className="w-[55%] md:w-auto max-w-2xl text-left">
-              <h2 className="text-[1.6rem] md:text-[4rem] lg:text-[4.3rem] tracking-tight leading-[1.05]" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
+              <h2 className="text-[1.6rem] md:text-[4rem] lg:text-[4.3rem] tracking-tight leading-[1.05] font-gliker">
                 Do You Want To Feel Like Yourself Again?
               </h2>
               <p className="mt-3 text-base md:text-[1.7rem]">
                 Take the precision timed supplement and come alive in 30 days.
               </p>
               <div className="mt-5 md:mt-7">
-                <a href="#product" className="inline-block rounded-md bg-brand px-10 py-3 text-base md:px-20 md:text-xl font-extrabold uppercase tracking-wide text-white shadow-sm hover:opacity-90" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>
+                <a href="#product" className="inline-block rounded-md bg-brand px-10 py-3 text-base md:px-20 md:text-xl font-extrabold uppercase tracking-wide text-white shadow-sm hover:opacity-90">
                   I'M READY TO OPTIMIZE
                 </a>
               </div>
@@ -139,10 +139,10 @@ export default function HomePage() {
         {/* Quote */}
         <section className="border-t border-border bg-white">
           <div className="mx-auto max-w-5xl px-6 py-16">
-            <p className="mb-3 text-sm uppercase tracking-wide" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 400, color: '#e68163' }}>
+            <p className="mb-3 text-sm uppercase tracking-wide text-brand">
               Generic Supplements Don&apos;t Consider Changing Daily Needs
             </p>
-            <p className="text-2xl md:text-3xl lg:text-4xl leading-snug" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>
+            <p className="text-2xl md:text-3xl lg:text-4xl leading-snug font-bold">
               Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol. Each daily packet is tailored to that stage of the cycle rather than a one size fits all blend, designed for effortless top tier results.
             </p>
           </div>
@@ -204,14 +204,13 @@ export default function HomePage() {
             <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-brand/10">
               <Shield className="h-8 w-8 text-brand" />
             </div>
-            <h2 className="mb-3 text-2xl uppercase" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>30 Day Money Back Guarantee</h2>
-            <p className="mx-auto max-w-xl text-base" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>
+            <h2 className="mb-3 text-2xl uppercase font-bold">30 Day Money Back Guarantee</h2>
+            <p className="mx-auto max-w-xl text-base">
               Try M3 for a full 30 days. If you do not feel the difference, we will refund every dollar. No questions asked. We are confident in the protocol.
             </p>
             <Link
               href="/refunds"
               className="mt-4 inline-block text-sm font-semibold text-brand hover:underline"
-              style={{ fontFamily: '"Arimo", sans-serif' }}
             >
               Read our refund policy
             </Link>

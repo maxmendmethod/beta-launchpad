@@ -232,7 +232,6 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
   const [selectedOneTimeTier, setSelectedOneTimeTier] = useState(0);
   const [openTab, setOpenTab] = useState<string | null>("ingredients");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [ctaHovered, setCtaHovered] = useState(false);
 
   const activePlan = planType === "subscribe" ? MOCK_PRODUCT.plans.subscribe[selectedTier] : null;
   const activeOneTime = MOCK_PRODUCT.plans.oneTime[selectedOneTimeTier];
@@ -251,13 +250,13 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             <div className="aspect-[4/5] w-full rounded-md bg-secondary flex items-center justify-center overflow-hidden">
               {selectedImage === 0 ? (
                 <div className="text-center">
-                  <p className="text-7xl text-brand" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>M3</p>
-                  <p className="mt-2 text-sm" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400, color: '#000000' }}>Product image coming soon</p>
+                  <p className="text-7xl text-brand font-gliker">M3</p>
+                  <p className="mt-2 text-sm font-gliker">Product image coming soon</p>
                 </div>
               ) : (
                 <div className="text-center">
-                  <p className="text-3xl text-brand/30" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>View {selectedImage + 1}</p>
-                  <p className="mt-1 text-xs" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400, color: '#000000' }}>Image coming soon</p>
+                  <p className="text-3xl text-brand/30 font-gliker">View {selectedImage + 1}</p>
+                  <p className="mt-1 text-xs font-gliker">Image coming soon</p>
                 </div>
               )}
             </div>
@@ -286,10 +285,10 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
             {/* Title */}
             <div>
-              <h2 className="text-4xl md:text-3xl tracking-tight leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400, color: '#e68163' }}>
+              <h2 className="text-4xl md:text-3xl tracking-tight leading-tight font-gliker text-brand">
                 {MOCK_PRODUCT.name}
               </h2>
-              <p className="mt-1 text-lg md:text-base text-foreground" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>{MOCK_PRODUCT.tagline}</p>
+              <p className="mt-1 text-lg md:text-base text-foreground font-bold">{MOCK_PRODUCT.tagline}</p>
             </div>
 
             {/* Stars */}
@@ -297,7 +296,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
               ))}
-              <span className="ml-1 text-sm text-foreground" style={{ fontFamily: '"Arimo", sans-serif' }}>Founding member reviews loading soon</span>
+              <span className="ml-1 text-sm text-foreground">Founding member reviews loading soon</span>
             </div>
 
             {/* Claims */}
@@ -307,8 +306,8 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                   key={c.label}
                   className="rounded-md border border-border bg-secondary/50 px-3 py-2 text-center"
                 >
-                  <p className="text-lg font-black" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>{c.stat}</p>
-                  <p className="text-[11px] leading-tight" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>{c.label}</p>
+                  <p className="text-lg font-black">{c.stat}</p>
+                  <p className="text-[11px] leading-tight font-bold">{c.label}</p>
                 </div>
               ))}
             </div>
@@ -317,31 +316,21 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             <div className="grid grid-cols-2 gap-1 rounded-xl bg-secondary p-1">
               <button
                 onClick={() => setPlanType("subscribe")}
-                className={`rounded-lg py-3 text-base md:text-sm transition-colors ${
+                className={`rounded-lg py-3 text-base md:text-sm font-bold transition-colors ${
                   planType === "subscribe"
                     ? "bg-brand text-white shadow-sm"
-                    : ""
+                    : "text-foreground"
                 }`}
-                style={{
-                  fontFamily: '"Arimo", sans-serif',
-                  fontWeight: 700,
-                  color: planType === "subscribe" ? undefined : '#000000',
-                }}
               >
                 Subscribe and Save
               </button>
               <button
                 onClick={() => setPlanType("onetime")}
-                className={`rounded-lg py-2.5 text-sm transition-colors ${
+                className={`rounded-lg py-2.5 text-sm font-bold transition-colors ${
                   planType === "onetime"
                     ? "bg-brand text-white shadow-sm"
-                    : ""
+                    : "text-foreground"
                 }`}
-                style={{
-                  fontFamily: '"Arimo", sans-serif',
-                  fontWeight: 700,
-                  color: planType === "onetime" ? undefined : '#000000',
-                }}
               >
                 One Time
               </button>
@@ -373,29 +362,29 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <p className="font-bold text-sm" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>
+                            <p className="font-bold text-sm">
                               {/^\d/.test(tier.label) ? (
                                 <>
-                                  <span style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>{tier.label.split(' ')[0]}</span>
+                                  <span className="font-gliker">{tier.label.split(' ')[0]}</span>
                                   {' ' + tier.label.split(' ').slice(1).join(' ')}
                                 </>
                               ) : tier.label}
                             </p>
-                            <span className="rounded-full bg-brand text-white text-[9px] font-extrabold px-1.5 py-0.5 leading-none" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>
+                            <span className="rounded-full bg-brand text-white text-[9px] font-extrabold px-1.5 py-0.5 leading-none">
                               {tier.badge.toUpperCase()}
                             </span>
                           </div>
-                          <p className="text-xs text-foreground/60" style={{ fontFamily: '"Arimo", sans-serif' }}>{tier.billingNote}</p>
+                          <p className="text-xs text-foreground/60">{tier.billingNote}</p>
                         </div>
                       </div>
                       <div className="text-right shrink-0 ml-2">
                         <div className="flex items-baseline gap-1.5">
-                          <span className="text-lg" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>${tier.pricePerMonth}</span>
-                          <span className="text-xs text-foreground/60" style={{ fontFamily: '"Arimo", sans-serif' }}>/mo</span>
-                          <span className="text-xs text-foreground/35 line-through" style={{ fontFamily: '"Arimo", sans-serif' }}>${tier.originalPrice}</span>
+                          <span className="text-lg font-gliker">${tier.pricePerMonth}</span>
+                          <span className="text-xs text-foreground/60">/mo</span>
+                          <span className="text-xs text-foreground/35 line-through">${tier.originalPrice}</span>
                         </div>
-                        <p className="text-[11px] text-foreground/50" style={{ fontFamily: '"Arimo", sans-serif' }}>${tier.perServing.toFixed(2)} per serving</p>
-                        <span className="inline-block rounded-full bg-brand/10 text-brand text-[10px] font-extrabold px-2 py-0.5" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>
+                        <p className="text-[11px] text-foreground/50">${tier.perServing.toFixed(2)} per serving</p>
+                        <span className="inline-block rounded-full bg-brand/10 text-brand text-[10px] font-extrabold px-2 py-0.5">
                           SAVE {tier.savingsPct}%
                         </span>
                       </div>
@@ -403,8 +392,8 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                     {selectedTier === i && (
                       <ul className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 pl-6">
                         {tier.perks.map((p) => (
-                          <li key={p} className="flex items-center gap-1 text-xs text-foreground/70" style={{ fontFamily: '"Arimo", sans-serif' }}>
-                            <span className="font-bold text-brand" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>✓</span> {p}
+                          <li key={p} className="flex items-center gap-1 text-xs text-foreground/70">
+                            <span className="font-bold text-brand">✓</span> {p}
                           </li>
                         ))}
                       </ul>
@@ -440,30 +429,30 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <p className="font-bold text-sm" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>
+                            <p className="font-bold text-sm">
                               {/^\d/.test(tier.label) ? (
                                 <>
-                                  <span style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>{tier.label.split(' ')[0]}</span>
+                                  <span className="font-gliker">{tier.label.split(' ')[0]}</span>
                                   {' ' + tier.label.split(' ').slice(1).join(' ')}
                                 </>
                               ) : tier.label}
                             </p>
-                            <span className="rounded-full bg-brand text-white text-[9px] font-extrabold px-1.5 py-0.5 leading-none" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>
+                            <span className="rounded-full bg-brand text-white text-[9px] font-extrabold px-1.5 py-0.5 leading-none">
                               {tier.badge.toUpperCase()}
                             </span>
                           </div>
-                          <p className="text-xs text-foreground/60" style={{ fontFamily: '"Arimo", sans-serif' }}>{tier.note}</p>
+                          <p className="text-xs text-foreground/60">{tier.note}</p>
                         </div>
                       </div>
                       <div className="text-right shrink-0 ml-2">
-                        <span className="text-lg" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
+                        <span className="text-lg font-gliker">
                           {tier.price === 0 ? "FREE" : `$${tier.price}`}
                         </span>
                         {tier.perks.length > 0 && selectedOneTimeTier === i && (
                           <ul className="mt-1 space-y-0.5">
                             {tier.perks.map((p) => (
-                              <li key={p} className="flex items-center gap-1 text-xs" style={{ fontFamily: '"Arimo", sans-serif' }}>
-                                <span className="font-bold text-brand" style={{ fontWeight: 700 }}>✓</span> {p}
+                              <li key={p} className="flex items-center gap-1 text-xs">
+                                <span className="font-bold text-brand">✓</span> {p}
                               </li>
                             ))}
                           </ul>
@@ -478,18 +467,18 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Price and CTA */}
             <div className="flex flex-col gap-2.5">
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl md:text-3xl" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>${displayPrice}</span>
+                <span className="text-4xl md:text-3xl font-gliker">${displayPrice}</span>
                 {planType === "subscribe" && (
-                  <span className="text-sm text-foreground/60" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>/month</span>
+                  <span className="text-sm text-foreground/60 font-gliker">/month</span>
                 )}
-                <span className="text-sm text-foreground/40 line-through" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
+                <span className="text-sm text-foreground/40 line-through font-gliker">
                   $149
                 </span>
               </div>
               {/* TODO: Replace href with Shopify checkout URL when store is live */}
               <Link
                 href="/signup"
-                className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-base font-extrabold uppercase tracking-wide text-white shadow-sm transition-colors" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, backgroundColor: ctaHovered ? '#c45a35' : '#e68163' }} onMouseEnter={() => setCtaHovered(true)} onMouseLeave={() => setCtaHovered(false)}
+                className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-base font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors"
               >
                 <span className="flex items-center justify-center gap-2">{planType === "subscribe" ? "Subscribe" : "Buy Now"}<svg width="48" height="20" viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0"><line x1="0" y1="10" x2="44" y2="10" stroke="white" strokeWidth="2.5" strokeLinecap="round"/><polyline points="36,3 44,10 36,17" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg></span>
               </Link>
@@ -499,15 +488,15 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             <div className="flex justify-between -mt-3">
               <div className="flex flex-col items-center gap-1 text-center">
                 <Shield className="h-5 w-5 text-brand" />
-                <span className="text-[11px]" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>30 Day Guarantee</span>
+                <span className="text-[11px] font-bold">30 Day Guarantee</span>
               </div>
               <div className="flex flex-col items-center gap-1 text-center">
                 <Truck className="h-5 w-5 text-brand" />
-                <span className="text-[11px]" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>Free Ship over $180</span>
+                <span className="text-[11px] font-bold">Free Ship over $180</span>
               </div>
               <div className="flex flex-col items-center gap-1 text-center">
                 <RefreshCw className="h-5 w-5 text-brand" />
-                <span className="text-[11px]" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>Cancel Anytime</span>
+                <span className="text-[11px] font-bold">Cancel Anytime</span>
               </div>
             </div>
 
@@ -520,21 +509,21 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                       onClick={() => setOpenFaq(openFaq === i ? null : i)}
                       className="flex w-full items-start justify-between py-3 text-left text-base md:text-sm gap-2"
                     >
-                      <span style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>{faq.q}</span>
+                      <span className="font-bold">{faq.q}</span>
                       <Plus className={`h-4 w-4 shrink-0 mt-0.5 transition-transform duration-200 ${openFaq === i ? "rotate-45 text-brand" : "text-foreground/40"}`} />
                     </button>
                     {openFaq === i && (
                       faq.steps ? (
                         <ol className="pb-3 flex flex-col gap-1">
                           {faq.steps.map((step, j) => (
-                            <li key={j} className="flex items-start gap-2 text-sm" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>
-                              <span style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400, color: '#e68163', minWidth: '1rem' }}>{j + 1}.</span>
+                            <li key={j} className="flex items-start gap-2 text-sm">
+                              <span className="font-gliker text-brand min-w-4">{j + 1}.</span>
                               {step}
                             </li>
                           ))}
                         </ol>
                       ) : (
-                        <p className="pb-3 text-sm leading-relaxed" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>{faq.a}</p>
+                        <p className="pb-3 text-sm leading-relaxed">{faq.a}</p>
                       )
                     )}
                   </div>
@@ -550,7 +539,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
       {/* Experts */}
       <section className="">
         <div className="mx-auto max-w-7xl px-4 md:px-12 py-12">
-          <h2 className="mb-6 text-center text-4xl" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>Trusted by Doctors and Coaches</h2>
+          <h2 className="mb-6 text-center text-4xl font-bold">Trusted by Doctors and Coaches</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {EXPERTS.map((e) => (
               <div key={e.initials} className="flex flex-col gap-4 rounded-md border border-border p-6">
@@ -559,8 +548,8 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                     <span className="text-sm font-black text-brand">{e.initials}</span>
                   </div>
                   <div>
-                    <p className="text-sm font-bold leading-tight" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700 }}>{e.name}</p>
-                    <p className="text-xs leading-tight" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>{e.title}</p>
+                    <p className="text-sm font-bold leading-tight">{e.name}</p>
+                    <p className="text-xs leading-tight">{e.title}</p>
                   </div>
                 </div>
                 <div className="flex gap-0.5">
@@ -568,7 +557,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                     <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-sm leading-relaxed" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>{e.quote}</p>
+                <p className="text-sm leading-relaxed">{e.quote}</p>
               </div>
             ))}
           </div>
@@ -579,13 +568,13 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
       {/* Results */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 md:px-12 py-12">
-          <h2 className="mb-8 text-center text-2xl font-black uppercase" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>What Members Report</h2>
+          <h2 className="mb-8 text-center text-2xl font-black uppercase">What Members Report</h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {RESULTS.map((r) => (
               <div key={r.label} className="flex flex-col gap-2">
                 <div className="flex items-baseline justify-between">
-                  <span className="text-3xl text-brand" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>{r.pct}%</span>
-                  <span className="text-sm" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>{r.label}</span>
+                  <span className="text-3xl text-brand font-gliker">{r.pct}%</span>
+                  <span className="text-sm">{r.label}</span>
                 </div>
                 <div className="h-2 w-full overflow-hidden rounded-full bg-border">
                   <div className="h-full rounded-full bg-brand" style={{ width: `${r.pct}%` }} />
@@ -605,14 +594,11 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
           <div className="flex flex-col">
-          <h2 className="mb-10 text-2xl" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400, color: '#e68163' }}>What to Expect</h2>
+          <h2 className="mb-10 text-2xl font-gliker text-brand">What to Expect</h2>
             {TIMELINE.map((item, i) => (
               <div key={item.period} className="flex gap-5">
                 <div className="flex flex-col items-center">
-                  <div
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white text-sm"
-                    style={{ backgroundColor: '#e68163', fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}
-                  >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white text-sm bg-brand font-gliker">
                     {i + 1}
                   </div>
                   {i < TIMELINE.length - 1 && (
@@ -620,17 +606,14 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                   )}
                 </div>
                 <div className={`${i < TIMELINE.length - 1 ? "pb-8" : "pb-0"}`}>
-                  <p
-                    className="mb-0.5 text-[11px] font-extrabold uppercase tracking-wider"
-                    style={{ fontFamily: '"Arimo", sans-serif', color: '#e68163' }}
-                  >
+                  <p className="mb-0.5 text-[11px] font-extrabold uppercase tracking-wider text-brand">
                     {item.period}
                   </p>
-                  <p className="mb-2 text-base" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>{item.title}</p>
+                  <p className="mb-2 text-base font-bold">{item.title}</p>
                   <ul className="space-y-1">
                     {item.points.map((pt) => (
-                      <li key={pt} className="flex items-start gap-2 text-sm" style={{ fontFamily: '"Arimo", sans-serif', color: '#000000' }}>
-                        <span className="mt-0.5" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#e68163' }}>+</span>
+                      <li key={pt} className="flex items-start gap-2 text-sm">
+                        <span className="mt-0.5 font-bold text-brand">+</span>
                         {pt}
                       </li>
                     ))}

@@ -7,7 +7,7 @@ export function StickyBanner() {
         <span className="rounded-full bg-white text-brand text-[8px] font-extrabold px-1.5 py-0.5 tracking-wide">
           NEW
         </span>
-        <span style={{ fontFamily: '"Arimo", sans-serif' }}>
+        <span>
           <span className="font-extrabold">Max Mend Method Founding Members Program: </span>
           <span className="font-normal">Find out if you are a fit →</span>
         </span>

@@ -90,7 +90,7 @@ export function SignupClient() {
           <Link href="/">
             <Image src={logo} alt="M3" className="mx-auto h-12 w-auto" />
           </Link>
-          <h1 className="mt-10 text-2xl md:text-4xl leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
+          <h1 className="mt-10 text-2xl md:text-4xl leading-tight font-gliker">
             Congratulations on taking the first step to optimizing your health
           </h1>
           <Image src={celebrationGif} alt="Celebration" unoptimized className="mx-auto mt-8 w-full max-w-[57.6rem] h-auto" />
@@ -149,7 +149,7 @@ export function SignupClient() {
         {/* Dark band: Headline + Subheader + Video */}
         <section className="bg-[#1d1e1c]">
           <div className="mx-auto max-w-5xl px-4 pb-8">
-            <h1 className="text-[2.4rem] md:text-[3.9rem] text-center leading-[1.05] text-white" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
+            <h1 className="text-[2.4rem] md:text-[3.9rem] text-center leading-[1.05] text-white font-gliker">
               Are you getting everything out of your supplements?
             </h1>
             <p className="mt-4 text-center text-[1.7rem] md:text-[2.1rem] text-white/80">
@@ -317,7 +317,7 @@ function FounderVideo() {
         className={`absolute inset-0 flex items-center justify-center w-full transition-opacity duration-200 ${showControls ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         aria-label={isPlaying ? "Pause" : "Play"}
       >
-        <div className="rounded-full p-5 backdrop-blur-sm" style={{ backgroundColor: "#e68163" }}>
+        <div className="rounded-full p-5 backdrop-blur-sm bg-brand">
           {isPlaying ? <Pause className="h-10 w-10 text-white" /> : <Play className="h-10 w-10 text-white" />}
         </div>
       </button>
@@ -330,8 +330,8 @@ function FounderVideo() {
         {/* Gamified progress bar — display only */}
         <div className="w-full h-1 bg-white/30 rounded-full overflow-hidden mb-3 pointer-events-none">
           <div
-            className="h-full bg-brand rounded-full"
-            style={{ width: `${visualProgress * 100}%`, transition: "width 0.2s linear" }}
+            className="h-full bg-brand rounded-full transition-[width] duration-200 ease-linear"
+            style={{ width: `${visualProgress * 100}%` }}
           />
         </div>
 

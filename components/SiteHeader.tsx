@@ -10,7 +10,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header style={{ backgroundColor: "#ffffff" }}>
+    <header className="bg-white">
       {/* Desktop */}
       <div className="hidden md:flex w-full items-center justify-between pl-[5%] pr-[5%] py-2">
 
@@ -19,7 +19,7 @@ export function SiteHeader() {
           <Link href="/" className="flex items-center">
             <Image src={logo} alt="M3" className="h-14 w-auto" priority />
           </Link>
-          <nav className="flex items-center gap-8 text-sm text-foreground" style={{ fontFamily: '"Arimo", sans-serif' }}>
+          <nav className="flex items-center gap-8 text-sm text-foreground">
             <Link href="/science" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               Science
             </Link>
@@ -69,7 +69,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/signup"
-            className="flex items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm text-foreground/70 transition-colors hover:border-brand hover:text-brand" style={{ fontFamily: '"Arimo", sans-serif' }}
+            className="flex items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm text-foreground/70 transition-colors hover:border-brand hover:text-brand"
           >
             <User className="h-3.5 w-3.5" />
             Log in
@@ -100,7 +100,7 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <div className="md:hidden border-t border-border" style={{ backgroundColor: "#ffffff" }}>
+        <div className="md:hidden border-t border-border bg-white">
           <nav className="flex flex-col gap-3 px-4 py-4 text-sm font-semibold text-foreground">
             <Link href="/science" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
               Science

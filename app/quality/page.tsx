@@ -91,8 +91,7 @@ export default function QualityPage() {
         <section className="">
           <div className="mx-auto max-w-3xl px-4 py-16 text-center md:py-24">
             <h1
-              className="text-4xl leading-tight md:text-5xl"
-              style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400, color: '#000000' }}
+              className="text-4xl leading-tight md:text-5xl font-gliker"
             >
               Built around better standards from the beginning.
             </h1>
@@ -118,10 +117,7 @@ export default function QualityPage() {
                     />
                   </div>
                   <div className="flex flex-col gap-3 p-6">
-                    <h2
-                      className="text-lg"
-                      style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}
-                    >
+                    <h2 className="text-lg font-bold">
                       {header}
                     </h2>
                     <p className="text-sm leading-relaxed">
@@ -139,10 +135,7 @@ export default function QualityPage() {
           <div className="mx-auto max-w-7xl px-4 md:px-12 py-14">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16 items-start">
               <div>
-                <h2
-                  className="mb-6 text-2xl leading-snug md:text-3xl"
-                  style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}
-                >
+                <h2 className="mb-6 text-2xl leading-snug md:text-3xl font-bold">
                   Manufactured in the USA with experienced production partners.
                 </h2>
                 <p className="mb-4 text-base leading-relaxed">
@@ -154,10 +147,7 @@ export default function QualityPage() {
                 <div className="flex flex-col gap-5">
                   {MFG_STATS.map((s) => (
                     <div key={s.big} className="flex flex-col gap-1">
-                      <span
-                        className="text-3xl text-brand"
-                        style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}
-                      >
+                      <span className="text-3xl text-brand font-gliker">
                         {s.big}
                       </span>
                       <span className="text-sm leading-snug">
@@ -185,10 +175,7 @@ export default function QualityPage() {
           <div className="mx-auto max-w-7xl px-4 md:px-12 py-14">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16 items-start">
               <div>
-                <h2
-                  className="mb-6 text-2xl leading-snug md:text-3xl"
-                  style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}
-                >
+                <h2 className="mb-6 text-2xl leading-snug md:text-3xl font-bold">
                   Claims should be backed by something measurable.
                 </h2>
                 <p className="mb-4 text-base leading-relaxed">
@@ -198,7 +185,7 @@ export default function QualityPage() {
                   Our final third-party testing protocol is still being finalized alongside our manufacturing partners ahead of launch. The goal is straightforward: testing should verify that the product matches the label and meets clear safety standards before it reaches customers.
                 </p>
                 <div className="rounded-md border border-border bg-[#fffaeb] px-5 py-4">
-                  <p className="text-sm leading-relaxed" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>
+                  <p className="text-sm leading-relaxed font-bold">
                     Every production batch is planned to undergo independent third-party testing for label accuracy, heavy metals, and contaminants, with results tied to batch numbers and made publicly available.
                   </p>
                 </div>
@@ -210,7 +197,7 @@ export default function QualityPage() {
                       <Check className="h-3 w-3 text-brand" strokeWidth={2.5} />
                     </div>
                     <div>
-                      <p className="text-sm" style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}>
+                      <p className="text-sm font-bold">
                         {item.label}
                       </p>
                       <p className="text-sm leading-snug">
@@ -227,10 +214,7 @@ export default function QualityPage() {
         {/* 5. Standards chips */}
         <section className="">
           <div className="mx-auto max-w-7xl px-4 md:px-12 py-14">
-            <h2
-              className="mb-8 text-2xl md:text-3xl"
-              style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}
-            >
+            <h2 className="mb-8 text-2xl md:text-3xl font-bold">
               What we include, and what we avoid.
             </h2>
             <div className="flex flex-wrap gap-3">
@@ -249,10 +233,7 @@ export default function QualityPage() {
         {/* 6. Commitment cards */}
         <section className="">
           <div className="mx-auto max-w-7xl px-4 md:px-12 py-14">
-            <h2
-              className="mb-8 text-2xl md:text-3xl"
-              style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}
-            >
+            <h2 className="mb-8 text-2xl md:text-3xl font-bold">
               Quality isn't a launch checklist. It's the whole point.
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -268,10 +249,7 @@ export default function QualityPage() {
                     />
                   </div>
                   <div className="flex flex-col gap-3 p-6">
-                    <h3
-                      className="text-base"
-                      style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}
-                    >
+                    <h3 className="text-base font-bold">
                       {header}
                     </h3>
                     <p className="text-sm leading-relaxed">
@@ -287,10 +265,7 @@ export default function QualityPage() {
         {/* 7. Closing CTA */}
         <section>
           <div className="mx-auto max-w-2xl px-4 py-16 text-center md:py-24">
-            <h2
-              className="mb-4 text-2xl md:text-3xl"
-              style={{ fontFamily: '"Arimo", sans-serif', fontWeight: 700, color: '#000000' }}
-            >
+            <h2 className="mb-4 text-2xl md:text-3xl font-bold">
               Your body has a rhythm. Your supplements should too.
             </h2>
             <p className="mb-8 text-base leading-relaxed">

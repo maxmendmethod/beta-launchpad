@@ -296,30 +296,26 @@ const N: Nutrient[] = [
 type CellLevel = "full" | "reduced" | "off";
 
 function MiniCell({ level }: { level: CellLevel }) {
-  return (
-    <span
-      className="inline-block w-6 h-6 rounded-sm"
-      style={{
-        background: level === "full" ? HC[2] : level === "reduced" ? HC[1] : HC[0],
-        border: level === "off" ? "1.5px dashed #b8b8b8" : "none",
-      }}
-    />
-  );
+  const cls =
+    level === "full" ? "bg-brand" :
+    level === "reduced" ? "bg-[#fcd9a8]" :
+    "bg-white border-[1.5px] border-dashed border-[#b8b8b8]";
+  return <span className={`inline-block w-6 h-6 rounded-sm ${cls}`} />;
 }
 
 function MiniLegend() {
   return (
     <div className="mt-4 flex flex-wrap gap-4 text-[10px] text-foreground/55 uppercase tracking-wider">
       <span className="flex items-center gap-1.5">
-        <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[2] }} />
+        <span className="inline-block w-3 h-3 rounded-sm bg-brand" />
         Full dose
       </span>
       <span className="flex items-center gap-1.5">
-        <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[1] }} />
+        <span className="inline-block w-3 h-3 rounded-sm bg-[#fcd9a8]" />
         Reduced dose
       </span>
       <span className="flex items-center gap-1.5">
-        <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[0], border: "1.5px dashed #b8b8b8" }} />
+        <span className="inline-block w-3 h-3 rounded-sm bg-white border-[1.5px] border-dashed border-[#b8b8b8]" />
         Off
       </span>
     </div>
@@ -447,30 +443,26 @@ export function ScienceContent() {
   }
 
   return (
-    <div style={{ background: "#ffffff", color: "#1a1a1a", lineHeight: 1.65 }} className="font-sans">
+    <div className="font-sans bg-white text-[#1a1a1a] leading-[1.65]">
 
       {/* ── CORE PRINCIPLES ─────────────────────────────────────────── */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
 
           <header className="mb-10">
-            <h2 className="text-4xl leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>Core Principles</h2>
+            <h2 className="text-4xl leading-tight font-gliker">Core Principles</h2>
           </header>
 
           {/* Grid stacking — all cards in the same cell so height = tallest card, no layout shift */}
-          <div style={{ display: "grid" }}>
+          <div className="grid">
             {PRINCIPLES.map((p, i) => (
               <div
                 key={i}
-                style={{
-                  gridArea: "1/1",
-                  opacity: i === pIdx ? 1 : 0,
-                  transform: i === pIdx ? "translateY(0px)" : "translateY(8px)",
-                  transition: "opacity 240ms ease, transform 240ms ease",
-                  pointerEvents: i === pIdx ? "auto" : "none",
-                  zIndex: i === pIdx ? 1 : 0,
-                  height: "100%",
-                }}
+                className={`[grid-area:1/1] h-full transition-[opacity,transform] duration-[240ms] ease-in-out ${
+                  i === pIdx
+                    ? "opacity-100 translate-y-0 pointer-events-auto z-[1]"
+                    : "opacity-0 translate-y-[8px] pointer-events-none z-[0]"
+                }`}
               >
                 <div className="rounded-2xl border border-border bg-white overflow-hidden flex flex-col h-full">
                   {/* Progress bar */}
@@ -490,17 +482,13 @@ export function ScienceContent() {
                             key={j}
                             onClick={() => goTo(j)}
                             aria-label={PRINCIPLES[j].name}
-                            style={{
-                              width: j === pIdx ? 22 : 8,
-                              height: 8,
-                              borderRadius: 4,
-                              background: j === pIdx ? "#e68163" : "#e5ddd0",
-                              transition: "width 250ms ease, background 250ms ease",
-                            }}
+                            className={`h-2 rounded transition-[width,background] duration-[250ms] ease-in-out ${
+                              j === pIdx ? "w-[22px] bg-brand" : "w-2 bg-[#e5ddd0]"
+                            }`}
                           />
                         ))}
                       </div>
-                      <span className="text-xs font-bold tabular-nums" style={{ color: "#e68163" }}>
+                      <span className="text-xs font-bold tabular-nums text-brand">
                         {String(i + 1).padStart(2, "0")}&thinsp;/&thinsp;{String(PRINCIPLES.length).padStart(2, "0")}
                       </span>
                     </div>
@@ -547,7 +535,7 @@ export function ScienceContent() {
         <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
 
           <header className="mb-10">
-            <h1 className="text-4xl leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>Why Every Day Looks A Little Different</h1>
+            <h1 className="text-4xl leading-tight font-gliker">Why Every Day Looks A Little Different</h1>
           </header>
 
           <div className="space-y-6 text-base leading-relaxed text-foreground">
@@ -645,24 +633,24 @@ export function ScienceContent() {
         <div className="mx-auto max-w-5xl px-4 py-16 md:py-20">
 
           <header className="mb-8">
-            <h2 className="text-4xl leading-tight" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>Nutrient Schedule Grid</h2>
+            <h2 className="text-4xl leading-tight font-gliker">Nutrient Schedule Grid</h2>
           </header>
 
           <div className="mb-6 flex flex-wrap gap-4 text-[11px] text-foreground/65">
             <span className="flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[3] }} />
+              <span className="inline-block w-3 h-3 rounded-sm bg-[#7a1f0b]" />
               Boosted
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[2] }} />
+              <span className="inline-block w-3 h-3 rounded-sm bg-brand" />
               Full
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[1] }} />
+              <span className="inline-block w-3 h-3 rounded-sm bg-[#fcd9a8]" />
               Reduced
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: HC[0], border: "1.5px dashed #b8b8b8" }} />
+              <span className="inline-block w-3 h-3 rounded-sm bg-white border-[1.5px] border-dashed border-[#b8b8b8]" />
               Zeroed
             </span>
           </div>
@@ -707,17 +695,18 @@ export function ScienceContent() {
                           <td className="py-1 px-1 text-[11px] text-foreground/85 sticky left-0 bg-[#ffffff] z-[5] max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap">
                             {n.name}
                           </td>
-                          {n.sched.map((v, idx) => (
-                            <td key={idx} className="text-center px-0 py-0.5">
-                              <span
-                                className="inline-block w-3.5 h-3.5 rounded-sm"
-                                style={{
-                                  background: v > 0 ? HC[v] : HC[0],
-                                  border: v === 0 ? "1.5px dashed #b8b8b8" : "none",
-                                }}
-                              />
-                            </td>
-                          ))}
+                          {n.sched.map((v, idx) => {
+                            const cls =
+                              v === 0 ? "bg-white border-[1.5px] border-dashed border-[#b8b8b8]" :
+                              v === 1 ? "bg-[#fcd9a8]" :
+                              v === 2 ? "bg-brand" :
+                              "bg-[#7a1f0b]";
+                            return (
+                              <td key={idx} className="text-center px-0 py-0.5">
+                                <span className={`inline-block w-3.5 h-3.5 rounded-sm ${cls}`} />
+                              </td>
+                            );
+                          })}
                         </tr>
                       ))}
                     </React.Fragment>
