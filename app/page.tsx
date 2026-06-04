@@ -14,9 +14,9 @@ import foundersDuo from "@/src/assets/founders-duo.png";
 import heroBg from "@/src/assets/hero-bg.avif";
 
 export const metadata: Metadata = {
-  title: "Max Mend Method | Precision Timed Supplement",
+  title: "Max Mend Method | Daily Precision Timed Supplement",
   description:
-    "Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol.",
+    "Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol optimized for absorption and nutrient interactions.",
   alternates: { canonical: "https://www.maxmendmethod.com/" },
 };
 
@@ -161,7 +161,7 @@ export default function HomePage() {
             {faqs.map((f) => (
               <details key={f.q} className="group py-4">
                 <summary className="cursor-pointer list-none flex justify-between items-center font-bold text-base md:text-lg">
-                  <span>{f.q}</span>
+                  <h3 className="m-0 font-bold text-base md:text-lg">{f.q}</h3>
                   <span className="ml-4 text-brand text-xl group-open:rotate-45 transition-transform">+</span>
                 </summary>
                 <div className="mt-3 text-sm md:text-base text-foreground/80">{f.a}</div>
@@ -174,13 +174,13 @@ export default function HomePage() {
         <section className="bg-white relative overflow-hidden">
           <Image
             src={founderMyles}
-            alt=""
+            alt="Myles Sherman, co-founder of Max Mend Method"
             aria-hidden
             className="hidden 2xl:block pointer-events-none select-none absolute left-16 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
           />
           <Image
             src={founderLeo}
-            alt=""
+            alt="Leo Sherman, co-founder of Max Mend Method"
             aria-hidden
             className="hidden 2xl:block pointer-events-none select-none absolute right-16 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
           />

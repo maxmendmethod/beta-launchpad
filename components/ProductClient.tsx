@@ -505,13 +505,15 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
               <div className="flex flex-col">
                 {FAQS.map((faq, i) => (
                   <div key={i} className="border-b border-border last:border-b-0">
-                    <button
-                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                      className="flex w-full items-start justify-between py-3 text-left text-base md:text-sm gap-2"
-                    >
-                      <span className="font-bold">{faq.q}</span>
-                      <Plus className={`h-4 w-4 shrink-0 mt-0.5 transition-transform duration-200 ${openFaq === i ? "rotate-45 text-brand" : "text-foreground/40"}`} />
-                    </button>
+                    <h3 className="m-0">
+                      <button
+                        onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                        className="flex w-full items-start justify-between py-3 text-left text-base md:text-sm gap-2 font-bold"
+                      >
+                        {faq.q}
+                        <Plus className={`h-4 w-4 shrink-0 mt-0.5 transition-transform duration-200 ${openFaq === i ? "rotate-45 text-brand" : "text-foreground/40"}`} />
+                      </button>
+                    </h3>
                     {openFaq === i && (
                       faq.steps ? (
                         <ol className="pb-3 flex flex-col gap-1">

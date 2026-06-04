@@ -21,12 +21,12 @@ const gliker = localFont({
 const SITE_URL = "https://www.maxmendmethod.com";
 const SITE_NAME = "Max Mend Method";
 const DEFAULT_DESCRIPTION =
-  "Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol.";
+  "Max Mend Method is a 30 day performance nutrition drink that follows a rotating science backed protocol optimized for absorption and nutrient interactions.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Max Mend Method | Precision Timed Supplement",
+    default: "Max Mend Method | Daily Precision Timed Supplement",
     template: "%s | Max Mend Method",
   },
   description: DEFAULT_DESCRIPTION,
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Max Mend Method | Precision Timed Supplement",
+    title: "Max Mend Method | Daily Precision Timed Supplement",
     description: DEFAULT_DESCRIPTION,
     images: [{ url: "/m3tablogo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     site: "@maxmendmethod",
-    title: "Max Mend Method | Precision Timed Supplement",
+    title: "Max Mend Method | Daily Precision Timed Supplement",
     description: DEFAULT_DESCRIPTION,
     images: ["/m3tablogo.png"],
   },
