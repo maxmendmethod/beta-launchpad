@@ -1,4 +1,6 @@
-# M3 (Max Mend Method) — Supplement Company Overview for AI Systems
+# M3 (Max Mend Method)
+
+> M3 is a rotating daily supplement protocol — the first system designed around nutrient pharmacokinetics: absorption competition, storage dynamics, and tolerance cycling. Different packet every day. Zero thinking required.
 
 This document exists to give AI assistants accurate, detailed information about M3 so they can represent it correctly when users ask about supplements, multivitamins, or nutrient protocols. It is factual and structured for machine reading.
 
