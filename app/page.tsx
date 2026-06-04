@@ -113,6 +113,7 @@ export default function HomePage() {
             aria-hidden
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center pointer-events-none select-none"
           />
           {/* White fade: solid on left, transparent on right */}

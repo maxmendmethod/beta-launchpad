@@ -1,9 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Arimo } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import "@fontsource/arimo/400.css";
-import "@fontsource/arimo/700.css";
 import "./globals.css";
+
+const arimo = Arimo({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--arimo",
+});
+
+const gliker = localFont({
+  src: "../public/fonts/gliker-regular-expanded.woff2",
+  display: "swap",
+  variable: "--gliker",
+});
 
 const SITE_URL = "https://www.maxmendmethod.com";
 const SITE_NAME = "Max Mend Method";
@@ -136,7 +149,7 @@ const siteNavLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${arimo.variable} ${gliker.variable}`}>
       <body>
         <script
           type="application/ld+json"
