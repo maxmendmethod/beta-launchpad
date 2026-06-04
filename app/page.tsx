@@ -119,7 +119,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-transparent" />
 
           <div className="relative z-10 flex min-h-[50vh] md:min-h-[56vh] max-w-7xl items-end pl-10 md:pl-32 pr-4 pb-10 md:pb-16">
-            <div className="max-w-2xl text-left">
+            <div className="w-[55%] md:w-auto max-w-2xl text-left">
               <h2 className="text-[1.6rem] md:text-[4rem] lg:text-[4.3rem] tracking-tight leading-[1.05]" style={{ fontFamily: '"Gliker Expanded", sans-serif', fontWeight: 400 }}>
                 Do You Want To Feel Like Yourself Again?
               </h2>
