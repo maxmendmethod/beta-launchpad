@@ -57,6 +57,13 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+const SOCIAL_PROFILES = [
+  "https://www.instagram.com/maxmendmethod/",
+  "https://www.facebook.com/maxmendmethod",
+  "https://x.com/maxmendmethod",
+  "https://www.linkedin.com/company/maxmendmethod",
+];
+
 const organizationLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -70,7 +77,25 @@ const organizationLd = {
     height: 512,
   },
   description: DEFAULT_DESCRIPTION,
-  sameAs: ["https://www.instagram.com/maxmendmethod/"],
+  sameAs: SOCIAL_PROFILES,
+};
+
+const localBusinessLd = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
+  name: SITE_NAME,
+  alternateName: "M3",
+  url: SITE_URL,
+  image: `${SITE_URL}/m3tablogo.png`,
+  logo: `${SITE_URL}/favicon-512x512.png`,
+  description: DEFAULT_DESCRIPTION,
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  currenciesAccepted: "USD",
+  priceRange: "$$",
+  sameAs: SOCIAL_PROFILES,
 };
 
 const websiteLd = {
@@ -124,6 +149,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }}
         />
         {children}
         <Analytics />
