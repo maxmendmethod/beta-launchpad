@@ -4,6 +4,8 @@ import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { CartProvider } from "@/contexts/CartContext";
+import { CartDrawer } from "@/components/CartDrawer";
 import "./globals.css";
 
 const arimo = Arimo({
@@ -168,7 +170,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }}
         />
-        {children}
+        <CartProvider>
+          {children}
+          <CartDrawer />
+        </CartProvider>
         <Analytics />
         <SpeedInsights />
         <GoogleAnalytics gaId="G-8HZL3B3CQK" />

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown, ChevronUp, Star, Shield, Truck, RefreshCw, ArrowRight, Plus } from "lucide-react";
 import whatToExpectImg from "@/src/assets/whattoexpect.avif";
+import { useCart } from "@/contexts/CartContext";
 
 const MOCK_PRODUCT = {
   name: "Max Mend Method",
@@ -27,6 +28,8 @@ const MOCK_PRODUCT = {
         savingsPct: 33,
         billingNote: "Billed at $297 every 12 weeks",
         perks: ["Free shipping", "Cancel anytime", "Priority support"],
+        shopifyProductGid: "gid://shopify/Product/8603532984493",
+        shopifySellingPlanGid: "gid://shopify/SellingPlan/3891265709",
       },
       {
         id: "sub-30",
@@ -38,6 +41,8 @@ const MOCK_PRODUCT = {
         savingsPct: 29,
         billingNote: "Billed every 4 weeks",
         perks: ["Cancel anytime", "Priority support"],
+        shopifyProductGid: "gid://shopify/Product/8603533148333",
+        shopifySellingPlanGid: "gid://shopify/SellingPlan/3891232941",
       },
     ],
     oneTime: [
@@ -49,6 +54,8 @@ const MOCK_PRODUCT = {
         perServing: 0,
         note: "Free shipping included.",
         perks: ["Free shipping"],
+        shopifyProductGid: null,
+        shopifySellingPlanGid: null,
       },
       {
         id: "ot-standard",
@@ -58,6 +65,8 @@ const MOCK_PRODUCT = {
         perServing: 4.97,
         note: "No subscription. Free shipping on orders over $180.",
         perks: [],
+        shopifyProductGid: "gid://shopify/Product/8603532886189",
+        shopifySellingPlanGid: null,
       },
     ],
   },
@@ -232,10 +241,27 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
   const [selectedOneTimeTier, setSelectedOneTimeTier] = useState(0);
   const [openTab, setOpenTab] = useState<string | null>("ingredients");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const { addToCart, isLoading } = useCart();
 
   const activePlan = planType === "subscribe" ? MOCK_PRODUCT.plans.subscribe[selectedTier] : null;
   const activeOneTime = MOCK_PRODUCT.plans.oneTime[selectedOneTimeTier];
   const displayPrice = planType === "subscribe" ? activePlan!.pricePerMonth : activeOneTime.price;
+
+  const activeShopifyGid = planType === "subscribe"
+    ? activePlan!.shopifyProductGid
+    : activeOneTime.shopifyProductGid;
+  const activeSellingPlanGid = planType === "subscribe"
+    ? activePlan!.shopifySellingPlanGid
+    : activeOneTime.shopifySellingPlanGid;
+  const isFoundingMember = planType === "onetime" && activeOneTime.id === "ot-founding";
+
+  async function handleBuy() {
+    if (!activeShopifyGid) return;
+    await addToCart({
+      productGid: activeShopifyGid,
+      sellingPlanId: activeSellingPlanGid ?? undefined,
+    });
+  }
 
   return (
     <>
@@ -475,13 +501,30 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                   $149
                 </span>
               </div>
-              {/* TODO: Replace href with Shopify checkout URL when store is live */}
-              <Link
-                href="/signup"
-                className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-base font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors"
-              >
-                <span className="flex items-center justify-center gap-2">{planType === "subscribe" ? "Subscribe" : "Buy Now"}<svg width="48" height="20" viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0"><line x1="0" y1="10" x2="44" y2="10" stroke="white" strokeWidth="2.5" strokeLinecap="round"/><polyline points="36,3 44,10 36,17" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg></span>
-              </Link>
+              {isFoundingMember ? (
+                <Link
+                  href="/signup"
+                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-base font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors"
+                >
+                  <span className="flex items-center justify-center gap-2">
+                    Apply Now
+                    <svg width="48" height="20" viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0"><line x1="0" y1="10" x2="44" y2="10" stroke="white" strokeWidth="2.5" strokeLinecap="round"/><polyline points="36,3 44,10 36,17" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
+                  </span>
+                </Link>
+              ) : (
+                <button
+                  onClick={handleBuy}
+                  disabled={isLoading}
+                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-base font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  <span className="flex items-center justify-center gap-2">
+                    {isLoading ? "Adding..." : planType === "subscribe" ? "Subscribe" : "Buy Now"}
+                    {!isLoading && (
+                      <svg width="48" height="20" viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0"><line x1="0" y1="10" x2="44" y2="10" stroke="white" strokeWidth="2.5" strokeLinecap="round"/><polyline points="36,3 44,10 36,17" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
+                    )}
+                  </span>
+                </button>
+              )}
             </div>
 
             {/* Trust row */}

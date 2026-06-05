@@ -5,9 +5,14 @@ import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, ShoppingCart, User, ChevronDown } from "lucide-react";
 import logo from "@/src/assets/m3-logo.png";
+import { useCart } from "@/contexts/CartContext";
+
+const ACCOUNT_URL = "https://maxmendmethod.myshopify.com/account";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { openCart, cart } = useCart();
+  const itemCount = cart?.lines.reduce((s, l) => s + l.quantity, 0) ?? 0;
 
   return (
     <header className="bg-white">
@@ -60,20 +65,25 @@ export function SiteHeader() {
 
         {/* Right: cart + login */}
         <div className="flex items-center gap-3">
-          <Link
-            href="/signup"
+          <button
+            onClick={openCart}
             aria-label="Cart"
-            className="flex items-center justify-center w-9 h-9 rounded-full border border-border text-foreground/60 transition-colors hover:border-brand hover:text-brand"
+            className="relative flex items-center justify-center w-9 h-9 rounded-full border border-border text-foreground/60 transition-colors hover:border-brand hover:text-brand"
           >
             <ShoppingCart className="h-4 w-4" />
-          </Link>
-          <Link
-            href="/signup"
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand text-white text-[10px] font-extrabold">
+                {itemCount}
+              </span>
+            )}
+          </button>
+          <a
+            href={ACCOUNT_URL}
             className="flex items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm text-foreground/70 transition-colors hover:border-brand hover:text-brand"
           >
             <User className="h-3.5 w-3.5" />
             Log in
-          </Link>
+          </a>
         </div>
       </div>
 
@@ -83,13 +93,18 @@ export function SiteHeader() {
           <Image src={logo} alt="M3" className="h-8 w-auto" priority />
         </Link>
         <div className="flex items-center gap-2">
-          <Link
-            href="/signup"
+          <button
+            onClick={openCart}
             aria-label="Cart"
-            className="flex items-center justify-center w-12 h-12 rounded-full border border-border text-foreground/60"
+            className="relative flex items-center justify-center w-12 h-12 rounded-full border border-border text-foreground/60"
           >
             <ShoppingCart className="h-4 w-4" />
-          </Link>
+            {itemCount > 0 && (
+              <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand text-white text-[10px] font-extrabold">
+                {itemCount}
+              </span>
+            )}
+          </button>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
@@ -120,9 +135,9 @@ export function SiteHeader() {
             <Link href="/signup" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
               Become a Founding Member
             </Link>
-            <Link href="/signup" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
+            <a href={ACCOUNT_URL} className="self-start transition-colors hover:text-brand">
               Log in
-            </Link>
+            </a>
           </nav>
         </div>
       )}
