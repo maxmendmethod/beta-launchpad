@@ -153,16 +153,16 @@ export default function HomePage() {
 
         {/* FAQ — side by side: title left, cards right */}
         <section className="mx-auto px-4 md:px-[15%] py-10">
-          <div className="grid grid-cols-1 gap-8 md:gap-12 md:[grid-template-columns:1fr_1.5fr] items-start">
-            <h2 className="text-3xl md:text-4xl font-gliker font-bold uppercase">FAQs</h2>
+          <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2 items-start">
+            <h2 className="text-6xl md:text-7xl font-gliker font-bold uppercase">FAQs</h2>
             <div className="divide-y divide-border">
               {faqs.map((f) => (
                 <details key={f.q} className="group py-4">
-                  <summary className="cursor-pointer list-none flex justify-between items-center font-bold text-base md:text-lg">
-                    <h3 className="m-0 font-bold text-base md:text-lg">{f.q}</h3>
-                    <span className="ml-4 text-brand text-xl group-open:rotate-45 transition-transform">+</span>
+                  <summary className="cursor-pointer list-none flex justify-between items-center font-bold text-xl md:text-2xl">
+                    <h3 className="m-0 font-bold text-xl md:text-2xl">{f.q}</h3>
+                    <span className="ml-4 text-brand text-2xl md:text-3xl group-open:rotate-45 transition-transform">+</span>
                   </summary>
-                  <div className="mt-3 text-sm md:text-base text-foreground/80">{f.a}</div>
+                  <div className="mt-3 text-base md:text-xl text-foreground/80">{f.a}</div>
                 </details>
               ))}
             </div>

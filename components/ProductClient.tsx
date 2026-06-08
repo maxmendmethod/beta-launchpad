@@ -179,18 +179,6 @@ const EXPERTS = [
     title: "Functional Medicine Practitioner",
     quote: "The interaction management is what sets M3 apart. Most multi-supplements ignore the fact that nutrients compete with each other. This one was built around that problem from the start.",
   },
-  {
-    initials: "ER",
-    name: "Dr. Elena Rossi, RD",
-    title: "Performance Dietitian, Olympic Team",
-    quote: "I have spent years untangling nutrient timing for elite athletes by hand. M3 bakes that thinking right into the product. It is genuinely the first system I would hand a client without a dozen caveats.",
-  },
-  {
-    initials: "TB",
-    name: "Tyler Brooks, CSCS",
-    title: "Pro Performance Coach, 15 Years",
-    quote: "Half my job used to be reminding clients what to take and when. With M3 that problem just disappears, and the recovery numbers I track week to week have never looked better.",
-  },
 ];
 
 const TIMELINE = [
@@ -279,7 +267,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
     <>
       {/* Hero with sticky image */}
       <section className="mx-auto px-4 md:px-[15%] pt-0 md:pt-16">
-        <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:[grid-template-columns:1fr_1.2fr]">
+        <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:grid-cols-2">
 
           {/* Left: sticky image + thumbnails */}
           <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3">
