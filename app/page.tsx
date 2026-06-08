@@ -121,7 +121,7 @@ export default function HomePage() {
 
           <div className="relative z-10 flex min-h-[50vh] md:min-h-[56vh] max-w-7xl items-end pl-10 md:pl-32 pr-4 pb-10 md:pb-16">
             <div className="w-[55%] md:w-auto max-w-2xl text-left">
-              <h2 className="text-[1.6rem] md:text-[4rem] lg:text-[4.3rem] tracking-tight leading-[1.05] font-gliker">
+              <h2 className="text-[1.5rem] md:text-[3.3rem] lg:text-[3.6rem] tracking-tight leading-[1.05] font-gliker font-bold">
                 Do You Want To Feel Like Yourself Again?
               </h2>
               <p className="mt-3 text-base md:text-[1.7rem]">

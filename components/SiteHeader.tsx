@@ -19,11 +19,13 @@ export function SiteHeader() {
       {/* Desktop */}
       <div className="hidden md:flex w-full items-center justify-between pl-[5%] pr-[5%] py-2">
 
-        {/* Left: logo + nav */}
-        <div className="flex items-center gap-10">
-          <Link href="/" className="flex items-center">
-            <Image src={logo} alt="M3" className="h-14 w-auto" priority />
-          </Link>
+        {/* Left: logo */}
+        <Link href="/" className="flex items-center">
+          <Image src={logo} alt="M3" className="h-14 w-auto" priority />
+        </Link>
+
+        {/* Right: nav + cart + login */}
+        <div className="flex items-center gap-8">
           <nav className="flex items-center gap-8 text-sm text-foreground">
             <Link href="/science" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               Science
@@ -61,10 +63,9 @@ export function SiteHeader() {
               Become a Founding Member
             </Link>
           </nav>
-        </div>
 
-        {/* Right: cart + login */}
-        <div className="flex items-center gap-3">
+          {/* Cart + login */}
+          <div className="flex items-center gap-3">
           <button
             onClick={openCart}
             aria-label="Cart"
@@ -84,6 +85,7 @@ export function SiteHeader() {
             <User className="h-3.5 w-3.5" />
             Log in
           </a>
+          </div>
         </div>
       </div>
 

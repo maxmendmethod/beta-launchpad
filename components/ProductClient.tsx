@@ -320,7 +320,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Stars */}
             <div className="flex items-center gap-1.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="h-4 w-4 fill-[#e68163] text-[#e68163]" />
               ))}
               <span className="ml-1 text-sm text-foreground">Founding member reviews loading soon</span>
             </div>
@@ -599,7 +599,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                 </div>
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-3 w-3 fill-[#e68163] text-[#e68163]" />
                   ))}
                 </div>
                 <p className="text-sm leading-relaxed">{e.quote}</p>
