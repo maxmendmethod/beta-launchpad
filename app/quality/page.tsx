@@ -91,7 +91,7 @@ export default function QualityPage() {
         <section className="">
           <div className="mx-auto max-w-3xl px-4 py-16 text-center md:py-24">
             <h1
-              className="text-4xl leading-tight md:text-5xl font-cormorant"
+              className="text-4xl leading-tight md:text-5xl font-bodoni"
             >
               Built around better standards from the beginning.
             </h1>
@@ -147,7 +147,7 @@ export default function QualityPage() {
                 <div className="flex flex-col gap-5">
                   {MFG_STATS.map((s) => (
                     <div key={s.big} className="flex flex-col gap-1">
-                      <span className="text-3xl text-brand font-cormorant">
+                      <span className="text-3xl text-brand font-bodoni">
                         {s.big}
                       </span>
                       <span className="text-sm leading-snug">

@@ -28,8 +28,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-brand: var(--brand);
-  --font-cormorant: var(--cormorant), Georgia, "Times New Roman", serif;
-  --font-sans: var(--lato), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-bodoni: var(--bodoni), Georgia, "Times New Roman", serif;
+  --font-sans: var(--open-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 :root {

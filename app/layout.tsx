@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Lato, Cormorant_Garamond } from "next/font/google";
+import { Open_Sans, Bodoni_Moda } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -7,18 +7,18 @@ import { CartProvider } from "@/contexts/CartContext";
 import { CartDrawer } from "@/components/CartDrawer";
 import "./globals.css";
 
-const lato = Lato({
+const openSans = Open_Sans({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
-  variable: "--lato",
+  variable: "--open-sans",
 });
 
-const cormorant = Cormorant_Garamond({
+const bodoni = Bodoni_Moda({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--cormorant",
+  variable: "--bodoni",
 });
 
 const SITE_URL = "https://www.maxmendmethod.com";
@@ -152,7 +152,7 @@ const siteNavLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${lato.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${openSans.variable} ${bodoni.variable}`}>
       <body>
         <script
           type="application/ld+json"

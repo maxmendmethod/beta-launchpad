@@ -276,13 +276,13 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             <div className="aspect-[4/5] w-full rounded-md bg-secondary flex items-center justify-center overflow-hidden">
               {selectedImage === 0 ? (
                 <div className="text-center">
-                  <p className="text-7xl text-brand font-cormorant">M3</p>
-                  <p className="mt-2 text-sm font-cormorant">Product image coming soon</p>
+                  <p className="text-7xl text-brand font-bodoni">M3</p>
+                  <p className="mt-2 text-sm font-bodoni">Product image coming soon</p>
                 </div>
               ) : (
                 <div className="text-center">
-                  <p className="text-3xl text-brand/30 font-cormorant">View {selectedImage + 1}</p>
-                  <p className="mt-1 text-xs font-cormorant">Image coming soon</p>
+                  <p className="text-3xl text-brand/30 font-bodoni">View {selectedImage + 1}</p>
+                  <p className="mt-1 text-xs font-bodoni">Image coming soon</p>
                 </div>
               )}
             </div>
@@ -311,7 +311,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
             {/* Title */}
             <div>
-              <h2 className="text-4xl md:text-3xl tracking-tight leading-tight font-cormorant text-brand">
+              <h2 className="text-4xl md:text-3xl tracking-tight leading-tight font-bodoni text-brand">
                 {MOCK_PRODUCT.name}
               </h2>
               <p className="mt-1 text-lg md:text-base text-foreground font-bold">{MOCK_PRODUCT.tagline}</p>
@@ -320,7 +320,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Stars */}
             <div className="flex items-center gap-1.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="h-4 w-4 fill-brand text-brand" />
               ))}
               <span className="ml-1 text-sm text-foreground">Founding member reviews loading soon</span>
             </div>
@@ -391,7 +391,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                             <p className="font-bold text-sm">
                               {/^\d/.test(tier.label) ? (
                                 <>
-                                  <span className="font-cormorant">{tier.label.split(' ')[0]}</span>
+                                  <span className="font-bodoni">{tier.label.split(' ')[0]}</span>
                                   {' ' + tier.label.split(' ').slice(1).join(' ')}
                                 </>
                               ) : tier.label}
@@ -405,7 +405,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                       </div>
                       <div className="text-right shrink-0 ml-2">
                         <div className="flex items-baseline gap-1.5">
-                          <span className="text-lg font-cormorant">${tier.pricePerMonth}</span>
+                          <span className="text-lg font-bodoni">${tier.pricePerMonth}</span>
                           <span className="text-xs text-foreground/60">/mo</span>
                           <span className="text-xs text-foreground/35 line-through">${tier.originalPrice}</span>
                         </div>
@@ -458,7 +458,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                             <p className="font-bold text-sm">
                               {/^\d/.test(tier.label) ? (
                                 <>
-                                  <span className="font-cormorant">{tier.label.split(' ')[0]}</span>
+                                  <span className="font-bodoni">{tier.label.split(' ')[0]}</span>
                                   {' ' + tier.label.split(' ').slice(1).join(' ')}
                                 </>
                               ) : tier.label}
@@ -471,7 +471,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                         </div>
                       </div>
                       <div className="text-right shrink-0 ml-2">
-                        <span className="text-lg font-cormorant">
+                        <span className="text-lg font-bodoni">
                           {tier.price === 0 ? "FREE" : `$${tier.price}`}
                         </span>
                         {tier.perks.length > 0 && selectedOneTimeTier === i && (
@@ -493,11 +493,11 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Price and CTA */}
             <div className="flex flex-col gap-2.5">
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl md:text-3xl font-cormorant">${displayPrice}</span>
+                <span className="text-4xl md:text-3xl font-bodoni">${displayPrice}</span>
                 {planType === "subscribe" && (
-                  <span className="text-sm text-foreground/60 font-cormorant">/month</span>
+                  <span className="text-sm text-foreground/60 font-bodoni">/month</span>
                 )}
-                <span className="text-sm text-foreground/40 line-through font-cormorant">
+                <span className="text-sm text-foreground/40 line-through font-bodoni">
                   $149
                 </span>
               </div>
@@ -562,7 +562,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                         <ol className="pb-3 flex flex-col gap-1">
                           {faq.steps.map((step, j) => (
                             <li key={j} className="flex items-start gap-2 text-sm">
-                              <span className="font-cormorant text-brand min-w-4">{j + 1}.</span>
+                              <span className="font-bodoni text-brand min-w-4">{j + 1}.</span>
                               {step}
                             </li>
                           ))}
@@ -599,7 +599,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                 </div>
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-3 w-3 fill-brand text-brand" />
                   ))}
                 </div>
                 <p className="text-sm leading-relaxed">{e.quote}</p>
@@ -618,7 +618,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {RESULTS.map((r) => (
               <div key={r.label} className="flex flex-col gap-2">
                 <div className="flex items-baseline justify-between">
-                  <span className="text-3xl text-brand font-cormorant">{r.pct}%</span>
+                  <span className="text-3xl text-brand font-bodoni">{r.pct}%</span>
                   <span className="text-sm">{r.label}</span>
                 </div>
                 <div className="h-2 w-full overflow-hidden rounded-full bg-border">
@@ -639,11 +639,11 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
           <div className="flex flex-col">
-          <h2 className="mb-10 text-2xl font-cormorant text-brand">What to Expect</h2>
+          <h2 className="mb-10 text-2xl font-bodoni text-brand">What to Expect</h2>
             {TIMELINE.map((item, i) => (
               <div key={item.period} className="flex gap-5">
                 <div className="flex flex-col items-center">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white text-sm bg-brand font-cormorant">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white text-sm bg-brand font-bodoni">
                     {i + 1}
                   </div>
                   {i < TIMELINE.length - 1 && (

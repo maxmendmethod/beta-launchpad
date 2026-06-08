@@ -78,7 +78,7 @@ export default function ArticlePage() {
       <main className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
         <header className="mb-10">
           <h1
-            className="text-3xl sm:text-4xl leading-tight font-cormorant"
+            className="text-3xl sm:text-4xl leading-tight font-bodoni"
           >
             Why Taking the Same Supplements Every Day Isn&apos;t Enough For Peak Health &amp;
             Performance in 2026
