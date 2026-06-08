@@ -151,19 +151,21 @@ export default function HomePage() {
           <ProductClient defaultPlanType="onetime" />
         </div>
 
-{/* FAQ — borderless, wide */}
-        <section className="mx-auto max-w-6xl px-4 py-10">
-          <h2 className="text-2xl md:text-3xl font-black text-center uppercase">FAQs</h2>
-          <div className="mt-6 divide-y divide-border">
-            {faqs.map((f) => (
-              <details key={f.q} className="group py-4">
-                <summary className="cursor-pointer list-none flex justify-between items-center font-bold text-base md:text-lg">
-                  <h3 className="m-0 font-bold text-base md:text-lg">{f.q}</h3>
-                  <span className="ml-4 text-brand text-xl group-open:rotate-45 transition-transform">+</span>
-                </summary>
-                <div className="mt-3 text-sm md:text-base text-foreground/80">{f.a}</div>
-              </details>
-            ))}
+        {/* FAQ — side by side: title left, cards right */}
+        <section className="mx-auto px-4 md:px-[15%] py-10">
+          <div className="grid grid-cols-1 gap-8 md:gap-12 md:[grid-template-columns:1fr_1.5fr] items-start">
+            <h2 className="text-3xl md:text-4xl font-gliker font-bold uppercase">FAQs</h2>
+            <div className="divide-y divide-border">
+              {faqs.map((f) => (
+                <details key={f.q} className="group py-4">
+                  <summary className="cursor-pointer list-none flex justify-between items-center font-bold text-base md:text-lg">
+                    <h3 className="m-0 font-bold text-base md:text-lg">{f.q}</h3>
+                    <span className="ml-4 text-brand text-xl group-open:rotate-45 transition-transform">+</span>
+                  </summary>
+                  <div className="mt-3 text-sm md:text-base text-foreground/80">{f.a}</div>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -182,7 +184,7 @@ export default function HomePage() {
             className="hidden 2xl:block pointer-events-none select-none absolute right-16 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
           />
           <div className="mx-auto max-w-5xl px-4 py-12 relative z-10">
-            <h2 className="text-2xl md:text-3xl font-black text-center uppercase mb-8">About The Founders</h2>
+            <h2 className="text-2xl md:text-3xl font-gliker font-bold text-center uppercase mb-8">About The Founders</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-1 gap-8 items-start">
               <div className="md:col-span-1 2xl:hidden">
                 <Image src={foundersDuo} alt="Myles and Leo Sherman" className="w-full rounded-lg h-auto" />
@@ -202,7 +204,7 @@ export default function HomePage() {
             <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-brand/10">
               <Shield className="h-8 w-8 text-brand" />
             </div>
-            <h2 className="mb-3 text-2xl uppercase font-bold">30 Day Money Back Guarantee</h2>
+            <h2 className="mb-3 text-2xl uppercase font-gliker font-bold">30 Day Money Back Guarantee</h2>
             <p className="mx-auto max-w-xl text-base">
               Try M3 for a full 30 days. If you do not feel the difference, we will refund every dollar. No questions asked. We are confident in the protocol.
             </p>
@@ -216,8 +218,8 @@ export default function HomePage() {
         </section>
 
         {/* Final CTA — centered logo + button */}
-        <section className="mx-auto max-w-5xl px-4 py-10">
-          <div className="flex flex-col items-center justify-center gap-6">
+        <section className="bg-[#fffaeb]">
+          <div className="mx-auto max-w-5xl px-4 py-10 flex flex-col items-center justify-center gap-6">
             <Image src={logo} alt="M3" className="h-14 w-auto" />
             <div className="relative inline-block">
               <Link

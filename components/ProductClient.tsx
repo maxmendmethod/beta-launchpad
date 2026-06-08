@@ -179,6 +179,18 @@ const EXPERTS = [
     title: "Functional Medicine Practitioner",
     quote: "The interaction management is what sets M3 apart. Most multi-supplements ignore the fact that nutrients compete with each other. This one was built around that problem from the start.",
   },
+  {
+    initials: "ER",
+    name: "Dr. Elena Rossi, RD",
+    title: "Performance Dietitian, Olympic Team",
+    quote: "I have spent years untangling nutrient timing for elite athletes by hand. M3 bakes that thinking right into the product. It is genuinely the first system I would hand a client without a dozen caveats.",
+  },
+  {
+    initials: "TB",
+    name: "Tyler Brooks, CSCS",
+    title: "Pro Performance Coach, 15 Years",
+    quote: "Half my job used to be reminding clients what to take and when. With M3 that problem just disappears, and the recovery numbers I track week to week have never looked better.",
+  },
 ];
 
 const TIMELINE = [
@@ -266,8 +278,8 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
   return (
     <>
       {/* Hero with sticky image */}
-      <section className="mx-auto max-w-7xl px-4 md:px-12 pt-0 md:pt-16">
-        <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:[grid-template-columns:1fr_1.2fr] md:ml-[7%]">
+      <section className="mx-auto px-4 md:px-[15%] pt-0 md:pt-16">
+        <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:[grid-template-columns:1fr_1.2fr]">
 
           {/* Left: sticky image + thumbnails */}
           <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3">
@@ -583,8 +595,8 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
       {/* Experts */}
       <section className="">
-        <div className="mx-auto max-w-7xl px-4 md:px-12 py-12">
-          <h2 className="mb-6 text-center text-4xl font-bold">Trusted by Doctors and Coaches</h2>
+        <div className="mx-auto px-4 md:px-[15%] py-12">
+          <h2 className="mb-6 text-center text-4xl font-gliker font-bold">Trusted by Doctors and Coaches</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {EXPERTS.map((e) => (
               <div key={e.initials} className="flex flex-col gap-4 rounded-md border border-border p-6">
@@ -612,16 +624,16 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
       {/* Results */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 md:px-12 py-12">
-          <h2 className="mb-8 text-center text-2xl font-black uppercase">What Members Report</h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="mx-auto px-4 md:px-[15%] py-16">
+          <h2 className="mb-12 text-center text-4xl font-gliker font-bold uppercase">What Members Report</h2>
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
             {RESULTS.map((r) => (
-              <div key={r.label} className="flex flex-col gap-2">
-                <div className="flex items-baseline justify-between">
-                  <span className="text-3xl text-brand font-gliker">{r.pct}%</span>
-                  <span className="text-sm">{r.label}</span>
+              <div key={r.label} className="flex flex-col gap-3">
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="text-5xl text-brand font-gliker font-bold">{r.pct}%</span>
+                  <span className="text-lg md:text-xl font-bold">{r.label}</span>
                 </div>
-                <div className="h-2 w-full overflow-hidden rounded-full bg-border">
+                <div className="h-3 w-full overflow-hidden rounded-full bg-border">
                   <div className="h-full rounded-full bg-brand" style={{ width: `${r.pct}%` }} />
                 </div>
               </div>
@@ -632,14 +644,14 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
       {/* What to Expect */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
+        <div className="mx-auto px-4 md:px-[15%] py-12">
           {/* Mobile-only cropped image */}
           <div className="md:hidden w-full rounded-md overflow-hidden mb-6 aspect-square">
             <Image src={whatToExpectImg} alt="What to expect with M3 over time" className="w-full h-full object-cover object-top" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
           <div className="flex flex-col">
-          <h2 className="mb-10 text-2xl font-gliker text-brand">What to Expect</h2>
+          <h2 className="mb-10 text-4xl font-gliker font-bold text-brand">What to Expect</h2>
             {TIMELINE.map((item, i) => (
               <div key={item.period} className="flex gap-5">
                 <div className="flex flex-col items-center">
