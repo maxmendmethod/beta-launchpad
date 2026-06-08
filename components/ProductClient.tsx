@@ -311,10 +311,10 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
             {/* Title */}
             <div>
-              <h2 className="text-4xl md:text-3xl tracking-tight leading-tight font-gliker text-brand">
+              <h2 className="text-4xl md:text-4xl tracking-tight leading-tight font-gliker text-brand">
                 {MOCK_PRODUCT.name}
               </h2>
-              <p className="mt-1 text-lg md:text-base text-foreground font-bold">{MOCK_PRODUCT.tagline}</p>
+              <p className="mt-1 text-xl md:text-lg text-foreground font-bold">{MOCK_PRODUCT.tagline}</p>
             </div>
 
             {/* Stars */}
@@ -322,7 +322,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-[#e68163] text-[#e68163]" />
               ))}
-              <span className="ml-1 text-sm text-foreground">Founding member reviews loading soon</span>
+              <span className="ml-1 text-base text-foreground">Founding member reviews loading soon</span>
             </div>
 
             {/* Claims */}
@@ -332,8 +332,8 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                   key={c.label}
                   className="rounded-md border border-border bg-secondary/50 px-3 py-2 text-center"
                 >
-                  <p className="text-lg font-black">{c.stat}</p>
-                  <p className="text-[11px] leading-tight font-bold">{c.label}</p>
+                  <p className="text-xl font-black">{c.stat}</p>
+                  <p className="text-xs leading-tight font-bold">{c.label}</p>
                 </div>
               ))}
             </div>
@@ -342,7 +342,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             <div className="grid grid-cols-2 gap-1 rounded-xl bg-secondary p-1">
               <button
                 onClick={() => setPlanType("subscribe")}
-                className={`rounded-lg py-3 text-base md:text-sm font-bold transition-colors ${
+                className={`rounded-lg py-3 text-base md:text-base font-bold transition-colors ${
                   planType === "subscribe"
                     ? "bg-brand text-white shadow-sm"
                     : "text-foreground"
@@ -352,7 +352,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
               </button>
               <button
                 onClick={() => setPlanType("onetime")}
-                className={`rounded-lg py-2.5 text-sm font-bold transition-colors ${
+                className={`rounded-lg py-2.5 text-base font-bold transition-colors ${
                   planType === "onetime"
                     ? "bg-brand text-white shadow-sm"
                     : "text-foreground"
@@ -493,7 +493,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Price and CTA */}
             <div className="flex flex-col gap-2.5">
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl md:text-3xl font-gliker">${displayPrice}</span>
+                <span className="text-4xl md:text-4xl font-gliker">${displayPrice}</span>
                 {planType === "subscribe" && (
                   <span className="text-sm text-foreground/60 font-gliker">/month</span>
                 )}
@@ -504,7 +504,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
               {isFoundingMember ? (
                 <Link
                   href="/signup"
-                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-base font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors"
+                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-lg font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors"
                 >
                   <span className="flex items-center justify-center gap-2">
                     Apply Now
@@ -515,7 +515,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                 <button
                   onClick={handleBuy}
                   disabled={isLoading}
-                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-base font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-lg font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   <span className="flex items-center justify-center gap-2">
                     {isLoading ? "Adding..." : planType === "subscribe" ? "Subscribe" : "Buy Now"}
@@ -551,7 +551,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                     <h3 className="m-0">
                       <button
                         onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                        className="flex w-full items-start justify-between py-3 text-left text-base md:text-sm gap-2 font-bold"
+                        className="flex w-full items-start justify-between py-3 text-left text-base md:text-base gap-2 font-bold"
                       >
                         {faq.q}
                         <Plus className={`h-4 w-4 shrink-0 mt-0.5 transition-transform duration-200 ${openFaq === i ? "rotate-45 text-brand" : "text-foreground/40"}`} />
@@ -641,7 +641,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           <div className="flex flex-col">
           <h2 className="mb-10 text-4xl font-gliker font-bold text-brand">What to Expect</h2>
             {TIMELINE.map((item, i) => (
-              <div key={item.period} className="flex gap-5">
+              <div key={item.period} className="flex gap-5 md:flex-1">
                 <div className="flex flex-col items-center">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white text-sm bg-brand font-gliker">
                     {i + 1}
