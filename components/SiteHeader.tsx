@@ -15,7 +15,7 @@ export function SiteHeader() {
   const itemCount = cart?.lines.reduce((s, l) => s + l.quantity, 0) ?? 0;
 
   return (
-    <header className="bg-white">
+    <header className="bg-[#fffaeb]">
       {/* Desktop */}
       <div className="hidden md:flex w-full items-center justify-between pl-[5%] pr-[5%] py-2">
 
@@ -117,7 +117,7 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <div className="md:hidden border-t border-border bg-white">
+        <div className="md:hidden border-t border-border bg-[#fffaeb]">
           <nav className="flex flex-col gap-3 px-4 py-4 text-sm font-semibold text-foreground">
             <Link href="/science" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
               Science
