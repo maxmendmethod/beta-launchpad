@@ -84,7 +84,8 @@
       "Bash(sleep 1)",
       "Bash(ffmpeg -i herosection.gif)",
       "Bash(ffmpeg -y -i herosection.gif -movflags +faststart -pix_fmt yuv420p -vf \"scale=1280:-2:flags=lanczos\" -an -c:v libx264 -crf 30 -preset slow public/hero-section.mp4)",
-      "Bash(ffmpeg -y -i herosection.gif -vf \"scale=1280:-2:flags=lanczos\" -an -c:v libvpx-vp9 -crf 40 -b:v 0 -row-mt 1 public/hero-section.webm)"
+      "Bash(ffmpeg -y -i herosection.gif -vf \"scale=1280:-2:flags=lanczos\" -an -c:v libvpx-vp9 -crf 40 -b:v 0 -row-mt 1 public/hero-section.webm)",
+      "Bash(grep -iE \"\\\\.\\(png|jpg|jpeg|webp|gif|svg|avif\\)$\")"
     ]
   }
 }

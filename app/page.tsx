@@ -11,7 +11,6 @@ import logo from "@/src/assets/m3-logo.png";
 import founderMyles from "@/src/assets/founder-max.png";
 import founderLeo from "@/src/assets/founder-jon.png";
 import foundersDuo from "@/src/assets/founders-duo.png";
-import heroBg from "@/src/assets/hero-bg.avif";
 
 export const metadata: Metadata = {
   title: "Max Mend Method | Daily Precision Timed Supplement",
@@ -113,7 +112,6 @@ export default function HomePage() {
             muted
             loop
             playsInline
-            poster={heroBg.src}
             className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none"
           >
             <source src="/hero-section.mp4" type="video/mp4" />
