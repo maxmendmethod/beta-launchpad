@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Arimo } from "next/font/google";
-import localFont from "next/font/local";
+import { Source_Sans_3, Libre_Baskerville } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -8,17 +7,18 @@ import { CartProvider } from "@/contexts/CartContext";
 import { CartDrawer } from "@/components/CartDrawer";
 import "./globals.css";
 
-const arimo = Arimo({
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  display: "swap",
+  variable: "--source-sans",
+});
+
+const libreBaskerville = Libre_Baskerville({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
-  variable: "--arimo",
-});
-
-const gliker = localFont({
-  src: "../public/fonts/gliker-regular-expanded.woff2",
-  display: "swap",
-  variable: "--gliker",
+  variable: "--libre-baskerville",
 });
 
 const SITE_URL = "https://www.maxmendmethod.com";
@@ -152,7 +152,7 @@ const siteNavLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${arimo.variable} ${gliker.variable}`}>
+    <html lang="en" className={`${sourceSans.variable} ${libreBaskerville.variable}`}>
       <body>
         <script
           type="application/ld+json"
