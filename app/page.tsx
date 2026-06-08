@@ -178,8 +178,8 @@ export default function HomePage() {
               "radial-gradient(130% 115% at 0% 0%, #e68163 0%, rgba(230,129,99,0) 55%)",
               "radial-gradient(90% 95% at 72% 22%, #cf6f95 0%, rgba(207,111,149,0) 55%)",
               "radial-gradient(100% 105% at 22% 88%, #6a4f93 0%, rgba(106,79,147,0) 58%)",
-              "radial-gradient(125% 120% at 100% 100%, #2f6d8a 0%, rgba(47,109,138,0) 62%)",
-              "linear-gradient(135deg, #e68163 0%, #b56b86 45%, #3b6f8c 100%)",
+              "radial-gradient(125% 120% at 100% 100%, #6b3a22 0%, rgba(107,58,34,0) 62%)",
+              "linear-gradient(135deg, #e68163 0%, #b56b86 45%, #5a3420 100%)",
             ].join(", "),
           }}
         >
@@ -196,7 +196,7 @@ export default function HomePage() {
             className="hidden 2xl:block pointer-events-none select-none absolute right-16 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
           />
           <div className="mx-auto max-w-5xl px-4 py-12 relative z-10 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.25)]">
-            <h2 className="text-2xl md:text-3xl font-gliker font-bold text-center uppercase mb-8 text-white">About The Founders</h2>
+            <h2 className="text-4xl md:text-5xl font-gliker font-bold text-center uppercase mb-8 text-white">About The Founders</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-1 gap-8 items-start">
               <div className="md:col-span-1 2xl:hidden">
                 <Image src={foundersDuo} alt="Myles and Leo Sherman" className="w-full rounded-lg h-auto" />
