@@ -106,16 +106,18 @@ export default function HomePage() {
 
         {/* HERO — background image with left-to-right white fade */}
         <section className="relative overflow-hidden md:border-b md:border-border">
-          {/* Background image */}
-          <Image
-            src={heroBg}
-            alt=""
+          {/* Background video (gif converted to mp4 for performance) */}
+          <video
             aria-hidden
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center pointer-events-none select-none"
-          />
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={heroBg.src}
+            className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none"
+          >
+            <source src="/hero-section.mp4" type="video/mp4" />
+          </video>
           {/* White fade: solid on left, transparent on right */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-transparent" />
 
@@ -124,7 +126,7 @@ export default function HomePage() {
               <h2 className="text-[1.5rem] md:text-[3.3rem] lg:text-[3.6rem] tracking-tight leading-[1.05] font-gliker font-bold">
                 Do You Want To Feel Like Yourself Again?
               </h2>
-              <p className="mt-3 text-base md:text-[1.7rem]">
+              <p className="mt-3 text-sm md:text-[1.4rem]">
                 Take the precision timed supplement and come alive in 30 days.
               </p>
               <div className="mt-5 md:mt-7">

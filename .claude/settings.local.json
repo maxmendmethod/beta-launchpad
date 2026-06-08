@@ -81,7 +81,10 @@
       "Bash(grep -qi \"ready\\\\|started server\\\\|compiled\\\\|localhost:3100\" \"C:\\\\Users\\\\NAS\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--NAS-Desktop-beta-launchpad\\\\b65986c2-143e-4cbb-8a45-b99ca942ab28\\\\tasks\\\\ber3c462v.output\")",
       "Bash(echo \"READY-MARKER-FOUND\")",
       "Bash(break)",
-      "Bash(sleep 1)"
+      "Bash(sleep 1)",
+      "Bash(ffmpeg -i herosection.gif)",
+      "Bash(ffmpeg -y -i herosection.gif -movflags +faststart -pix_fmt yuv420p -vf \"scale=1280:-2:flags=lanczos\" -an -c:v libx264 -crf 30 -preset slow public/hero-section.mp4)",
+      "Bash(ffmpeg -y -i herosection.gif -vf \"scale=1280:-2:flags=lanczos\" -an -c:v libvpx-vp9 -crf 40 -b:v 0 -row-mt 1 public/hero-section.webm)"
     ]
   }
 }
