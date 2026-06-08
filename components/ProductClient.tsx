@@ -631,7 +631,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
       </section>
 
       {/* What to Expect */}
-      <section className="bg-white">
+      <section className="bg-[#fffaeb]">
         <div className="mx-auto px-4 md:px-[15%] py-12">
           {/* Mobile-only cropped image */}
           <div className="md:hidden w-full rounded-md overflow-hidden mb-6 aspect-square">

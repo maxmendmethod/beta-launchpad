@@ -170,7 +170,19 @@ export default function HomePage() {
         </section>
 
         {/* Founders — hero-style side images on 2xl+, duo image + text grid below */}
-        <section className="bg-white relative overflow-hidden">
+        <section
+          className="relative overflow-hidden"
+          style={{
+            backgroundColor: "#e68163",
+            backgroundImage: [
+              "radial-gradient(130% 115% at 0% 0%, #e68163 0%, rgba(230,129,99,0) 55%)",
+              "radial-gradient(90% 95% at 72% 22%, #cf6f95 0%, rgba(207,111,149,0) 55%)",
+              "radial-gradient(100% 105% at 22% 88%, #6a4f93 0%, rgba(106,79,147,0) 58%)",
+              "radial-gradient(125% 120% at 100% 100%, #2f6d8a 0%, rgba(47,109,138,0) 62%)",
+              "linear-gradient(135deg, #e68163 0%, #b56b86 45%, #3b6f8c 100%)",
+            ].join(", "),
+          }}
+        >
           <Image
             src={founderMyles}
             alt="Myles Sherman, co-founder of Max Mend Method"
@@ -183,13 +195,13 @@ export default function HomePage() {
             aria-hidden
             className="hidden 2xl:block pointer-events-none select-none absolute right-16 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
           />
-          <div className="mx-auto max-w-5xl px-4 py-12 relative z-10">
-            <h2 className="text-2xl md:text-3xl font-gliker font-bold text-center uppercase mb-8">About The Founders</h2>
+          <div className="mx-auto max-w-5xl px-4 py-12 relative z-10 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.25)]">
+            <h2 className="text-2xl md:text-3xl font-gliker font-bold text-center uppercase mb-8 text-white">About The Founders</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-1 gap-8 items-start">
               <div className="md:col-span-1 2xl:hidden">
                 <Image src={foundersDuo} alt="Myles and Leo Sherman" className="w-full rounded-lg h-auto" />
               </div>
-              <div className="md:col-span-2 2xl:col-span-1 2xl:max-w-2xl 2xl:mx-auto space-y-4 text-sm md:text-base text-foreground/85">
+              <div className="md:col-span-2 2xl:col-span-1 2xl:max-w-2xl 2xl:mx-auto space-y-4 text-sm md:text-base text-white/95">
                 <p>Myles and Leo Sherman are brothers and co-founders of M3. Myles holds a degree in Cybersecurity and Economics. Leo holds a degree in Physics and Electrical Engineering. Both are The Knowledge Society alumni. Across their education a deep focus on human performance and nutrition remained constant.</p>
                 <p>Over time that gave them a thorough understanding of the industry and its problems. They have spent years implementing nutrition science. Myles has a 2,000 consecutive day streak on Cronometer and MyFitnessPal. Neither has missed a single gym session in eight years. When they travel, TSA often flags their bags for supplements. They became the default reference point in their circles for training and nutrition.</p>
                 <p>They have been through the mistakes M3 is designed to prevent. From managing over 20 supplements to spending hundreds of dollars per month on trending ingredients: they get it. The research they did to understand those failures is what M3 is built on.</p>
