@@ -176,10 +176,10 @@ export default function HomePage() {
             backgroundColor: "#e68163",
             backgroundImage: [
               "radial-gradient(130% 115% at 0% 0%, #e68163 0%, rgba(230,129,99,0) 55%)",
-              "radial-gradient(90% 95% at 72% 22%, #cf6f95 0%, rgba(207,111,149,0) 55%)",
-              "radial-gradient(100% 105% at 22% 88%, #6a4f93 0%, rgba(106,79,147,0) 58%)",
+              "radial-gradient(90% 95% at 72% 22%, #e0975a 0%, rgba(224,151,90,0) 55%)",
+              "radial-gradient(100% 105% at 22% 88%, #9c5a32 0%, rgba(156,90,50,0) 58%)",
               "radial-gradient(125% 120% at 100% 100%, #6b3a22 0%, rgba(107,58,34,0) 62%)",
-              "linear-gradient(135deg, #e68163 0%, #b56b86 45%, #5a3420 100%)",
+              "linear-gradient(135deg, #e68163 0%, #b06a3c 45%, #5a3420 100%)",
             ].join(", "),
           }}
         >
