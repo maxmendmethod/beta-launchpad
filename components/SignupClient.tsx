@@ -90,7 +90,7 @@ export function SignupClient() {
           <Link href="/">
             <Image src={logo} alt="M3" className="mx-auto h-12 w-auto" />
           </Link>
-          <h1 className="mt-10 text-2xl md:text-4xl leading-tight font-bodoni">
+          <h1 className="mt-10 text-2xl md:text-4xl leading-tight font-gliker">
             Congratulations on taking the first step to optimizing your health
           </h1>
           <Image src={celebrationGif} alt="Celebration" unoptimized className="mx-auto mt-8 w-full max-w-[57.6rem] h-auto" />
@@ -149,7 +149,7 @@ export function SignupClient() {
         {/* Dark band: Headline + Subheader + Video */}
         <section className="bg-[#1d1e1c]">
           <div className="mx-auto max-w-5xl px-4 pb-8">
-            <h1 className="text-[2.4rem] md:text-[3.9rem] text-center leading-[1.05] text-white font-bodoni">
+            <h1 className="text-[2.4rem] md:text-[3.9rem] text-center leading-[1.05] text-white font-gliker">
               Are you getting everything out of your supplements?
             </h1>
             <p className="mt-4 text-center text-[1.7rem] md:text-[2.1rem] text-white/80">

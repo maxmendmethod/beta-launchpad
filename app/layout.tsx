@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Open_Sans, Bodoni_Moda } from "next/font/google";
+import { Arimo } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -7,18 +8,17 @@ import { CartProvider } from "@/contexts/CartContext";
 import { CartDrawer } from "@/components/CartDrawer";
 import "./globals.css";
 
-const openSans = Open_Sans({
+const arimo = Arimo({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
-  variable: "--open-sans",
+  variable: "--arimo",
 });
 
-const bodoni = Bodoni_Moda({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const gliker = localFont({
+  src: "../public/fonts/gliker-regular-expanded.woff2",
   display: "swap",
-  variable: "--bodoni",
+  variable: "--gliker",
 });
 
 const SITE_URL = "https://www.maxmendmethod.com";
@@ -152,7 +152,7 @@ const siteNavLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${openSans.variable} ${bodoni.variable}`}>
+    <html lang="en" className={`${arimo.variable} ${gliker.variable}`}>
       <body>
         <script
           type="application/ld+json"

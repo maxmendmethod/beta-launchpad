@@ -20,7 +20,7 @@ export default function TermsPage() {
       <StickyBanner />
       <SiteHeader />
       <main className="mx-auto max-w-3xl px-4 py-16 pb-24">
-        <h1 className="text-4xl mb-2 font-bodoni">Terms of Service</h1>
+        <h1 className="text-4xl mb-2 font-gliker">Terms of Service</h1>
         <p className="text-sm text-muted-foreground mb-10">Last updated: May 22, 2026</p>
         <div className="space-y-10 text-sm leading-relaxed text-foreground">
 
