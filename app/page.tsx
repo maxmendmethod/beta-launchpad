@@ -118,7 +118,7 @@ export default function HomePage() {
           >
             <source src="/hero-section.mp4" type="video/mp4" />
           </video>
-          <div className="relative z-10 flex min-h-[50vh] md:min-h-[56vh] max-w-7xl items-end pl-10 md:pl-32 pr-4 pb-10 md:pb-16">
+          <div className="relative z-10 flex min-h-[50vh] md:min-h-[56vh] max-w-7xl items-center pl-10 md:pl-32 pr-4 py-10 md:py-16">
             <div className="w-[55%] md:w-auto max-w-2xl text-left text-white">
               <h2 className="text-[1.5rem] md:text-[3.3rem] lg:text-[3.6rem] tracking-tight leading-[1.05] font-gliker font-bold">
                 Do You Want To Feel Like Yourself Again?
