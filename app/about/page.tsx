@@ -28,7 +28,7 @@ export default function AboutPage() {
       <SiteHeader />
       <main className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
         <header className="mb-10">
-          <h1 className="text-4xl leading-tight font-gliker">Why We Made M3</h1>
+          <h1 className="text-4xl leading-tight font-cormorant">Why We Made M3</h1>
           <div className="mt-4 flex items-center gap-3">
             <Image
               src={founderJon}

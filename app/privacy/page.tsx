@@ -20,7 +20,7 @@ export default function PrivacyPage() {
       <StickyBanner />
       <SiteHeader />
       <main className="mx-auto max-w-3xl px-4 py-16 pb-24">
-        <h1 className="text-4xl mb-2 font-gliker">Privacy Policy</h1>
+        <h1 className="text-4xl mb-2 font-cormorant">Privacy Policy</h1>
         <p className="text-sm text-muted-foreground mb-10">Last updated: June 4, 2026</p>
         <div className="space-y-10 text-sm leading-relaxed text-foreground">
 
