@@ -137,9 +137,9 @@ export default function HomePage() {
         </section>
 
         {/* Quote */}
-        <section className="border-t border-border bg-white">
-          <div className="mx-auto max-w-5xl px-6 py-16">
-            <p className="mb-3 text-sm uppercase tracking-wide text-brand">
+        <section className="border-t border-border bg-[#e68163] text-white">
+          <div className="px-[10%] py-16">
+            <p className="mb-3 text-sm uppercase tracking-wide text-white">
               Generic Supplements Don&apos;t Consider Changing Daily Needs
             </p>
             <p className="text-2xl md:text-3xl lg:text-4xl leading-snug font-bold">
