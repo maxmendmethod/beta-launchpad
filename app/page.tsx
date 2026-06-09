@@ -164,7 +164,10 @@ export default function HomePage() {
         {/* Founders — hero-style side images on 2xl+, duo image + text grid below */}
         <section
           className="relative overflow-hidden"
-          style={{ backgroundColor: "#fffaeb" }}
+          style={{
+            backgroundColor: "#fffaeb",
+            backgroundImage: "linear-gradient(135deg, #e68163 0%, #fffaeb 100%)",
+          }}
         >
           <Image
             src={founderMyles}
