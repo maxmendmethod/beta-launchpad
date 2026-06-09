@@ -109,7 +109,7 @@ export default function HomePage() {
           {/* Background video (gif converted to mp4 for performance) */}
           <HeroVideo className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none" />
           <div className="relative z-10 flex min-h-[60vh] md:min-h-[67vh] max-w-7xl items-center pl-10 md:pl-32 pr-4 py-10 md:py-16">
-            <div className="w-[55%] md:w-auto max-w-2xl text-left text-white">
+            <div className="w-[70%] md:w-auto max-w-2xl text-left text-white">
               <h2 className="text-[1.5rem] md:text-[3.3rem] lg:text-[3.6rem] tracking-tight leading-[1.05] font-gliker font-bold">
                 Do You Want To Feel Like Yourself Again?
               </h2>
@@ -117,7 +117,7 @@ export default function HomePage() {
                 Take the precision timed supplement and come alive in 30 days.
               </p>
               <div className="mt-5 md:mt-7">
-                <a href="#product" className="inline-block whitespace-nowrap rounded-md bg-brand px-5 py-3 text-xs tracking-tight md:px-20 md:text-xl md:tracking-wide font-extrabold uppercase text-white shadow-sm hover:opacity-90">
+                <a href="#product" className="inline-block whitespace-nowrap rounded-md bg-brand px-8 py-5 text-lg tracking-tight md:px-20 md:py-4 md:text-xl md:tracking-wide font-extrabold uppercase text-white shadow-sm hover:opacity-90">
                   I'M READY TO OPTIMIZE
                 </a>
               </div>
