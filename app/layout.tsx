@@ -56,14 +56,12 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Max Mend Method | Daily Precision Timed Supplement",
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: "/m3tablogo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     site: "@maxmendmethod",
     title: "Max Mend Method | Daily Precision Timed Supplement",
     description: DEFAULT_DESCRIPTION,
-    images: ["/m3tablogo.png"],
   },
 };
 

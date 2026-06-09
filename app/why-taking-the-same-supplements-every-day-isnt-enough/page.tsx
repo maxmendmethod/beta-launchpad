@@ -21,7 +21,6 @@ export const metadata: Metadata = {
     url: "https://www.maxmendmethod.com/why-taking-the-same-supplements-every-day-isnt-enough",
     type: "article",
     publishedTime: "2026-06-03T00:00:00.000Z",
-    images: [{ url: "https://www.maxmendmethod.com/images/articles/field.webp", width: 800, height: 500 }],
   },
 };
 
