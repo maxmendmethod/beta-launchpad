@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, ShoppingCart, User, ChevronDown } from "lucide-react";
 import logo from "@/src/assets/m3-logo.png";
 import { useCart } from "@/contexts/CartContext";
+import { cn } from "@/lib/utils";
 
 const ACCOUNT_URL = "https://maxmendmethod.myshopify.com/account";
 
@@ -13,6 +14,15 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const { openCart, cart } = useCart();
   const itemCount = cart?.lines.reduce((s, l) => s + l.quantity, 0) ?? 0;
+  const close = () => setOpen(false);
+
+  // Lock body scroll while the full-screen mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <header className="bg-[#fffaeb]">
@@ -26,7 +36,7 @@ export function SiteHeader() {
 
         {/* Right: nav + cart + login */}
         <div className="flex items-center gap-8">
-          <nav className="flex items-center gap-8 text-sm text-foreground">
+          <nav className="flex items-center gap-8 text-sm font-bold text-foreground">
             <Link href="/science" className="hover:underline hover:decoration-[#e68163] hover:decoration-[3px] hover:underline-offset-[5px]">
               Science
             </Link>
@@ -116,33 +126,54 @@ export function SiteHeader() {
           </button>
         </div>
       </div>
-      {open && (
-        <div className="md:hidden border-t border-border bg-[#fffaeb]">
-          <nav className="flex flex-col gap-3 px-4 py-4 text-sm font-semibold text-foreground">
-            <Link href="/science" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
-              Science
-            </Link>
-            <div className="flex flex-col gap-0">
-              <span className="text-foreground/50 text-xs uppercase tracking-widest pb-1">About</span>
-              <Link href="/about" onClick={() => setOpen(false)} className="self-start pl-2 transition-colors hover:text-brand py-1">
-                Why We Made M3
-              </Link>
-              <Link href="/quality" onClick={() => setOpen(false)} className="self-start pl-2 transition-colors hover:text-brand py-1">
-                Quality
-              </Link>
-              <Link href="/why-taking-the-same-supplements-every-day-isnt-enough" onClick={() => setOpen(false)} className="self-start pl-2 transition-colors hover:text-brand py-1">
-                Why Daily Supplements Aren&apos;t Enough
-              </Link>
-            </div>
-            <Link href="/signup" onClick={() => setOpen(false)} className="self-start transition-colors hover:text-brand">
-              Become a Founding Member
-            </Link>
-            <a href={ACCOUNT_URL} className="self-start transition-colors hover:text-brand">
-              Log in
-            </a>
-          </nav>
+      {/* Mobile full-screen menu overlay */}
+      <div
+        className={cn(
+          "md:hidden fixed inset-0 z-[80] flex flex-col bg-[#fffaeb] transition-[opacity,transform] duration-300 ease-out",
+          open
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none",
+        )}
+      >
+        {/* Top bar: logo + close */}
+        <div className="flex items-center justify-between px-4 py-2">
+          <Link href="/" onClick={close} className="flex items-center">
+            <Image src={logo} alt="M3" className="h-8 w-auto" />
+          </Link>
+          <button
+            onClick={close}
+            aria-label="Close menu"
+            className="p-3 -mr-1 rounded-md text-foreground transition-colors hover:bg-secondary"
+          >
+            <X className="h-7 w-7" />
+          </button>
         </div>
-      )}
+
+        {/* Links */}
+        <nav className="flex flex-1 flex-col gap-7 overflow-y-auto px-7 pt-10 pb-12 text-3xl font-bold text-foreground">
+          <Link href="/science" onClick={close} className="self-start transition-colors hover:text-brand">
+            Science
+          </Link>
+          <div className="flex flex-col gap-4">
+            <span className="text-foreground/40 text-xs font-semibold uppercase tracking-[0.25em]">About</span>
+            <Link href="/about" onClick={close} className="self-start text-2xl transition-colors hover:text-brand">
+              Why We Made M3
+            </Link>
+            <Link href="/quality" onClick={close} className="self-start text-2xl transition-colors hover:text-brand">
+              Quality
+            </Link>
+            <Link href="/why-taking-the-same-supplements-every-day-isnt-enough" onClick={close} className="self-start text-2xl transition-colors hover:text-brand">
+              Why Daily Supplements Aren&apos;t Enough
+            </Link>
+          </div>
+          <Link href="/signup" onClick={close} className="self-start transition-colors hover:text-brand">
+            Become a Founding Member
+          </Link>
+          <a href={ACCOUNT_URL} onClick={close} className="self-start transition-colors hover:text-brand">
+            Log in
+          </a>
+        </nav>
+      </div>
     </header>
   );
 }

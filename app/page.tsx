@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBanner } from "@/components/StickyBanner";
 import { CTAButton } from "@/components/CTAButton";
+import { HeroVideo } from "@/components/HeroVideo";
 import { ProductClient } from "@/components/ProductClient";
 import logo from "@/src/assets/m3-logo.png";
 import founderMyles from "@/src/assets/founder-max.png";
@@ -106,30 +107,21 @@ export default function HomePage() {
         {/* HERO — background image with left-to-right white fade */}
         <section className="relative overflow-hidden md:border-b md:border-border">
           {/* Background video (gif converted to mp4 for performance) */}
-          <video
-            aria-hidden
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none"
-          >
-            <source src="/hero-section.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none" />
           <div className="relative z-10 flex min-h-[60vh] md:min-h-[67vh] max-w-7xl items-center pl-10 md:pl-32 pr-4 py-10 md:py-16">
             <div className="w-[55%] md:w-auto max-w-2xl text-left text-white">
               <h2 className="text-[1.5rem] md:text-[3.3rem] lg:text-[3.6rem] tracking-tight leading-[1.05] font-gliker font-bold">
                 Do You Want To Feel Like Yourself Again?
               </h2>
-              <p className="mt-3 text-sm md:text-[1.4rem]">
+              <p className="mt-3 text-sm font-bold md:text-[1.4rem] md:font-normal">
                 Take the precision timed supplement and come alive in 30 days.
               </p>
               <div className="mt-5 md:mt-7">
-                <a href="#product" className="inline-block rounded-md bg-brand px-10 py-3 text-base md:px-20 md:text-xl font-extrabold uppercase tracking-wide text-white shadow-sm hover:opacity-90">
+                <a href="#product" className="inline-block whitespace-nowrap rounded-md bg-brand px-5 py-3 text-xs tracking-tight md:px-20 md:text-xl md:tracking-wide font-extrabold uppercase text-white shadow-sm hover:opacity-90">
                   I'M READY TO OPTIMIZE
                 </a>
               </div>
-              <p className="mt-3 text-sm text-white">Become a founding member. Try M3 on us.</p>
+              <p className="mt-3 text-sm font-bold text-white md:font-normal">Become a founding member. Try M3 on us.</p>
             </div>
           </div>
         </section>
