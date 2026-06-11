@@ -271,7 +271,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
         <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:grid-cols-2">
 
           {/* Left: sticky image + thumbnails */}
-          <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3 md:w-[70%]">
+          <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3 md:w-[70%] md:ml-auto">
 
             {/* Main image */}
             <div className="aspect-square w-full rounded-3xl bg-secondary flex items-center justify-center overflow-hidden">
@@ -316,7 +316,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           </div>
 
           {/* Right: scrollable product details and FAQ */}
-          <div className="flex flex-col gap-5 pb-8 md:pb-10 md:pt-5 md:w-[80%]">
+          <div className="flex flex-col gap-5 pb-8 md:pb-10 md:pt-5 md:w-[80%] md:mr-auto">
 
             {/* Title */}
             <div>
