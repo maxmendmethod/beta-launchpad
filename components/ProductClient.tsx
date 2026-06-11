@@ -316,7 +316,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           </div>
 
           {/* Right: scrollable product details and FAQ */}
-          <div className="flex flex-col gap-5 pb-8 md:pb-10 md:pt-5">
+          <div className="flex flex-col gap-5 pb-8 md:pb-10 md:pt-5 md:w-[80%]">
 
             {/* Title */}
             <div>
