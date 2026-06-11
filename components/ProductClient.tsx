@@ -421,15 +421,13 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                         </span>
                       </div>
                     </div>
-                    {selectedTier === i && (
-                      <ul className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 pl-6">
-                        {tier.perks.map((p) => (
-                          <li key={p} className="flex items-center gap-1 text-xs text-foreground/70">
-                            <span className="font-bold text-brand">✓</span> {p}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                    <ul className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 pl-6">
+                      {tier.perks.map((p) => (
+                        <li key={p} className="flex items-center gap-1 text-xs text-foreground/70">
+                          <span className="font-bold text-brand">✓</span> {p}
+                        </li>
+                      ))}
+                    </ul>
                   </button>
                 ))}
               </div>
@@ -482,7 +480,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                         <span className="text-lg font-gliker">
                           {tier.price === 0 ? "FREE" : `$${tier.price}`}
                         </span>
-                        {tier.perks.length > 0 && selectedOneTimeTier === i && (
+                        {tier.perks.length > 0 && (
                           <ul className="mt-1 space-y-0.5">
                             {tier.perks.map((p) => (
                               <li key={p} className="flex items-center gap-1 text-xs">
