@@ -241,6 +241,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
   const [selectedOneTimeTier, setSelectedOneTimeTier] = useState(0);
   const [openTab, setOpenTab] = useState<string | null>("ingredients");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showNutritionLabel, setShowNutritionLabel] = useState(false);
   const { addToCart, isLoading } = useCart();
 
   const activePlan = planType === "subscribe" ? MOCK_PRODUCT.plans.subscribe[selectedTier] : null;
@@ -273,7 +274,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3">
 
             {/* Main image */}
-            <div className="aspect-[4/5] w-full rounded-md bg-secondary flex items-center justify-center overflow-hidden">
+            <div className="aspect-[4/5] w-[90%] mx-auto rounded-md bg-secondary flex items-center justify-center overflow-hidden">
               {selectedImage === 0 ? (
                 <div className="text-center">
                   <p className="text-7xl text-brand font-gliker">M3</p>
@@ -303,6 +304,14 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                 </button>
               ))}
             </div>
+
+            {/* Nutrition label button */}
+            <button
+              onClick={() => setShowNutritionLabel(true)}
+              className="w-full rounded-md border border-border bg-secondary/50 py-2.5 text-sm font-bold hover:bg-secondary transition-colors"
+            >
+              View Nutrition Label
+            </button>
 
           </div>
 
@@ -674,6 +683,71 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           </div>
         </div>
       </section>
+
+      {/* Nutrition Label Modal */}
+      {showNutritionLabel && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          onClick={() => setShowNutritionLabel(false)}
+        >
+          <div
+            className="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowNutritionLabel(false)}
+              className="absolute right-4 top-4 text-foreground/40 hover:text-foreground transition-colors text-xl leading-none"
+              aria-label="Close"
+            >
+              ✕
+            </button>
+
+            {/* Supplement Facts panel — filler until finalized */}
+            <div className="border-2 border-black font-sans text-black">
+              <div className="border-b-8 border-black px-2 pb-1 pt-2">
+                <p className="text-3xl font-extrabold leading-none">Supplement Facts</p>
+                <p className="text-xs">Serving Size 1 Stick Pack</p>
+                <p className="text-xs">Servings Per Container 30</p>
+              </div>
+              <div className="px-2">
+                <div className="flex justify-between border-b border-black py-0.5 text-[10px] font-bold">
+                  <span />
+                  <span>Amount Per Serving</span>
+                  <span>% Daily Value</span>
+                </div>
+                {[
+                  ["Vitamin A", "900 mcg", "100%"],
+                  ["Vitamin C", "90 mg", "100%"],
+                  ["Vitamin D3", "50 mcg", "250%"],
+                  ["Vitamin E", "15 mg", "100%"],
+                  ["Vitamin K2", "120 mcg", "100%"],
+                  ["B-Complex (B1–B9)", "—", "100%"],
+                  ["Vitamin B12", "2.4 mcg", "100%"],
+                  ["Iron (Performance Days)", "8 mg", "44%"],
+                  ["Calcium", "200 mg", "15%"],
+                  ["Magnesium", "80 mg", "19%"],
+                  ["Zinc", "8 mg", "73%"],
+                  ["Creatine Monohydrate", "3,000 mg", "†"],
+                  ["Probiotics", "10B CFU", "†"],
+                  ["Lion's Mane Extract", "500 mg", "†"],
+                  ["Ashwagandha KSM-66", "300 mg", "†"],
+                  ["CoQ10 (Ubiquinol)", "100 mg", "†"],
+                  ["CDP-Choline", "250 mg", "†"],
+                ].map(([name, amount, dv]) => (
+                  <div key={name} className="flex justify-between border-b border-black/20 py-0.5 text-[10px]">
+                    <span className="font-medium">{name}</span>
+                    <span>{amount}</span>
+                    <span>{dv}</span>
+                  </div>
+                ))}
+                <p className="py-1.5 text-[9px] leading-tight text-black/60">
+                  † Daily Value not established. Nutrient amounts vary by formula rotation (Performance / Recovery / Maintenance days). See packaging for full details.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </>
   );
