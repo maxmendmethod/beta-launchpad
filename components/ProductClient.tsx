@@ -271,10 +271,10 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
         <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:grid-cols-2">
 
           {/* Left: sticky image + thumbnails */}
-          <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3 md:w-[80%]">
+          <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3">
 
             {/* Main image */}
-            <div className="aspect-square w-[90%] mx-auto rounded-md bg-secondary flex items-center justify-center overflow-hidden">
+            <div className="aspect-[4/5] w-full rounded-md bg-secondary flex items-center justify-center overflow-hidden">
               {selectedImage === 0 ? (
                 <div className="text-center">
                   <p className="text-7xl text-brand font-gliker">M3</p>
@@ -289,8 +289,8 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             </div>
 
             {/* Thumbnails */}
-            <div className="w-[90%] mx-auto grid grid-cols-5 gap-2">
-              {[0, 1, 2, 3, 4].map((i) => (
+            <div className="grid grid-cols-4 gap-2">
+              {[0, 1, 2, 3].map((i) => (
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
@@ -308,7 +308,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Nutrition label button */}
             <button
               onClick={() => setShowNutritionLabel(true)}
-              className="w-[90%] mx-auto rounded-md border border-border bg-[#fffaeb] py-2.5 text-sm font-bold hover:bg-[#f5f0dc] transition-colors"
+              className="w-full rounded-md border border-border bg-[#fffaeb] py-2.5 text-sm font-bold hover:bg-[#f5f0dc] transition-colors"
             >
               View Nutrition Label
             </button>
@@ -316,7 +316,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           </div>
 
           {/* Right: scrollable product details and FAQ */}
-          <div className="flex flex-col gap-5 pb-8 md:pb-10 md:pt-5 md:w-[80%]">
+          <div className="flex flex-col gap-5 pb-8 md:pb-10 md:pt-5">
 
             {/* Title */}
             <div>
