@@ -289,8 +289,8 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             </div>
 
             {/* Thumbnails */}
-            <div className="grid grid-cols-5 gap-2">
-              {[0, 1, 2, 3, 4].map((i) => (
+            <div className="grid grid-cols-8 gap-2">
+              {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
@@ -308,7 +308,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Nutrition label button */}
             <button
               onClick={() => setShowNutritionLabel(true)}
-              className="w-full rounded-full border border-border bg-[#fffaeb] py-2.5 text-sm font-bold hover:bg-[#f5f0dc] transition-colors"
+              className="w-full rounded-full border border-border bg-[#ffffff] py-2.5 text-sm font-bold hover:bg-[#f5f5f5] transition-colors"
             >
               View Nutrition Label
             </button>
@@ -316,35 +316,30 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           </div>
 
           {/* Right: scrollable product details and FAQ */}
-          <div className="flex flex-col gap-5 pb-8 md:pb-10 md:pt-5 md:w-[80%] md:mr-auto">
+          <div className="flex flex-col gap-7 pb-8 md:pb-10 md:pt-5 md:w-[72%] md:mr-auto">
 
-            {/* Title */}
-            <div>
-              <h2 className="text-4xl md:text-4xl tracking-tight leading-tight font-gliker text-brand">
-                {MOCK_PRODUCT.name}
-              </h2>
-              <p className="mt-1 text-xl md:text-lg text-foreground font-bold">{MOCK_PRODUCT.tagline}</p>
-            </div>
+            {/* Header: best seller badge, stars, title */}
+            <div className="flex flex-col gap-2.5">
+              {/* Best Seller badge */}
+              <span className="inline-flex w-fit items-center rounded-md border border-border bg-[#fffaeb] px-2.5 py-1 text-xs font-bold text-brand">
+                Best Seller
+              </span>
 
-            {/* Stars */}
-            <div className="flex items-center gap-1.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-[#e68163] text-[#e68163]" />
-              ))}
-              <span className="ml-1 text-base text-foreground">Founding member reviews loading soon</span>
-            </div>
+              {/* Stars */}
+              <div className="flex items-center gap-1.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-[#e68163] text-[#e68163]" />
+                ))}
+                <span className="ml-1 text-base text-foreground">Founding member reviews loading soon</span>
+              </div>
 
-            {/* Claims */}
-            <div className="order-last md:order-none grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {MOCK_PRODUCT.claims.map((c) => (
-                <div
-                  key={c.label}
-                  className="rounded-md border border-border bg-secondary/50 px-3 py-2 text-center"
-                >
-                  <p className="text-xl font-black">{c.stat}</p>
-                  <p className="text-xs leading-tight font-bold">{c.label}</p>
-                </div>
-              ))}
+              {/* Title */}
+              <div>
+                <h2 className="text-4xl md:text-4xl tracking-tight leading-tight font-gliker text-brand">
+                  {MOCK_PRODUCT.name}
+                </h2>
+                <p className="mt-1 text-xl md:text-lg text-foreground font-bold">{MOCK_PRODUCT.tagline}</p>
+              </div>
             </div>
 
             {/* Plan toggle */}
@@ -373,14 +368,16 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
             {/* Subscribe tier cards */}
             {planType === "subscribe" && (
-              <div className="flex flex-col gap-3">
-                {MOCK_PRODUCT.plans.subscribe.map((tier, i) => (
+              <div className="flex flex-col">
+                {MOCK_PRODUCT.plans.subscribe.map((tier, i, arr) => (
                   <button
                     key={tier.id}
                     onClick={() => setSelectedTier(i)}
-                    className={`w-full rounded-md border px-4 py-3 text-left transition-all ${
+                    className={`relative w-full border px-4 py-5 text-left transition-all ${
+                      i === 0 ? "rounded-t-md" : "-mt-px"
+                    } ${i === arr.length - 1 ? "rounded-b-md" : ""} ${
                       selectedTier === i
-                        ? "border-brand bg-[#fffaeb]"
+                        ? "z-10 border-brand bg-[#fffaeb]"
                         : "border-border bg-white hover:bg-[#fffaeb] hover:border-brand/40"
                     }`}
                   >
@@ -440,14 +437,16 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
 
             {/* One-time tier cards */}
             {planType === "onetime" && (
-              <div className="flex flex-col gap-3">
-                {MOCK_PRODUCT.plans.oneTime.map((tier, i) => (
+              <div className="flex flex-col">
+                {MOCK_PRODUCT.plans.oneTime.map((tier, i, arr) => (
                   <button
                     key={tier.id}
                     onClick={() => setSelectedOneTimeTier(i)}
-                    className={`w-full rounded-md border px-4 py-3 text-left transition-all ${
+                    className={`relative w-full border px-4 py-5 text-left transition-all ${
+                      i === 0 ? "rounded-t-md" : "-mt-px"
+                    } ${i === arr.length - 1 ? "rounded-b-md" : ""} ${
                       selectedOneTimeTier === i
-                        ? "border-brand bg-[#fffaeb]"
+                        ? "z-10 border-brand bg-[#fffaeb]"
                         : "border-border bg-white hover:bg-[#fffaeb] hover:border-brand/40"
                     }`}
                   >
@@ -584,6 +583,19 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                 ))}
               </div>
               <div className="border-t border-border" />
+            </div>
+
+            {/* Claims */}
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {MOCK_PRODUCT.claims.map((c) => (
+                <div
+                  key={c.label}
+                  className="rounded-md border border-border bg-secondary/50 px-3 py-2 text-center"
+                >
+                  <p className="text-xl font-black">{c.stat}</p>
+                  <p className="text-xs leading-tight font-bold">{c.label}</p>
+                </div>
+              ))}
             </div>
 
           </div>
