@@ -271,7 +271,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
         <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:grid-cols-2">
 
           {/* Left: sticky image + thumbnails */}
-          <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3">
+          <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3 md:w-[80%]">
 
             {/* Main image */}
             <div className="aspect-square w-[90%] mx-auto rounded-md bg-secondary flex items-center justify-center overflow-hidden">
