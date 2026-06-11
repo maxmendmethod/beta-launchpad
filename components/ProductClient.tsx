@@ -316,7 +316,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           </div>
 
           {/* Right: scrollable product details and FAQ */}
-          <div className="flex flex-col gap-7 pb-8 md:pb-10 md:pt-5 md:w-[72%] md:mr-auto">
+          <div className="flex flex-col gap-7 pb-8 md:pb-10 md:pt-0 md:w-[72%] md:mr-auto">
 
             {/* Header: best seller badge, stars, title */}
             <div className="flex flex-col gap-2.5">
@@ -551,6 +551,19 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
               </div>
             </div>
 
+            {/* Claims */}
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {MOCK_PRODUCT.claims.map((c) => (
+                <div
+                  key={c.label}
+                  className="rounded-md border border-border bg-secondary/50 px-3 py-2 text-center"
+                >
+                  <p className="text-xl font-black">{c.stat}</p>
+                  <p className="text-xs leading-tight font-bold">{c.label}</p>
+                </div>
+              ))}
+            </div>
+
             {/* FAQ */}
             <div className="-mt-1 border-t border-border pt-0">
               <div className="flex flex-col">
@@ -583,19 +596,6 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                 ))}
               </div>
               <div className="border-t border-border" />
-            </div>
-
-            {/* Claims */}
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {MOCK_PRODUCT.claims.map((c) => (
-                <div
-                  key={c.label}
-                  className="rounded-md border border-border bg-secondary/50 px-3 py-2 text-center"
-                >
-                  <p className="text-xl font-black">{c.stat}</p>
-                  <p className="text-xs leading-tight font-bold">{c.label}</p>
-                </div>
-              ))}
             </div>
 
           </div>
