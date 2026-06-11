@@ -11,6 +11,7 @@ import { ProductClient } from "@/components/ProductClient";
 import logo from "@/src/assets/m3-logo.png";
 import founderMyles from "@/src/assets/founder-max.png";
 import founderLeo from "@/src/assets/founder-jon.png";
+import foundersDuo from "@/src/assets/founders-duo.png";
 
 export const metadata: Metadata = {
   title: "Max Mend Method | Daily Precision Timed Supplement",
@@ -160,50 +161,34 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Founders — heading, founder cutouts on a soft brand stage, text beside */}
-        <section className="bg-[#fffaeb] border-t border-border">
-          <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-            <div className="text-center mb-12 md:mb-16">
-              <p className="text-sm uppercase tracking-wide text-brand mb-2">Meet The Team</p>
-              <h2 className="text-4xl md:text-5xl font-gliker font-bold uppercase">About The Founders</h2>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-              {/* Founder cutouts standing on a soft brand-tinted stage */}
-              <div className="lg:col-span-5">
-                <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-brand/20 via-brand/5 to-transparent ring-1 ring-brand/10 px-3 pt-8 sm:px-6 shadow-sm">
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 h-56 w-56 rounded-full bg-brand/30 blur-3xl"
-                  />
-                  <div className="relative flex items-end justify-center gap-1 sm:gap-3">
-                    <Image
-                      src={founderMyles}
-                      alt="Myles Sherman, co-founder of Max Mend Method"
-                      className="w-1/2 h-auto object-contain drop-shadow-sm"
-                    />
-                    <Image
-                      src={founderLeo}
-                      alt="Leo Sherman, co-founder of Max Mend Method"
-                      className="w-1/2 h-auto object-contain drop-shadow-sm"
-                    />
-                  </div>
-                </div>
-                <div className="mt-6 grid grid-cols-2 gap-3">
-                  <div className="text-center">
-                    <p className="font-gliker text-lg font-bold leading-tight">Myles Sherman</p>
-                    <p className="text-xs uppercase tracking-[0.15em] text-brand mt-0.5">Co-Founder</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="font-gliker text-lg font-bold leading-tight">Leo Sherman</p>
-                    <p className="text-xs uppercase tracking-[0.15em] text-brand mt-0.5">Co-Founder</p>
-                  </div>
-                </div>
+        {/* Founders — hero-style side images on 2xl+, duo image + text grid below */}
+        <section
+          className="relative overflow-hidden"
+          style={{
+            backgroundColor: "#fffaeb",
+            backgroundImage: "linear-gradient(135deg, #e68163 0%, #fffaeb 100%)",
+          }}
+        >
+          <Image
+            src={founderMyles}
+            alt="Myles Sherman, co-founder of Max Mend Method"
+            aria-hidden
+            className="hidden 2xl:block pointer-events-none select-none absolute left-16 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
+          />
+          <Image
+            src={founderLeo}
+            alt="Leo Sherman, co-founder of Max Mend Method"
+            aria-hidden
+            className="hidden 2xl:block pointer-events-none select-none absolute right-16 bottom-[-30%] h-[135%] w-auto max-w-[42vw] object-contain object-bottom"
+          />
+          <div className="mx-auto max-w-5xl px-4 py-12 relative z-10 text-foreground">
+            <h2 className="text-4xl md:text-5xl font-gliker font-bold text-center uppercase mb-8">About The Founders</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-1 gap-8 items-start">
+              <div className="md:col-span-1 2xl:hidden">
+                <Image src={foundersDuo} alt="Myles and Leo Sherman" className="w-full rounded-lg h-auto" />
               </div>
-
-              {/* Story */}
-              <div className="lg:col-span-7 space-y-5 text-base md:text-lg leading-relaxed text-foreground/80">
-                <p className="border-l-2 border-brand pl-4 text-foreground">Myles and Leo Sherman are brothers and co-founders of M3. Myles holds a degree in Cybersecurity and Economics. Leo holds a degree in Physics and Electrical Engineering. Both are The Knowledge Society alumni. Across their education a deep focus on human performance and nutrition remained constant.</p>
+              <div className="md:col-span-2 2xl:col-span-1 2xl:max-w-2xl 2xl:mx-auto space-y-4 text-sm md:text-base text-foreground/80">
+                <p>Myles and Leo Sherman are brothers and co-founders of M3. Myles holds a degree in Cybersecurity and Economics. Leo holds a degree in Physics and Electrical Engineering. Both are The Knowledge Society alumni. Across their education a deep focus on human performance and nutrition remained constant.</p>
                 <p>Over time that gave them a thorough understanding of the industry and its problems. They have spent years implementing nutrition science. Myles has a 2,000 consecutive day streak on Cronometer and MyFitnessPal. Neither has missed a single gym session in eight years. When they travel, TSA often flags their bags for supplements. They became the default reference point in their circles for training and nutrition.</p>
                 <p>They have been through the mistakes M3 is designed to prevent. From managing over 20 supplements to spending hundreds of dollars per month on trending ingredients: they get it. The research they did to understand those failures is what M3 is built on.</p>
               </div>

@@ -268,13 +268,13 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
     <>
       {/* Hero with sticky image */}
       <section className="mx-auto px-4 md:px-[15%] pt-0 md:pt-16">
-        <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-10 lg:gap-12 items-start lg:grid-cols-2">
 
           {/* Left: sticky image + thumbnails */}
-          <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-5 md:w-[70%] md:ml-auto">
+          <div className="lg:sticky lg:top-[192px] lg:pb-10 flex flex-col gap-5 xl:w-[70%] xl:ml-auto">
 
             {/* Main image */}
-            <div className="aspect-square w-full rounded-3xl bg-secondary flex items-center justify-center overflow-hidden">
+            <div className="aspect-square w-full rounded-2xl bg-secondary flex items-center justify-center overflow-hidden">
               {selectedImage === 0 ? (
                 <div className="text-center">
                   <p className="text-7xl text-brand font-gliker">M3</p>
@@ -294,7 +294,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
-                  className={`aspect-square rounded-2xl bg-secondary flex items-center justify-center border-2 transition-colors ${
+                  className={`aspect-square rounded-md bg-secondary flex items-center justify-center border-2 transition-colors ${
                     selectedImage === i
                       ? "border-brand"
                       : "border-transparent hover:border-brand/40"
@@ -316,7 +316,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           </div>
 
           {/* Right: scrollable product details and FAQ */}
-          <div className="flex flex-col gap-7 pb-8 md:pb-10 md:pt-0 md:w-[72%] md:mr-auto">
+          <div className="flex flex-col gap-7 pb-8 lg:pb-10 lg:pt-0 xl:w-[72%] xl:mr-auto">
 
             {/* Header: best seller badge, stars, title */}
             <div className="flex flex-col gap-2.5">
