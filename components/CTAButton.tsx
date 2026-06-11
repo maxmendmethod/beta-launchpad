@@ -5,7 +5,7 @@ export function CTAButton({ children = "I'M READY TO OPTIMIZE", className }: { c
   return (
     <Link
       href="/signup"
-      className={cn("inline-block rounded-md bg-brand px-8 py-4 text-base font-extrabold uppercase tracking-wide text-white shadow-sm hover:opacity-90", className)}
+      className={cn("inline-block rounded-md bg-brand px-8 py-4 text-base font-extrabold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-brand-hover hover:shadow-md", className)}
     >
       {children}
     </Link>

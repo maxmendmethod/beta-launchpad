@@ -99,7 +99,7 @@ export function CartDrawer() {
             <p className="text-xs text-foreground/50">Taxes and shipping calculated at checkout</p>
             <a
               href={cart.checkoutUrl}
-              className="block w-full rounded-md py-4 text-center text-base font-extrabold uppercase tracking-wide text-white bg-brand hover:bg-[#c45a35] transition-colors"
+              className="block w-full rounded-md py-4 text-center text-base font-extrabold uppercase tracking-wide text-white bg-brand shadow-sm hover:bg-brand-hover hover:shadow-md transition-all"
             >
               Checkout
             </a>

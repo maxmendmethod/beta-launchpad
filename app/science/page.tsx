@@ -42,7 +42,7 @@ export default function SciencePage() {
                   alt="Nutrient Timing Guide preview"
                   className="w-full max-w-[220px] rounded border border-border h-auto"
                 />
-                <span className="pointer-events-none absolute -top-3 -right-3 z-10 rounded-md bg-[#FF0000] text-white text-[10px] px-2 py-1 uppercase">
+                <span className="pointer-events-none absolute -top-3 -right-3 z-10 rounded-md bg-[#d92d20] text-white text-[10px] font-bold px-2 py-1 uppercase shadow-sm">
                   It&apos;s Free
                 </span>
               </div>
@@ -50,7 +50,7 @@ export default function SciencePage() {
                 href="https://docs.google.com/document/d/14I4Id_ZUuAeovT98vToEZzOjyMMJKlfYcUbG8kZhuQI/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-block rounded-md bg-brand px-6 py-3 text-sm text-white hover:opacity-90"
+                className="mt-4 inline-block rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-brand-hover hover:shadow-md"
               >
                 Get Your Free Guide →
               </a>

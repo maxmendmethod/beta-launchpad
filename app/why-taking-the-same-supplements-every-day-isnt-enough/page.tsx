@@ -445,7 +445,7 @@ export default function ArticlePage() {
           </p>
 
           {/* ── CTA ── */}
-          <Link href="/product/m3" className="!mt-10 inline-block rounded-md bg-brand px-7 py-3 text-sm font-extrabold uppercase tracking-wide text-white hover:opacity-90 transition-opacity">
+          <Link href="/product/m3" className="!mt-10 inline-block rounded-md bg-brand px-7 py-3 text-sm font-extrabold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-brand-hover hover:shadow-md">
             Learn About Max Mend Method →
           </Link>
 

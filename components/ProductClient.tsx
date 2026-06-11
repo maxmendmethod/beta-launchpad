@@ -308,7 +308,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Nutrition label button */}
             <button
               onClick={() => setShowNutritionLabel(true)}
-              className="w-full rounded-full border border-border bg-[#ffffff] py-2.5 text-sm font-bold hover:bg-[#f5f5f5] transition-colors"
+              className="w-full rounded-full border border-border bg-white py-2.5 text-sm font-bold hover:bg-secondary hover:border-brand/40 transition-colors"
             >
               View Nutrition Label
             </button>
@@ -510,7 +510,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
               {isFoundingMember ? (
                 <Link
                   href="/signup"
-                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-lg font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors"
+                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-lg font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-brand-hover hover:shadow-md transition-all"
                 >
                   <span className="flex items-center justify-center gap-2">
                     Apply Now
@@ -521,7 +521,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                 <button
                   onClick={handleBuy}
                   disabled={isLoading}
-                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-lg font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-[#c45a35] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="block w-full rounded-md py-5 md:py-4 text-center text-lg md:text-lg font-extrabold uppercase tracking-wide text-white shadow-sm bg-brand hover:bg-brand-hover hover:shadow-md transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:shadow-sm"
                 >
                   <span className="flex items-center justify-center gap-2">
                     {isLoading ? "Adding..." : planType === "subscribe" ? "Subscribe" : "Buy Now"}
@@ -606,7 +606,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           <h2 className="mb-6 text-center text-4xl font-gliker font-bold">Trusted by Doctors and Coaches</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {EXPERTS.map((e) => (
-              <div key={e.initials} className="flex flex-col gap-4 rounded-md border border-border p-6">
+              <div key={e.initials} className="flex flex-col gap-4 rounded-xl border border-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary">
                     <span className="text-sm font-black text-brand">{e.initials}</span>
@@ -650,7 +650,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
       </section>
 
       {/* What to Expect */}
-      <section className="bg-[#f5f5f5]">
+      <section className="bg-secondary">
         <div className="mx-auto px-4 md:px-[15%] py-12">
           {/* Mobile-only cropped image */}
           <div className="md:hidden w-full rounded-md overflow-hidden mb-6 aspect-square">

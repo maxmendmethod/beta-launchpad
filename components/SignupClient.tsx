@@ -111,7 +111,7 @@ export function SignupClient() {
                   await navigator.clipboard.writeText(shareText + " " + shareUrl);
                 }
               }}
-              className="flex items-center justify-center gap-2 w-full rounded-md bg-brand px-5 py-3 text-sm font-bold uppercase text-white hover:opacity-90"
+              className="flex items-center justify-center gap-2 w-full rounded-md bg-brand px-5 py-3 text-sm font-bold uppercase text-white shadow-sm transition-all hover:bg-brand-hover hover:shadow-md"
             >
               <Share2 className="h-4 w-4" /> Tell a friend
             </button>
@@ -166,7 +166,7 @@ export function SignupClient() {
           </p>
 
           {/* Fields section — white background */}
-          <div className="mt-8 bg-white border border-border rounded-lg px-8 py-10 max-w-2xl mx-auto text-foreground">
+          <div className="mt-8 bg-white border border-border rounded-lg shadow-sm px-8 py-10 max-w-2xl mx-auto text-foreground">
             <form
               onSubmit={handleSubmit}
               className="space-y-4"
@@ -176,7 +176,7 @@ export function SignupClient() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-md bg-brand px-5 py-3 text-sm font-extrabold uppercase tracking-wide text-white hover:opacity-90 disabled:opacity-60"
+                className="w-full rounded-md bg-brand px-5 py-3 text-sm font-extrabold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-brand-hover hover:shadow-md disabled:opacity-60 disabled:hover:shadow-sm"
               >
                 {loading ? "Submitting…" : "Join The Waitlist"}
               </button>

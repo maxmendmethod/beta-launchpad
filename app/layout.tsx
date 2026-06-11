@@ -9,7 +9,8 @@ import "./globals.css";
 
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  weight: ["400", "600"],
+  // Variable font: one file covers 400–900, so font-bold/extrabold/black render
+  // crisply instead of being faux-synthesized — no extra network cost.
   display: "swap",
   variable: "--source-sans",
 });

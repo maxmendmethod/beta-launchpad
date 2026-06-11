@@ -117,7 +117,7 @@ export default function HomePage() {
                 Take the precision timed supplement and come alive in 30 days.
               </p>
               <div className="mt-5 md:mt-7">
-                <a href="#product" className="inline-block whitespace-nowrap rounded-md bg-brand px-8 py-5 text-lg tracking-tight md:px-20 md:py-4 md:text-xl md:tracking-wide font-extrabold uppercase text-white shadow-sm hover:opacity-90">
+                <a href="#product" className="inline-block whitespace-nowrap rounded-md bg-brand px-8 py-5 text-lg tracking-tight md:px-20 md:py-4 md:text-xl md:tracking-wide font-extrabold uppercase text-white shadow-lg transition-all hover:bg-brand-hover hover:shadow-xl hover:-translate-y-0.5">
                   I'M READY TO OPTIMIZE
                 </a>
               </div>
@@ -129,7 +129,7 @@ export default function HomePage() {
         {/* Quote */}
         <section className="border-t border-border bg-white">
           <div className="px-[10%] py-16">
-            <p className="mb-3 text-sm uppercase tracking-wide text-brand">
+            <p className="mb-3 text-sm font-bold uppercase tracking-[0.12em] text-brand">
               Generic Supplements Don&apos;t Consider Changing Daily Needs
             </p>
             <p className="text-2xl md:text-3xl lg:text-4xl leading-snug font-bold">
@@ -222,11 +222,11 @@ export default function HomePage() {
             <div className="relative inline-block">
               <Link
                 href="/signup"
-                className="relative inline-block rounded-md bg-brand px-7 py-4 text-base uppercase tracking-wide text-white hover:opacity-90"
+                className="relative inline-block rounded-md bg-brand px-7 py-4 text-base font-extrabold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-brand-hover hover:shadow-md"
               >
                 Start Feeling Better For Free
               </Link>
-              <span className="pointer-events-none absolute -top-3 -right-3 z-10 rounded-md bg-[#FF0000] text-white text-[10px] px-2 py-1 uppercase">
+              <span className="pointer-events-none absolute -top-3 -right-3 z-10 rounded-md bg-[#d92d20] text-white text-[10px] font-bold px-2 py-1 uppercase shadow-sm">
                 Limited Opportunity
               </span>
             </div>

@@ -62,7 +62,7 @@ export default function Glp1Page() {
                 <div className="mt-6 md:mt-8">
                   <a
                     href="#product"
-                    className="inline-block whitespace-nowrap rounded-md bg-brand px-10 py-5 text-lg md:px-14 md:py-4 md:text-xl font-extrabold uppercase tracking-wide text-white shadow-sm hover:opacity-90"
+                    className="inline-block whitespace-nowrap rounded-md bg-brand px-10 py-5 text-lg md:px-14 md:py-4 md:text-xl font-extrabold uppercase tracking-wide text-white shadow-lg transition-all hover:bg-brand-hover hover:shadow-xl hover:-translate-y-0.5"
                   >
                     Protect My Progress
                   </a>
