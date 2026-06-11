@@ -268,10 +268,10 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
     <>
       {/* Hero with sticky image */}
       <section className="mx-auto px-4 md:px-[15%] pt-0 md:pt-16">
-        <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:grid-cols-[2fr_2.5fr]">
+        <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:grid-cols-[4fr_3fr]">
 
           {/* Left: sticky image + thumbnails */}
-          <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3">
+          <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3 md:w-[85%] md:mx-auto">
 
             {/* Main image */}
             <div className="aspect-[4/5] w-[90%] mx-auto rounded-md bg-secondary flex items-center justify-center overflow-hidden">
@@ -289,8 +289,8 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             </div>
 
             {/* Thumbnails */}
-            <div className="w-[90%] mx-auto grid grid-cols-4 gap-2">
-              {[0, 1, 2, 3].map((i) => (
+            <div className="w-[90%] mx-auto grid grid-cols-5 gap-2">
+              {[0, 1, 2, 3, 4].map((i) => (
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
