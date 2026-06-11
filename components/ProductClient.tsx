@@ -268,7 +268,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
     <>
       {/* Hero with sticky image */}
       <section className="mx-auto px-4 md:px-[15%] pt-0 md:pt-16">
-        <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:grid-cols-[2fr_3fr]">
+        <div className="grid grid-cols-1 gap-10 md:gap-12 items-start md:grid-cols-[2fr_2.5fr]">
 
           {/* Left: sticky image + thumbnails */}
           <div className="md:sticky md:top-[192px] md:pb-10 flex flex-col gap-3">
@@ -289,7 +289,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             </div>
 
             {/* Thumbnails */}
-            <div className="grid grid-cols-4 gap-2">
+            <div className="w-[90%] mx-auto grid grid-cols-4 gap-2">
               {[0, 1, 2, 3].map((i) => (
                 <button
                   key={i}
@@ -308,7 +308,7 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
             {/* Nutrition label button */}
             <button
               onClick={() => setShowNutritionLabel(true)}
-              className="w-full rounded-md border border-border bg-secondary/50 py-2.5 text-sm font-bold hover:bg-secondary transition-colors"
+              className="w-[90%] mx-auto rounded-md border border-border bg-[#fffaeb] py-2.5 text-sm font-bold hover:bg-[#f5f0dc] transition-colors"
             >
               View Nutrition Label
             </button>
@@ -691,26 +691,26 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
           onClick={() => setShowNutritionLabel(false)}
         >
           <div
-            className="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl"
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-10 shadow-xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setShowNutritionLabel(false)}
-              className="absolute right-4 top-4 text-foreground/40 hover:text-foreground transition-colors text-xl leading-none"
+              className="absolute right-5 top-5 text-foreground/40 hover:text-foreground transition-colors text-2xl leading-none"
               aria-label="Close"
             >
               ✕
             </button>
 
             {/* Supplement Facts panel — filler until finalized */}
-            <div className="border-2 border-black font-sans text-black">
-              <div className="border-b-8 border-black px-2 pb-1 pt-2">
-                <p className="text-3xl font-extrabold leading-none">Supplement Facts</p>
-                <p className="text-xs">Serving Size 1 Stick Pack</p>
-                <p className="text-xs">Servings Per Container 30</p>
+            <div className="border-4 border-black font-sans text-black">
+              <div className="border-b-[12px] border-black px-4 pb-2 pt-3">
+                <p className="text-5xl font-extrabold leading-none">Supplement Facts</p>
+                <p className="mt-1 text-base">Serving Size 1 Stick Pack</p>
+                <p className="text-base">Servings Per Container 30</p>
               </div>
-              <div className="px-2">
-                <div className="flex justify-between border-b border-black py-0.5 text-[10px] font-bold">
+              <div className="px-4">
+                <div className="flex justify-between border-b-2 border-black py-1 text-sm font-bold">
                   <span />
                   <span>Amount Per Serving</span>
                   <span>% Daily Value</span>
@@ -734,13 +734,13 @@ export function ProductClient({ defaultPlanType = "subscribe" }: { defaultPlanTy
                   ["CoQ10 (Ubiquinol)", "100 mg", "†"],
                   ["CDP-Choline", "250 mg", "†"],
                 ].map(([name, amount, dv]) => (
-                  <div key={name} className="flex justify-between border-b border-black/20 py-0.5 text-[10px]">
+                  <div key={name} className="flex justify-between border-b border-black/20 py-1.5 text-sm">
                     <span className="font-medium">{name}</span>
                     <span>{amount}</span>
                     <span>{dv}</span>
                   </div>
                 ))}
-                <p className="py-1.5 text-[9px] leading-tight text-black/60">
+                <p className="py-3 text-xs leading-relaxed text-black/60">
                   † Daily Value not established. Nutrient amounts vary by formula rotation (Performance / Recovery / Maintenance days). See packaging for full details.
                 </p>
               </div>
